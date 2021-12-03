@@ -1,4 +1,4 @@
-<IfModule mod_rewite.c>
+<IfModule mod_rewrite.c>
     Options -Multiviews
     RewriteEngine on
     RewriteBase /LobeGestao/public
