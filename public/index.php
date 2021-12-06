@@ -1,5 +1,6 @@
 <?php
     include './../app/Libraries/Rota.php';
+    include './../app/Libraries/Controller.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,5 @@
     <?php
         $rotas = new Rota();
     ?>
-    
 </body>
 </html>

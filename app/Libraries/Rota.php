@@ -2,18 +2,31 @@
 
 class Rota {
     
-    private $controlador = 'Paginas'; // Controlador padrão
+    private $controlador = 'conta'; // Controlador padrão
+    private $metodo = 'index'; // Método padrão
+    private $parametros = array(); // Parâmetros padrão
 
-    public function __construct(){ // Método construtor que faz o require dos controllers
+
+    public function __construct(){ // Método construtor que faz o require dos controllers e metodos
         $url = $this->url() ? $this->url() : [0];
 
-        if(file_exists('../app/Controllers/' . ucwords($url[0]) . '.php')){
+        if(file_exists('../app/Controllers/' . ucwords($url[0]) . '.php')){ // Verifica se o controlador existe
             $this->controlador = ucwords($url[0]);
             unset($url[0]);
         }
 
-        require_once '../app/Controllers/' . $this->controlador . '.php';
+        require_once '../app/Controllers/' . $this->controlador . '.php'; // Requerer o controlador
         $this->controlador = new $this->controlador;
+
+        if(isset($url[1])){ // Verifica se o método existe
+            if(method_exists($this->controlador, $url[1])){
+                $this->metodo = $url[1]; // Se existir, atribui o método
+                unset($url[1]);
+            }
+        }
+
+        $this->parametros = $url ? array_values($url) : []; // Se existir, atribui os parâmetros
+        call_user_func_array([$this->controlador, $this->metodo], $this->parametros); // Chama o método e passa os parâmetros
 
     }
 
