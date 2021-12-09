@@ -4,4 +4,6 @@
     ";
 
     $sql = "CREATE TABLE `lobegestao`.`empresas` ( `id` INT NOT NULL AUTO_INCREMENT , `nome` VARCHAR(32) NOT NULL , `tipo` VARCHAR(15) NOT NULL , `uf` VARCHAR(2) NOT NULL , `regime` VARCHAR(15) NOT NULL , `faturamento` VARCHAR(15) NOT NULL , `tareto` INT(1) NOT NULL , `tarego` INT(1) NOT NULL , `lei` INT(1) NOT NULL , `taregomex` INT(1) NOT NULL , `credita` INT(1) NOT NULL , `id_user` INT(5) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
+
+    $sql = "CREATE TABLE `lobegestao`.`usuarios` ( `id` INT NOT NULL AUTO_INCREMENT , `cnpj` VARCHAR(32) NOT NULL , `nome` VARCHAR(32) NOT NULL , `email` VARCHAR(32) NOT NULL , `senha` VARCHAR(32) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
     
