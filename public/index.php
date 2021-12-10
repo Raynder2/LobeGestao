@@ -1,6 +1,5 @@
 <?php
-    include './../app/Libraries/Rota.php';
-    include './../app/Libraries/Controller.php';
+    include './../app/autoload.php';
     include './../app/config.php';
 ?>
 <!DOCTYPE html>

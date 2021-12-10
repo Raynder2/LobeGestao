@@ -1,3 +1,14 @@
+<?php
+
+	if(isset($dados) && !empty($dados)){
+		$status = $dados['status'];
+		$msg = $dados['msg'];
+	}
+	else{
+		$status = '';
+		$msg = '';
+	}
+?>
 <!DOCTYPE html>
 <!-- saved from url=(0047)https://colorlib.com/etc/lf/Login_v2/index.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,7 +44,15 @@ e[s]=e[s]||[],e.zaraz._preTrack=[],e.zaraz.track=(t,r)=>e.zaraz._preTrack.push([
 <div class="limiter">
 <div class="container-login100">
 <div class="wrap-login100">
-<form class="login100-form validate-form">
+	<?php
+		if($status == 'erro'){
+			echo '<div class="alert alert-danger">'.$msg.'</div>';
+		}
+		else if($status == 'sucesso'){
+			echo '<div class="alert alert-success">'.$msg.'</div>';
+		}
+	?>
+<form method="POST" class="login100-form validate-form">
 <span class="login100-form-title p-b-26">
 LOBE GESTAO CLIENTE
 </span>
@@ -68,7 +87,7 @@ LOBE GESTAO CLIENTE
 <span class="btn-show-pass">
 <i class="zmdi zmdi-eye"></i>
 </span>
-<input class="input100" type="password" name="rpt-senha">
+<input class="input100" type="password" name="confirmarSenha">
 <span class="focus-input100" data-placeholder="Repita sua senha"></span>
 </div>
 
