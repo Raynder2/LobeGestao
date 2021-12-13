@@ -1,3 +1,13 @@
+<?php
+	if(isset($dados) && !empty($dados)){
+		$status = $dados['status'];
+		$msg = $dados['msg'];
+	}
+	else{
+		$status = '';
+		$msg = '';
+	}
+?>
 <!DOCTYPE html>
 <!-- saved from url=(0047)https://colorlib.com/etc/lf/Login_v2/index.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,23 +43,32 @@ e[s]=e[s]||[],e.zaraz._preTrack=[],e.zaraz.track=(t,r)=>e.zaraz._preTrack.push([
 <div class="limiter">
 <div class="container-login100">
 <div class="wrap-login100">
-<form class="login100-form validate-form">
+<?php
+		if($status == 'erro'){
+			echo '<div class="alert alert-danger">'.$msg.'</div>';
+		}
+		else if($status == 'sucesso'){
+			echo '<div class="alert alert-success">'.$msg.'</div>';
+			echo("<script>setTimeout(function(){window.location.href = '".URL."conta';}, 2000);</script>");
+		}
+	?>
+<form method="POST" action="<?=URL?>conta/entrar" class="login100-form validate-form">
 <span class="login100-form-title p-b-26">
 LOBE GESTAO CLIENTE
 </span>
 <span class="login100-form-title p-b-48">
 <i class="zmdi zmdi-font"></i>
 </span>
-<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+<div class="wrap-input100 validate-input" data-validate="Email invalido">
 <input class="input100" type="text" name="email">
 <span class="focus-input100" data-placeholder="Email"></span>
 </div>
-<div class="wrap-input100 validate-input" data-validate="Enter password">
+<div class="wrap-input100 validate-input" data-validate="Digite sua senha">
 <span class="btn-show-pass">
 <i class="zmdi zmdi-eye"></i>
 </span>
-<input class="input100" type="password" name="pass">
-<span class="focus-input100" data-placeholder="Password"></span>
+<input class="input100" type="password" name="senha">
+<span class="focus-input100" data-placeholder="Senha"></span>
 </div>
 <div class="container-login100-form-btn">
 <div class="wrap-login100-form-btn">

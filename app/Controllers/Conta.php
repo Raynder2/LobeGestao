@@ -7,14 +7,22 @@ class Conta extends Controller
         $this->view('conta/index');
     }
 
-    public function entrar($usuario = '', $senha = '')
+    public function entrar()
     {
-        $dados = [
-            'usuario' => $usuario,
-            'senha' => $senha
-        ];
+        if($_POST){
+            $dados = [
+                'email' => $_POST['email'],
+                'senha' => $_POST['senha']
+            ];
 
-        $this->view('conta/entrar', $dados);
+            $user = new Usuario();
+            $retorno = $user->logar($dados);
+            $this->view('conta/index', $retorno);
+        }
+        else{
+            $this->view('conta/index');
+        }
+
     }
 
     public function cadastre()

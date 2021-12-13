@@ -50,6 +50,7 @@ e[s]=e[s]||[],e.zaraz._preTrack=[],e.zaraz.track=(t,r)=>e.zaraz._preTrack.push([
 		}
 		else if($status == 'sucesso'){
 			echo '<div class="alert alert-success">'.$msg.'</div>';
+			echo("<script>setTimeout(function(){window.location.href = '".URL."conta';}, 2000);</script>");
 		}
 	?>
 <form method="POST" class="login100-form validate-form">

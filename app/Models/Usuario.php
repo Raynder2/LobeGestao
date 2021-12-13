@@ -3,6 +3,11 @@
     class Usuario{
 
         private $sql;
+        private $id;
+        private $nome;
+        private $email;
+        private $cnpj;
+
 
         public function __construct(){ // 
             setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
@@ -42,6 +47,27 @@
                 }
             }else{ // Se as senhas não são iguais
                 return ['status' => 'erro', 'msg' => 'As senhas não conferem!'];
+            }
+        }
+
+        public function logar($dados){
+            $query = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
+            $array = array(
+                ':email' => $dados['email'],
+                ':senha' => md5($dados['senha'])
+            );
+            $resul = $this->sql->select($query, $array);
+            if(count($resul) > 0){
+                session_start();
+                $_SESSION['id'] = $resul[0]['id'];
+                $_SESSION['nome'] = $resul[0]['nome'];
+                $_SESSION['email'] = $resul[0]['email'];
+                $_SESSION['cnpj'] = $resul[0]['cnpj'];
+                
+                return ['status' => 'sucesso', 'msg' => 'Usuário logado com sucesso!'];
+            }
+            else{
+                return ['status' => 'erro', 'msg' => 'Usuário ou senha incorretos!'];
             }
         }
     }
