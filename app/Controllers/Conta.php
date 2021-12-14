@@ -16,7 +16,7 @@ class Conta extends Controller
             ];
 
             $user = new Usuario();
-            $retorno = $user->logar($dados);
+            $retorno = $user->entrar($dados);
             $this->view('conta/index', $retorno);
         }
         else{
@@ -44,6 +44,12 @@ class Conta extends Controller
             $this->view('conta/cadastre');
         }
 
+    }
+
+    public function sair(){
+        $user = new Usuario();
+        $retorno = $user->sair();
+        $this->view("conta/index", $retorno);
     }
 
 

@@ -50,7 +50,7 @@
             }
         }
 
-        public function logar($dados){
+        public function entrar($dados){
             $query = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
             $array = array(
                 ':email' => $dados['email'],
@@ -59,15 +59,21 @@
             $resul = $this->sql->select($query, $array);
             if(count($resul) > 0){
                 session_start();
-                $_SESSION['id'] = $resul[0]['id'];
-                $_SESSION['nome'] = $resul[0]['nome'];
-                $_SESSION['email'] = $resul[0]['email'];
-                $_SESSION['cnpj'] = $resul[0]['cnpj'];
+                $_SESSION['usuario']['id'] = $resul[0]['id'];
+                $_SESSION['usuario']['nome'] = $resul[0]['nome'];
+                $_SESSION['usuario']['email'] = $resul[0]['email'];
+                $_SESSION['usuario']['cnpj'] = $resul[0]['cnpj'];
                 
                 return ['status' => 'sucesso', 'msg' => 'Usuário logado com sucesso!'];
             }
             else{
                 return ['status' => 'erro', 'msg' => 'Usuário ou senha incorretos!'];
             }
+        }
+
+        public function sair(){
+            session_start();
+            session_destroy();
+            return ['status' => 'info', 'msg' => 'Usuário deslogado com sucesso!'];
         }
     }

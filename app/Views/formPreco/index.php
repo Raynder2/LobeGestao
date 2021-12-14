@@ -1,3 +1,21 @@
+<?php
+    if(isset($dados) && !empty($dados)){
+        if(isset($dados['selecao']) && !empty($dados['selecao'])){
+            
+
+
+
+        }
+        else if(isset($dados['status']) && !empty($dados['status'])){
+            if($dados['status'] == 'sucesso'){
+                echo("<script>swal.fire('".$dados['mensagem']."','','success');</script>");
+            }
+            else{
+                echo("<script>swal.fire('".$dados['mensagem']."','','error');</script>");
+            }
+        }
+    }
+?>
 <div class="">
     <div class="row">
         <div class="col-md-12">
@@ -427,34 +445,46 @@
 
 <!-- DEFINIR FILIAIS -->
 <div class="modal fade" id="defUf" tabindex="-1" role="dialog" aria-labelledby="defUfLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="defUfLabel">DEFINIR FILIAIS</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-        <div class="col-md-12 colunas-pai" style="padding: 1px;"> <!-- Primeira coluna interna -->
-            <div class="table-responsive">
-                <input class="inputs" placeholder="EMPRESA 1"> <input type="button" class="input-func" value="EDITAR" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" name="" id="">
-                <input class="inputs" placeholder="EMPRESA 2"> <input type="button" class="input-func" value="EDITAR" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" name="" id=""> 
-
-                <input type="button" class="btn btn-secondary" onclick="cadastrarEmpresa()" style="margin: 10px;" value="CADASTRAR EMPRESA" name="cadastrar-empresa" id="cadastrar" data-dismiss="modal" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="defUfLabel">DEFINIR FILIAIS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 
+                <div class="col-md-12 colunas-pai" style="padding: 1px;"> <!-- Primeira coluna interna -->
+                    <div class="table-responsive">
+                        <select name="empresa1" id="empresa1" class="inputs">
+                            <?php
+                                $empresa = new Empresa();
+                                $options = $empresa->listarEmpresas();
+                                echo($options);
+                            ?>
+                        </select>
+                        <input type="button" class="input-func" value="EDITAR" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" name="" id="">
+                        <select name="empresa2" id="empresa2" class="inputs">
+                            <?php
+                                echo($options);
+                            ?>
+                        </select>
+                        <input type="button" class="input-func" value="EDITAR" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" name="" id=""> 
+
+                        <input type="button" class="btn btn-secondary" onclick="cadastrarEmpresa()" style="margin: 10px;" value="CADASTRAR EMPRESA" name="cadastrar-empresa" id="cadastrar" data-dismiss="modal" >
+                        
+                    </div>
+                </div>
+            
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
+                <button type="button" class="btn btn-primary">SALVAR</button>
+            </div>
             </div>
         </div>
-      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
-        <button type="button" class="btn btn-primary">SALVAR</button>
-      </div>
     </div>
-  </div>
-</div>
 
 
 <!-- CADASTRAR EMPRESA -->
@@ -471,12 +501,12 @@
         
         <div class="col-md-12 colunas-pai" style="padding: 1px;"> <!-- Primeira coluna interna -->
             <div class="table-responsive">
-                <form action="empresa/cadastrar" method="post" id="cadastrar-empresa">
+                <form action="cadastrarEmpresa" method="post" id="cadastrar-empresa">
 
-                    Nome da Empresa:<input class="inputs" placeholder="">
+                    Nome da Empresa:<input class="inputs" name="nome" placeholder="">
     
                     <p>
-                    Tipo:<select name="cad_tipo" id="cad_tipo">
+                    Tipo:<select name="tipo" id="cad_tipo">
                         <option value=""></option>
                         <option value="ATACADISTA">ATACADISTA</option>
                         <option value="VAREJISTA">VAREJISTA</option>
@@ -485,12 +515,12 @@
                     </select></p>
     
                     <p>
-                    UF:<select class="inputs" name="cad_uf" id="cad_uf">
+                    UF:<select class="inputs" name="uf" id="cad_uf">
                         <option value=""></option>
                     </select></p>
     
                     <p>
-                    Regime Tributario:<select required="required" class="inputs" name="cad_regime" id="cad_regime">
+                    Regime Tributario:<select required="required" class="inputs" name="regime" id="cad_regime">
                         <option value=""></option>
                         <option value="SIMPLES">SIMPLES</option>
                         <option value="LUCRO PRESUMIDO">LUCRO PRESUMIDO</option>
@@ -501,35 +531,35 @@
     
                     
                     <p>
-                    TARE TO:<select required="required" class="inputs" name="cad_tareto" id="cad_tareto">
+                    TARE TO:<select required="required" class="inputs" name="tareto" id="cad_tareto">
                         <option value=""></option>
                         <option value="SIM">SIM</option>
                         <option value="NAO">NAO</option>
                     </select></p>
                     
                     <p>
-                    TARE GO:<select required="required" class="inputs" name="cad_tarego" id="cad_tarego">
+                    TARE GO:<select required="required" class="inputs" name="tarego" id="cad_tarego">
                         <option value=""></option>
                         <option value="SIM">SIM</option>
                         <option value="NAO">NAO</option>
                     </select></p>
                     
                     <p>
-                    LEI 5.005 DF:<select required="required" class="inputs" name="cad_lei" id="cad_lei">
+                    LEI 5.005 DF:<select required="required" class="inputs" name="lei" id="cad_lei">
                         <option value=""></option>
                         <option value="SIM">SIM</option>
                         <option value="NAO">NAO</option>
                     </select></p>
                     
                     <p>
-                    TARE COMEX GO:<select required="required" class="inputs" name="cad_tarecomex" id="cad_tarecomex">
+                    TARE COMEX GO:<select required="required" class="inputs" name="taregomex" id="cad_tarecomex">
                         <option value=""></option>
                         <option value="SIM">SIM</option>
                         <option value="NAO">NAO</option>
                     </select></p>
                     
                     <p>
-                    CREDITA IPI<select required="required" class="inputs" name="cad_credita" id="cad_credita">
+                    CREDITA IPI<select required="required" class="inputs" name="credita" id="cad_credita">
                         <option value=""></option>
                         <option value="SIM">SIM</option>
                         <option value="NAO">NAO</option>
@@ -613,7 +643,7 @@
         width: 90%;
         margin: auto;
     }
-    input.inputs {
+    .inputs {
         border: solid 1px #e7e6e6;
         margin: 2%;
         width: 50%;
@@ -635,7 +665,7 @@
     }
 </style>
 
-<SCRIpt>
+<script>
     $('.real').mask('#.##0,00', {reverse: true});
     $('.porcentagem').mask('#.##0,00%', {reverse: true});
 
@@ -646,4 +676,5 @@
             });
         }, 1000);
     }
-</SCRIpt>
+</script>
+
