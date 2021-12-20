@@ -58,7 +58,6 @@
             );
             $resul = $this->sql->select($query, $array);
             if(count($resul) > 0){
-                session_start();
                 $_SESSION['usuario']['id'] = $resul[0]['id'];
                 $_SESSION['usuario']['nome'] = $resul[0]['nome'];
                 $_SESSION['usuario']['email'] = $resul[0]['email'];
@@ -72,7 +71,6 @@
         }
 
         public function sair(){
-            session_start();
             session_destroy();
             return ['status' => 'info', 'msg' => 'Usuário deslogado com sucesso!'];
         }

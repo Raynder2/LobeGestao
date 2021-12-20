@@ -3,7 +3,7 @@
     class FormPreco extends Controller {
 
         public function index() {
-            $this->view('formPreco/index');
+            $this->seLogin('formPreco/index');
         }
 
         public function cadastrarEmpresa(){
@@ -11,7 +11,19 @@
                 $_POST['id_user'] = $_SESSION['usuario']['id'];
                 $empresa = new Empresa();
                 $result = $empresa->cadastrarEmpresa($_POST);
-                $this->view('formPreco/index', $result);
+                $this->seLogin('formPreco/index', $result);
+            }
+        }
+
+        public function regras(){
+            $this->seLogin('formPreco/regras');
+        }
+
+        public function seLogin($view, $array = array()){
+            if(isset($_SESSION['usuario']['id']) && !empty($_SESSION['usuario']['id'])){
+                $this->view($view, $array);
+            }else{
+                $this->view('conta/index');
             }
         }
     }

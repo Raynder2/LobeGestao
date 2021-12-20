@@ -21,7 +21,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Formação de Preço Lobe<a href="<?=URL?>conta/sair" style="float:right;"><span style="color:grey;"><?=ucfirst($_SESSION['usuario']['nome']."  ");?></span>Sair</a></h4> 
+                    <h4 class="card-title">Formação de Preço Lobe | <a href="<?=URL?>">Casa</a> | <a href="<?=URL?>formPreco/regras">Regras</a><a href="<?=URL?>conta/sair" style="float:right;"><span style="color:grey;"><?=ucfirst($_SESSION['usuario']['nome']."  ");?></span>Sair</a></h4> 
                 </div>
                 <div class="card-body">
 
