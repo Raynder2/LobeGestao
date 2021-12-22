@@ -47,4 +47,9 @@
         public function setParam($key, $value, $sql){
             $sql->bindParam($key, $value);
         }
+
+        public function multi_query($query){
+            $sql = $this->conn->prepare($query);
+            $sql->execute();
+        }
     }

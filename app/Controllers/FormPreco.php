@@ -26,4 +26,11 @@
                 $this->view('conta/index');
             }
         }
+
+        public function salvarRegras(){
+            if(isset($_POST['regra']) && !empty($_POST['regra'])){
+                $empresa = new Empresa();
+                $result = $empresa->salvarRegras($_POST);
+            }
+        }
     }

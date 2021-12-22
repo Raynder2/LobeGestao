@@ -60,4 +60,29 @@
 
             return $options;
         }
+
+        public function listarRegras(){
+            $sql = new Database();
+            $query = "SELECT * FROM regras";
+
+            $result = $sql->select($query);
+            return($result);
+        }
+
+        public function salvarRegras($regra){
+            $sql = new Database();
+            $query = "INSERT INTO regras (regra, campoAlvo, criterios) VALUES (:regra, :campoAlvo, :criterios)";
+
+            $array = array(
+                ':regra' => $regra['regra'],
+                ':campoAlvo' => $regra['campoAlvo'],
+                ':criterios' => $regra['criterios']
+            );
+            if($sql->insere($query, $array)){
+                return ['status' => 'sucesso', 'mensagem' => 'Regras salvas com sucesso!'];
+            }
+            else{
+                return ['status' => 'erro', 'mensagem' => 'Erro ao salvar regras!'];
+            }
+        }
     }
