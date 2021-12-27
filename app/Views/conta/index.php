@@ -76,7 +76,7 @@ Login
 <span class="txt1">
 Não tem uma conta?
 </span>
-<a class="txt2" href="conta/cadastre">
+<a class="txt2" href="<?=URL?>conta/cadastre">
 Cadastre-se
 </a>
 </div>

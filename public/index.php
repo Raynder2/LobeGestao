@@ -21,6 +21,7 @@
     <title>Lobe Gestao</title>
 </head>
 <body>
+    
     <?php
         $rotas = new Rota();
     ?>
@@ -99,7 +100,6 @@
             
                             <p>
                             UF:<select class="inputs" name="uf" id="cad_uf">
-                                <option value=""></option>
                             </select></p>
             
                             <p>

@@ -9,9 +9,11 @@ class Rota {
 
     public function __construct(){ // Método construtor que faz o require dos controllers e metodos
         $url = $this->url() ? $this->url() : [0];
+        $cabecalho = '';
 
         if(file_exists('../app/Controllers/' . ucwords($url[0]) . '.php')){ // Verifica se o controlador existe
             $this->controlador = ucwords($url[0]);
+            $cabecalho = $url[0];
             unset($url[0]);
         }
 
@@ -24,8 +26,11 @@ class Rota {
                 unset($url[1]);
             }
         }
-
+        // exit(APP.'/Views/cabecalhos/'.$cabecalho.'.php');
         $this->parametros = $url ? array_values($url) : []; // Se existir, atribui os parâmetros
+        if(file_exists(APP.'/Views/cabecalhos/'.$cabecalho.'.php')){
+            include APP.'/Views/cabecalhos/'.$cabecalho.'.php';
+        }
         call_user_func_array([$this->controlador, $this->metodo], $this->parametros); // Chama o método e passa os parâmetros
 
     }

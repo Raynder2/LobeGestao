@@ -85,4 +85,23 @@
                 return ['status' => 'erro', 'mensagem' => 'Erro ao salvar regras!'];
             }
         }
+
+        public function selecionarFiliais($empresa1, $empresa2){
+            $sql = new Database();
+            $query = "SELECT * FROM empresas WHERE id = :id";
+
+            $array = array(
+                ':id' => $empresa1
+            );
+            $result = $sql->select($query, $array);
+            $empresa1 = $result[0];
+
+            $array = array(
+                ':id' => $empresa2
+            );
+            $result = $sql->select($query, $array);
+            $empresa2 = $result[0];
+
+            exit("resultadoJson".json_encode(array('filial1' => $empresa1, 'filial2' => $empresa2)));
+        }
     }

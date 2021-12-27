@@ -1,17 +1,19 @@
 <?php
-    if(isset($dados) && !empty($dados)){
-        if(isset($dados['selecao']) && !empty($dados['selecao'])){
+    
+    if(isset($dados['empresa']) && !empty($dados['empresa'])){
+        $resposta = $dados['empresa'];
+        if(isset($resposta['selecao']) && !empty($resposta['selecao'])){
             
 
 
 
         }
-        else if(isset($dados['status']) && !empty($dados['status'])){
-            if($dados['status'] == 'sucesso'){
-                echo("<script>swal.fire('".$dados['mensagem']."','','success');</script>");
+        else if(isset($resposta['status']) && !empty($resposta['status'])){
+            if($resposta['status'] == 'sucesso'){
+                echo("<script>swal.fire('".$resposta['mensagem']."','','success');</script>");
             }
             else{
-                echo("<script>swal.fire('".$dados['mensagem']."','','error');</script>");
+                echo("<script>swal.fire('".$resposta['mensagem']."','','error');</script>");
             }
         }
     }
@@ -20,9 +22,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Formação de Preço Lobe | <a href="<?=URL?>">Casa</a> | <a href="<?=URL?>formPreco/regras">Regras</a><a href="<?=URL?>conta/sair" style="float:right;"><span style="color:grey;"><?=ucfirst($_SESSION['usuario']['nome']."  ");?></span>Sair</a></h4> 
-                </div>
+                
                 <div class="card-body">
 
                     <form action=""> <!-- inicio do formulario -->
@@ -33,7 +33,7 @@
         
                                 <div class="coluna_entradas entrada_um col-md-6 colunas-pai" style="padding: 1px;"> <!-- Primeira coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #800080;">UF - > UF</p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo" style="background: #800080;"><span id="fornecedortext">UF</span> - > <span class="empresa1text">UF</span></p> <!-- Titulo da coluna interna-->
                                         
                                         <!-- Inicio dos campos -->
                                         <select name="operacao" class="operacao">
@@ -94,7 +94,7 @@
         
                                 <div class="coluna_entradas entrada_dois col-md-6 colunas-pai" style="padding: 1px;"> <!-- Segunda coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #800080;">UF -> UF</p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo" style="background: #800080;"><span id="fornecedortext">UF</span> -> <span class="empresa2text">UF</span></p> <!-- Titulo da coluna interna-->
                                         <select name="operacao" class="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
                                             <option value="bonificacao">BONIFICAÇÃO</option>
@@ -163,7 +163,7 @@
         
                                 <div class="coluna_saidas saida_um col-md-4 colunas-pai" style="padding: 1px;"> <!-- Primeira coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #008080;">UF -> UF</p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo" style="background: #008080;"> <span class="empresa1text">UF</span> -> UF</p> <!-- Titulo da coluna interna-->
                                         
                                         <!-- Inicio dos campos -->
                                         <select name="operacao" class="operacao">
@@ -226,7 +226,7 @@
                                 
                                 <div class="coluna_saidas saida_dois col-md-4 colunas-pai" style="padding: 1px;"> <!-- Segunda coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #008080;">UF -> UF</p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo" style="background: #008080;"> <span class="empresa2text">UF</span> -> UF</p> <!-- Titulo da coluna interna-->
                                         
                                         <!-- Inicio dos campos -->
                                         <select name="operacao" class="operacao">
@@ -374,10 +374,10 @@
 
                                         <select name="funcoes" class="funcoes">
                                             <option value="fornecedor">FORNECEDOR</option>
-                                            
+                                            <?=$dados['estados']?>
                                         </select>
 
-                                        <select name="funcoes" class="funcoes">
+                                        <select name="funcoes"  class="funcoes">
                                             <option value="tipo-fornecedor">TIPO FORNECEDOR</option>
                                             <option value="atacadista">ATACADISTA</option>
                                             <option value="industria">INDUSTRIA</option>
@@ -387,7 +387,7 @@
 
                                         <select name="funcoes" class="funcoes">
                                             <option value="cliente">CLIENTE</option>
-
+                                            <?=$dados['estados']?>
                                         </select>
 
                                         <select name="funcoes" class="funcoes">
@@ -458,19 +458,13 @@
                 <div class="col-md-12 colunas-pai" style="padding: 1px;"> <!-- Primeira coluna interna -->
                     <div class="table-responsive">
                         <select name="empresa1" id="empresa1" class="inputs">
-                            <?php
-                                $empresa = new Empresa();
-                                $options = $empresa->listarEmpresas();
-                                echo($options);
-                            ?>
+                            <?=$dados['options']?>
                         </select>
-                        <input type="button" class="input-func" value="EDITAR" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" name="" id="">
+                        <input type="button" class="input-func" value="EDITAR" onclick="editarFilial(1)" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" onclick="deletarFilial(1)" name="" id="">
                         <select name="empresa2" id="empresa2" class="inputs">
-                            <?php
-                                echo($options);
-                            ?>
+                            <?=$dados['options']?>
                         </select>
-                        <input type="button" class="input-func" value="EDITAR" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" name="" id=""> 
+                        <input type="button" class="input-func" value="EDITAR" onclick="editarFilial(2)" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" onclick="deletarFilial(2)" name="" id=""> 
 
                         <input type="button" class="btn btn-secondary" onclick="cadastrarEmpresa()" style="margin: 10px;" value="CADASTRAR EMPRESA" name="cadastrar-empresa" id="cadastrar" data-dismiss="modal" >
                         
@@ -480,106 +474,17 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
-                <button type="button" class="btn btn-primary">SALVAR</button>
+                <button type="button" class="btn btn-primary" onclick="selecionarFiliais()">SELECIONAR</button>
             </div>
             </div>
         </div>
     </div>
-
-
-<!-- CADASTRAR EMPRESA -->
-<div class="modal fade" id="cadastrarEmpresa" tabindex="-1" role="dialog" aria-labelledby="defUfLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="defUfLabel">CADASTRAR EMPRESA</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-        <div class="col-md-12 colunas-pai" style="padding: 1px;"> <!-- Primeira coluna interna -->
-            <div class="table-responsive">
-                <form action="cadastrarEmpresa" method="post" id="cadastrar-empresa">
-
-                    Nome da Empresa:<input class="inputs" name="nome" placeholder="">
-    
-                    <p>
-                    Tipo:<select name="tipo" id="cad_tipo">
-                        <option value=""></option>
-                        <option value="ATACADISTA">ATACADISTA</option>
-                        <option value="VAREJISTA">VAREJISTA</option>
-                        <option value="INDUSTRIA">INDUSTRIA</option>
-                        <option value="IMPORTADOR">IMPORTADOR</option>
-                    </select></p>
-    
-                    <p>
-                    UF:<select class="inputs" name="uf" id="cad_uf">
-                        <option value=""></option>
-                    </select></p>
-    
-                    <p>
-                    Regime Tributario:<select required="required" class="inputs" name="regime" id="cad_regime">
-                        <option value=""></option>
-                        <option value="SIMPLES">SIMPLES</option>
-                        <option value="LUCRO PRESUMIDO">LUCRO PRESUMIDO</option>
-                        <option value="LUCRO REAL">LUCRO REAL</option>
-                    </select></p>
-    
-                    Faturamento acumulado:<input class="inputs" placeholder="RS0,00"> 
-    
-                    
-                    <p>
-                    TARE TO:<select required="required" class="inputs" name="tareto" id="cad_tareto">
-                        <option value=""></option>
-                        <option value="SIM">SIM</option>
-                        <option value="NAO">NAO</option>
-                    </select></p>
-                    
-                    <p>
-                    TARE GO:<select required="required" class="inputs" name="tarego" id="cad_tarego">
-                        <option value=""></option>
-                        <option value="SIM">SIM</option>
-                        <option value="NAO">NAO</option>
-                    </select></p>
-                    
-                    <p>
-                    LEI 5.005 DF:<select required="required" class="inputs" name="lei" id="cad_lei">
-                        <option value=""></option>
-                        <option value="SIM">SIM</option>
-                        <option value="NAO">NAO</option>
-                    </select></p>
-                    
-                    <p>
-                    TARE COMEX GO:<select required="required" class="inputs" name="taregomex" id="cad_tarecomex">
-                        <option value=""></option>
-                        <option value="SIM">SIM</option>
-                        <option value="NAO">NAO</option>
-                    </select></p>
-                    
-                    <p>
-                    CREDITA IPI<select required="required" class="inputs" name="credita" id="cad_credita">
-                        <option value=""></option>
-                        <option value="SIM">SIM</option>
-                        <option value="NAO">NAO</option>
-                    </select></p>
-                        
-            </div>
-        </div>
-      
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
-        <input type="submit" value="CADASTRAR"  class="btn btn-primary">
-        </form>
-
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
+    var ufs = "<?=$dados['estados']?>";
+
+    var filiais;
+    
     var doc;
     var preco_do_produto = 0;
     var redutor = 0;
@@ -615,6 +520,10 @@
     var carga_tributaria = 0;
 
     // Entradas
+    function mudarFornecedor(){
+        var fornecedor = $('#fornecedor').val();
+        $('#fornecedortext').text(fornecedor);
+    }
     function atualizar(){
         preco_do_produto = doc.querySelector('#precodoproduto');
         redutor = doc.querySelector('#redutor');
@@ -692,18 +601,7 @@
         
 
     }
-    // setInterval(function(){
-    //     <?php
-    //         $empresa = new Empresa();
-    //         $regras = $empresa->listarRegras();
-
-    //         for($i = 0; $i < 3; $i++){
-    //             foreach($regras as $regra){
-    //                 echo($regra['regra']);
-    //             }
-    //         }
-    //     ?>
-    // },1000)
+    
     function calcular(){
         <?php
             $empresa = new Empresa();
@@ -732,6 +630,7 @@
             $("#cadastrarEmpresa").modal({
                 show: true
             });
+            document.getElementById('cad_uf').innerHTML = "<option value=''></option>"+ufs;
         }, 1000);
     }
 
@@ -746,6 +645,55 @@
         atualizar();
         calcular()
     })
+
+    function selecionarFiliais(){
+        empresa1 = $("#empresa1").val()
+        empresa2 = $("#empresa2").val()
+
+        $.ajax({
+            url: '<?=URL?>formPreco/selecionarFiliais',
+            type: 'POST',
+            data: {
+                empresa1: empresa1,
+                empresa2: empresa2
+            },
+            success: function(data){
+                filiais = JSON.parse(data.split("resultadoJson")[1]);
+                document.querySelectorAll('.empresa1text').forEach(function(ufalvo){
+                    ufalvo.innerHTML = filiais['filial1']['uf'];
+                })
+                document.querySelectorAll('.empresa2text').forEach(function(ufalvo){
+                    ufalvo.innerHTML = filiais['filial2']['uf'];
+                })
+            }
+        })
+
+        document.querySelectorAll('.coluna_entradas').forEach(function(coluna){
+            doc = coluna;
+            atualizar();
+        })
+
+        document.querySelectorAll('.coluna_saidas').forEach(function(coluna){
+            doc = coluna;
+            atualizar();
+        })
+    }
+
+    function deletarFilial(num){
+        id = $("empresa"+num).val("");
+
+        $.ajax({
+            url: "<?=URL?>formPreco/deletarFilial",
+            type: "POST",
+            data: {
+                id: id
+            },
+            success: function(response){
+                
+            }
+
+        })
+    }
 </script>
 
 <style>

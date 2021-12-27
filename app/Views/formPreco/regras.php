@@ -2,9 +2,6 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Formação de Preço Lobe | <a href="<?=URL?>">Casa</a> | <a href="<?=URL?>formPreco/regras">Regras</a><a href="<?=URL?>conta/sair" style="float:right;"><span style="color:grey;"><?=ucfirst($_SESSION['usuario']['nome']."  ");?></span>Sair</a></h4> 
-                </div>
                 <div class="card-body">
 
                     <div class="container-fluid">
@@ -131,69 +128,5 @@
     }
 </style>
 <script>
-    var criterios = 0;
-    var split = 0;
-    var entao = 0;
-    var campoAlvo;
-
-
-    function escreve(code, valor){
-        criterios++;
-        if(entao == 1){
-            campoAlvo = code
-            entao = 0
-        }
-
-        var exemplo = document.getElementById('exemplo').value;
-        var regra = document.getElementById('regra').value;
-
-        document.getElementById('exemplo').value = exemplo +' '+ valor;
-        document.getElementById('regra').value = regra + code;
-
-        if(valor == "Então"){
-            entao = 1;
-        }
-    }
-
-    function envia(incremento = ''){
-        if(entao == 1){
-            campoAlvo = code
-            entao = 0
-        }
-        
-        var vari = document.getElementById('valor').value;
-        var regra = document.getElementById('regra').value;
-        var exemplo = document.getElementById('exemplo').value;
-
-        document.getElementById('exemplo').value = exemplo +' '+ vari;
-        document.getElementById('regra').value = regra +"'"+ vari +incremento+"'";
-
-        if(split){
-            document.getElementById('regra').value = document.getElementById('regra').value + "') > 0";
-            split = 0;
-        }
-    }
-
-    function limpa(){
-        document.getElementById('exemplo').value = '';
-        document.getElementById('regra').value = '';
-        console.log(criterios);
-    }
-
-    function salvarRegra(){
-        var regra = document.getElementById('regra').value + ";}";
-        $.ajax({
-            url: "<?=URL?>formPreco/salvarRegras",
-            type: "POST",
-            data: {
-                regra: regra,
-                campoAlvo: campoAlvo,
-                criterios: criterios
-            },
-            success: function(data){
-                console.log(data);
-            }
-        })
-    }
-
+    
 </script>

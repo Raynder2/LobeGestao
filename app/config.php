@@ -5,3 +5,4 @@
     define('URL', 'http://localhost/LobeGestao/');
     define('DIST', 'http://localhost/LobeGestao/public/dist/');
     define('APP_NOME', 'Lobe');
+    global $cabecalho;
