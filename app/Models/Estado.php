@@ -41,7 +41,6 @@
 
         public function listarAliquotas(){
             $sql = new Database();
-
             // Verificar se já foi puxado as aliquotas do banco
             if(isset($_SESSION['aux']['nome']) && !empty($_SESSION['aux']['nome'])){
                 if($_SESSION['aux']['nome'] == 'estados'){
@@ -57,5 +56,21 @@
             return $_SESSION['aux']['dados'];
 
 
+        }
+
+        public function alterarAliquotas($dados){
+            $sql = new Database();
+            $_SESSION['aux']['nome'] = ''; // Limpar o nome para que as aliquotas sejam recarregadas
+            $query = "UPDATE alq_uf SET ".$dados['destino']." = :ALQ WHERE origem = :ORI"; 
+            $array = array(
+                ':ORI' => $dados['origem'],
+                ':ALQ' => $dados['aliquota']
+            );
+            if($sql->insere($query, $array)){
+                exit("resultadoJson".json_encode(array('status' => 'success', 'mensagem' => 'Aliquota alterada com sucesso!')));
+            }
+            else{
+                exit("resultadoJson".json_encode(array('status' => 'error', 'mensagem' => 'Erro ao alterar aliquota!')));
+            }
         }
     }

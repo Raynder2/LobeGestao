@@ -58,4 +58,13 @@
             $empresa->selecionarFiliais($empresa1, $empresa2);
 
         }
+
+        public function alterarAliquotas(){
+            $estado = new Estado();
+
+            if(isset($_POST) && !empty($_POST)){
+                $estado->alterarAliquotas($_POST);
+            }
+
+        }
     }

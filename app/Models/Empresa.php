@@ -2,6 +2,7 @@
 
     class Empresa{
 
+        // Método para cadastrar empresas
         public function cadastrarEmpresa($dados){
 
             $sql = new Database();
@@ -40,6 +41,7 @@
             
         }
 
+        // Método para listar empresas
         public function listarEmpresas(){
             $sql = new Database();
             $query = "SELECT id, nome FROM empresas WHERE id_user = :id_user";
@@ -61,6 +63,7 @@
             return $options;
         }
 
+        // Método para listar regras
         public function listarRegras(){
             $sql = new Database();
             $query = "SELECT * FROM regras";
@@ -69,6 +72,7 @@
             return($result);
         }
 
+        // Método para salvar regras
         public function salvarRegras($regra){
             $sql = new Database();
             $query = "INSERT INTO regras (regra, campoAlvo, criterios) VALUES (:regra, :campoAlvo, :criterios)";
@@ -86,6 +90,7 @@
             }
         }
 
+        // Método para puxar as regras das filiais solicitadas
         public function selecionarFiliais($empresa1, $empresa2){
             $sql = new Database();
             $query = "SELECT * FROM empresas WHERE id = :id";

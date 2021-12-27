@@ -1,3 +1,22 @@
+<?php
+if(isset($dados['empresa']) && !empty($dados['empresa'])){
+    $resposta = $dados['empresa'];
+    if(isset($resposta['selecao']) && !empty($resposta['selecao'])){
+        
+
+
+
+    }
+    else if(isset($resposta['status']) && !empty($resposta['status'])){
+        if($resposta['status'] == 'sucesso'){
+            echo("<script>swal.fire('".$resposta['mensagem']."','','success');</script>");
+        }
+        else{
+            echo("<script>swal.fire('".$resposta['mensagem']."','','error');</script>");
+        }
+    }
+}
+?>
 <div class="background">
     <div class="container-fluid">
         <div class="row">
@@ -28,7 +47,7 @@
                     aliquota <input type="text" name="alq" id="alq">
                 </form>
 
-                <div class="button">
+                <div class="button" onclick="alterar_aliquota()">
                     <p>Alterar aliquota</p>   
                 </div>
             </div>
@@ -121,5 +140,36 @@
             document.getElementById('alq').value = aliquota;
         }
 
+    }
+
+    function alterar_aliquota(){
+        var origem = document.getElementById('origem');
+        var destino = document.getElementById('destino');
+        var alq = document.getElementById('alq');
+        ori = origem.value;
+        des = destino.value;
+        aliquota = alq.value;
+
+        console.log(ori, des, aliquota);
+
+        if(ori != 'UF' && des != 'UF'){
+            $.ajax({
+                url: '<?=URL?>formPreco/alterarAliquotas',
+                type: 'POST',
+                data: {
+                    'origem': ori,
+                    'destino': des,
+                    'aliquota': aliquota
+                },
+                success: function(data){
+                    resposta = JSON.parse(data.split("resultadoJson")[1]);
+                    
+                    swal.fire(resposta.mensagem, '', resposta.status);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
+                }
+            });
+        }
     }
 </script>
