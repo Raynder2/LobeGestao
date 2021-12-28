@@ -15,4 +15,14 @@
                 die('View não encontrada');
             }
         }
+
+        public function seLogin($view, $array = array()){
+            if(isset($_SESSION['usuario']['id']) && !empty($_SESSION['usuario']['id'])){
+                $this->view($view, $array);
+                return true;
+            }else{
+                $this->view('conta/index');
+                return false;
+            }
+        }
     }
