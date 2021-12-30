@@ -9,16 +9,8 @@
 		$msg = '';
 	}
 ?>
-<!DOCTYPE html>
-<!-- saved from url=(0047)https://colorlib.com/etc/lf/Login_v2/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login V2</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="icon" type="image/png" href="https://colorlib.com/etc/lf/Login_v2/images/icons/favicon.ico">
-
-<link rel="stylesheet" type="text/css" href="<?=DIST?>loginPag/bootstrap.min.css">
 
 <link rel="stylesheet" type="text/css" href="<?=DIST?>loginPag/font-awesome.min.css">
 
@@ -40,7 +32,7 @@
 <meta name="robots" content="noindex, follow">
 <script type="text/javascript" async="" src="<?=DIST?>loginPag/analytics.js"></script><script defer="" src="<?=DIST?>loginPag/s.js"></script><script>(function(w,d){!function(e,t,r,a,s){e[r]=e[r]||{},e[r].executed=[],e.zaraz={deferred:[]};var n=t.getElementsByTagName("title")[0];e[r].c=t.cookie,n&&(e[r].t=t.getElementsByTagName("title")[0].text),e[r].w=e.screen.width,e[r].h=e.screen.height,e[r].j=e.innerHeight,e[r].e=e.innerWidth,e[r].l=e.location.href,e[r].r=t.referrer,e[r].k=e.screen.colorDepth,e[r].n=t.characterSet,e[r].o=(new Date).getTimezoneOffset(),//
 e[s]=e[s]||[],e.zaraz._preTrack=[],e.zaraz.track=(t,r)=>e.zaraz._preTrack.push([t,r]),e[s].push({"zaraz.start":(new Date).getTime()});var i=t.getElementsByTagName(a)[0],o=t.createElement(a);o.defer=!0,o.src="/cdn-cgi/zaraz/s.js?"+new URLSearchParams(e[r]).toString(),i.parentNode.insertBefore(o,i)}(w,d,"zarazData","script","dataLayer");})(window,document);</script></head>
-<body>
+
 <div class="limiter">
 <div class="container-login100">
 <div class="wrap-login100">
@@ -55,7 +47,7 @@ e[s]=e[s]||[],e.zaraz._preTrack=[],e.zaraz.track=(t,r)=>e.zaraz._preTrack.push([
 	?>
 <form method="POST" class="login100-form validate-form">
 <span class="login100-form-title p-b-26">
-LOBE GESTAO CLIENTE
+<?=APP_NOME?> CLIENTE
 </span>
 <span class="login100-form-title p-b-48">
 <i class="zmdi zmdi-font"></i>
@@ -140,6 +132,3 @@ Entrar
 	</script>
 <script defer="" src="<?=DIST?>loginPag/v64f9daad31f64f81be21cbef6184a5e31634941392597" integrity="sha512-gV/bogrUTVP2N3IzTDKzgP0Js1gg4fbwtYB6ftgLbKQu/V8yH2+lrKCfKHelh4SO3DPzKj4/glTO+tNJGDnb0A==" data-cf-beacon="{&quot;rayId&quot;:&quot;6bb145878563cff0&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2021.11.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
 <script defer="" src="<?=DIST?>loginPag/v64f9daad31f64f81be21cbef6184a5e31634941392597" integrity="sha512-gV/bogrUTVP2N3IzTDKzgP0Js1gg4fbwtYB6ftgLbKQu/V8yH2+lrKCfKHelh4SO3DPzKj4/glTO+tNJGDnb0A==" data-cf-beacon="{&quot;rayId&quot;:&quot;6bb145876bc1cff0&quot;,&quot;token&quot;:&quot;cd0b4b3a733644fc843ef0b185f98241&quot;,&quot;version&quot;:&quot;2021.11.0&quot;,&quot;si&quot;:100}" crossorigin="anonymous"></script>
-
-
-</body></html>
