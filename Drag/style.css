@@ -1,0 +1,88 @@
+html {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    background-color: #130f0d;
+    color: white;
+}
+
+.boards{
+    display: flex;
+    justify-content: space-between;
+}
+
+.board{
+    background: #141316;
+    border: 1px solid #FD951F11;
+    border-radius: 4px;
+    margin: 0 10px;
+}
+
+.board h3{
+    padding: 16px;
+    margin: 0;
+    color: #FD951Fcc;
+}
+
+.dropzone{
+    padding: 16px;
+    min-width: 282px;
+    min-height: 200px;
+}
+
+.card{
+    padding: 16px;
+    box-shadow: 0 2px 2px -1px #FD951Fcc;
+    width: 250px;
+    margin: 25px 0;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 18px;
+    background: #1A1A1C;
+}
+
+.status{
+    width: 30px;
+    height: 8px;
+    background: grey;
+    margin-bottom: 16px;
+    border-radius: 8px;
+}
+
+.status.green{
+    background: #23d2ac;
+}
+
+.status.blue{
+    background: #3634ce;
+}
+
+.status.red{
+    background: #d22a23;
+}
+
+.highlight{ /*quando card sobre*/
+    background: #FD951F08;
+}
+
+.card, .dropzone {
+    position: relative;
+    transition: 400ms;
+}
+
+.is-dragging{
+    cursor: move;
+    opacity: 0.3;
+}
+
+.over{
+    background: #4cd13711;
+}
+
+.card > img{
+    width: 100%;
+    position: absolute;
+    left: -20px;
+    top: -49px;
+}
