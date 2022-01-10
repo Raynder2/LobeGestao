@@ -341,12 +341,17 @@
                                 <div class="table-responsive campos">
                                         
                                         <!-- Inicio dos campos -->
-                                        <select name="funcoes" class="funcoes">
-                                            <option value="teste1">FORMAÇÃO</option>
+                                        <select name="regime" class="funcoes">
+                                            <!-- regime -->
                                             <option value="regime">REGIME</option>
+                                            <!-- intermediario -->
                                             <option value="intermediario">INTERMEDIÁRIO</option>
+                                            <!-- cross-docking -->
                                             <option value="cross-docking">CROSS DOCKING</option>
-                                            <option value="planejameto">PLANEJAMENTO</option>
+                                            <!-- planejamento -->
+                                            <option value="planejamento">PLANEJAMENTO</option>
+                                            <!-- formacao -->
+                                            <option value="formacao">FORMAÇÃO</option>
                                         </select>
 
                                         <select name="funcoes" class="funcoes">
@@ -359,7 +364,7 @@
                                             
                                         </select>
 
-                                        <select name="funcoes" class="funcoes">
+                                        <select name="tipo-fornecedor" class="funcoes">
                                             <option value="tipo-fornecedor">TIPO FORNECEDOR</option>
                                             <option value="atacadista">ATACADISTA</option>
                                             <option value="industria">INDUSTRIA</option>

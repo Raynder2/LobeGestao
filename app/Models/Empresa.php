@@ -90,6 +90,33 @@
             }
         }
 
+        // Método para salvar seletores
+        public function salvarSeletor($seletor){
+            $sql = new Database();
+            $query = "INSERT INTO seletores (valor, nome, referencia) VALUES (:valor, :nome, :referencia)";
+
+            $array = array(
+                ':valor' => $seletor['seletor_valor'],
+                ':nome' => strtoupper($seletor['seletor']),
+                ':referencia' => $seletor['referencia']
+            );
+
+            if($sql->insere($query, $array)){
+                exit("resultadoJson".json_encode(['status' => 'success', 'mensagem' => 'Seletor salvo com sucesso!']));
+            }
+            else{
+                exit("resultadoJson".json_encode(['status' => 'error', 'mensagem' => 'Erro ao salvar seletor!']));
+            }
+        }
+
+        public function listarSeletores(){
+            $sql = new Database();
+            $query = "SELECT * FROM seletores";
+
+            $result = $sql->select($query);
+            return($result);
+        }
+
         // Método para puxar as regras das filiais solicitadas
         public function selecionarFiliais($empresa1, $empresa2){
             $sql = new Database();
@@ -108,5 +135,16 @@
             $empresa2 = $result[0];
 
             exit("resultadoJson".json_encode(array('filial1' => $empresa1, 'filial2' => $empresa2)));
+        }
+
+        public function listarSeletoresCadastrados($referencia){
+            $sql = new Database();
+            $query = "SELECT * FROM seletores WHERE referencia = :referencia";
+
+            $array = array(
+                ':referencia' => $referencia
+            );
+            $result = $sql->select($query, $array);
+            return($result);
         }
     }

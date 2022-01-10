@@ -68,6 +68,8 @@
             INSERT INTO `estados`(`sigla`, `estado`) VALUES ('INSERT INTO `estados`(`sigla`, `estado`) VALUES (','');
             ";
 
+            $sqltemp3 = "CREATE TABLE `lobegestao`.`seletores` ( `id` INT NOT NULL AUTO_INCREMENT , `valor` VARCHAR(32) NOT NULL , `nome` VARCHAR(32) NOT NULL , `referencia` VARCHAR(32) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;"
+
             $resul = $db->multi_query($sql);
         
             if($resul){

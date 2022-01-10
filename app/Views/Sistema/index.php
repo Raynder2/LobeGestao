@@ -9,7 +9,8 @@
 <body>
     <h1>Sistemas</h1>
 
-    <a href="<?=URL?>formPreco/index">Formação de Preço</a>
+    <a href="<?=URL?>formPreco/index">Formação de Preço</a><br>
+    <a href="<?=URL?>cfop/index">CFOP</a>
     
 </body>
 </html>

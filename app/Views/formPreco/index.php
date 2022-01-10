@@ -1,5 +1,4 @@
 <?php
-    
     if(isset($dados['empresa']) && !empty($dados['empresa'])){
         $resposta = $dados['empresa'];
         if(isset($resposta['selecao']) && !empty($resposta['selecao'])){
@@ -17,6 +16,23 @@
             }
         }
     }
+
+    if(isset($dados['seletores']) && !empty($dados['seletores'])){
+        $array_seletores = array();
+        /*Vamos percorrer o array e verificar qual a referencia atual e criar um array de arrays por referencia
+          Como temos que criar o primeiro elemento do array antes de começar a ultilizar o array_push
+          Colocamos um valor para a posição 0 conforme linha 31 e assim que a referencia mudar linha 27-29 vamos remover a posição 0*/
+
+        foreach($dados['seletores'] as $seletor){
+            if(isset($nomeseletor) && !empty($nomeseletor) && $nomeseletor != $seletor['referencia']){
+                array_shift($array_seletores[$nomeseletor]);
+            }
+            $nomeseletor = $seletor['referencia'];
+            $array_seletores[$nomeseletor][0] = $seletor;
+            array_push($array_seletores[$nomeseletor], $seletor);
+        }
+    }
+    array_shift($array_seletores[$nomeseletor]);
 ?>
 <div class="">
     <div class="row">
@@ -36,11 +52,14 @@
                                         <p class="text-center coluna-titulo" style="background: #800080;"><span id="fornecedortext">UF</span> - > <span class="empresa1text">UF</span></p> <!-- Titulo da coluna interna-->
                                         
                                         <!-- Inicio dos campos -->
-                                        <select name="operacao" class="operacao">
+                                        <select name="operacao" class="operacao"  id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
-                                            <option value="bonificacao">BONIFICAÇÃO</option>
-                                            <option value="transparencia">TRANSPARÊNCIA</option>
-                                            <option value="importacao">IMPORTAÇÃO</option>
+                                            <!-- Listar $array_seletores['operacao'] -->
+                                            <?php
+                                                foreach($array_seletores['operacao_entr'] as $operacao){
+                                                    echo("<option value='".$operacao['valor']."'>".$operacao['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
                                         
                                         <label for="valor">Preço do Produto</label>
@@ -95,11 +114,14 @@
                                 <div class="coluna_entradas entrada_dois col-md-6 colunas-pai" style="padding: 1px;"> <!-- Segunda coluna interna -->
                                     <div class="table-responsive campos">
                                         <p class="text-center coluna-titulo" style="background: #800080;"><span id="fornecedortext">UF</span> -> <span class="empresa2text">UF</span></p> <!-- Titulo da coluna interna-->
-                                        <select name="operacao" class="operacao">
+                                        <select name="operacao" class="operacao"  id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
-                                            <option value="bonificacao">BONIFICAÇÃO</option>
-                                            <option value="transparencia">TRANSPARÊNCIA</option>
-                                            <option value="importacao">IMPORTAÇÃO</option>
+                                            <!-- Listar $array_seletores['operacao'] -->
+                                            <?php
+                                                foreach($array_seletores['operacao_entr'] as $operacao){
+                                                    echo("<option value='".$operacao['valor']."'>".$operacao['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
                                         
                                         <label for="valor">Preço do Produto</label>
@@ -166,11 +188,14 @@
                                         <p class="text-center coluna-titulo" style="background: #008080;"> <span class="empresa1text">UF</span> -> UF</p> <!-- Titulo da coluna interna-->
                                         
                                         <!-- Inicio dos campos -->
-                                        <select name="operacao" class="operacao">
+                                        <select name="operacao" class="operacao"  id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
-                                            <option value="venda">VENDA</option>
-                                            <option value="bonificacao">BONIFICAÇÃO</option>
-                                            <option value="transparencia">TRANSPARÊNCIA</option>
+                                            <!-- Listar $array_seletores['operacao_said'] -->
+                                            <?php
+                                                foreach($array_seletores['operacao_said'] as $operacao){
+                                                    echo("<option value='".$operacao['valor']."'>".$operacao['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
                                         
                                         <label for="icms-saida">ICMS Saida</label>
@@ -229,11 +254,14 @@
                                         <p class="text-center coluna-titulo" style="background: #008080;"> <span class="empresa2text">UF</span> -> UF</p> <!-- Titulo da coluna interna-->
                                         
                                         <!-- Inicio dos campos -->
-                                        <select name="operacao" class="operacao">
+                                        <select name="operacao" class="operacao"  id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
-                                            <option value="venda">VENDA</option>
-                                            <option value="bonificacao">BONIFICAÇÃO</option>
-                                            <option value="transparencia">TRANSPARÊNCIA</option>
+                                            <!-- Listar $array_seletores['operacao_said'] -->
+                                            <?php
+                                                foreach($array_seletores['operacao_said'] as $operacao){
+                                                    echo("<option value='".$operacao['valor']."'>".$operacao['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
                                         
                                         <label for="icms-saida">ICMS Saida</label>
@@ -290,11 +318,14 @@
                                 <div class="coluna_saidas saida_tres col-md-4 colunas-pai" style="padding: 1px;"> <!-- Terceira coluna interna -->
                                     <div class="table-responsive campos">
                                         <p class="text-center coluna-titulo" style="background: #008080;">UF -> UF</p> <!-- Titulo da coluna interna-->
-                                        <select name="operacao" class="operacao">
+                                        <select name="operacao" class="operacao"  id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
-                                            <option value="venda">VENDA</option>
-                                            <option value="bonificacao">BONIFICAÇÃO</option>
-                                            <option value="transparencia">TRANSPARÊNCIA</option>
+                                            <!-- Listar $array_seletores['operacao_said'] -->
+                                            <?php
+                                                foreach($array_seletores['operacao_said'] as $operacao){
+                                                    echo("<option value='".$operacao['valor']."'>".$operacao['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
                                         
                                         <label for="icms-saida">ICMS Saida</label>
@@ -359,70 +390,80 @@
                                 <div class="table-responsive campos">
                                         
                                         <!-- Inicio dos campos -->
-                                        <select name="funcoes" class="funcoes">
-                                            <option value="teste1">FORMAÇÃO</option>
+                                        <select name="regime" class="funcoes">
+                                            <!-- regime -->
                                             <option value="regime">REGIME</option>
-                                            <option value="intermediario">INTERMEDIÁRIO</option>
-                                            <option value="cross-docking">CROSS DOCKING</option>
-                                            <option value="planejameto">PLANEJAMENTO</option>
+                                            <?php
+                                                foreach($array_seletores['regime'] as $regime){
+                                                    echo("<option value='".$regime['valor']."'>".$regime['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
 
-                                        <select name="funcoes" class="funcoes">
+                                        <select name="preco-de-venda" class="funcoes" id="preco-de-venda">
                                             <option value="preco-de-venda">PRECO DE VENDA</option>
-                                            <option value="margem">MARGEM</option>
+                                            <?php
+                                                foreach($array_seletores['preco_venda'] as $preco_venda){
+                                                    echo("<option value='".$preco_venda['valor']."'>".$preco_venda['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
 
-                                        <select name="funcoes" class="funcoes">
+                                        <select name="fornecedor" class="funcoes" id="fornecedor">
                                             <option value="fornecedor">FORNECEDOR</option>
                                             <?=$dados['estados']?>
                                         </select>
 
-                                        <select name="funcoes"  class="funcoes">
-                                            <option value="tipo-fornecedor">TIPO FORNECEDOR</option>
-                                            <option value="atacadista">ATACADISTA</option>
-                                            <option value="industria">INDUSTRIA</option>
-                                            <option value="varejista">VAREJISTA</option>
-                                            <option value="importacao">IMPORTACAO</option>
+                                        <select name="tipo-fornecedor"  class="funcoes" id="tipo-fornecedor">
+                                            <option value="tipo-fornecedor">TIPO DE FORNECEDOR</option>
+                                            <?php
+                                                foreach($array_seletores['tipo-fornecedor'] as $tipo_fornecedor){
+                                                    echo("<option value='".$tipo_fornecedor['valor']."'>".$tipo_fornecedor['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
 
-                                        <select name="funcoes" class="funcoes">
+                                        <select name="cliente" class="funcoes" id="cliente">
                                             <option value="cliente">CLIENTE</option>
                                             <?=$dados['estados']?>
                                         </select>
 
-                                        <select name="funcoes" class="funcoes">
+                                        <select name="tipo-cliente" class="funcoes" id="tipo-cliente">
                                             <option value="tipo-cliente">TIPO CLIENTE</option>
-                                            <option value="consumidor-pj">CONSUMIDOR P.J</option>
-                                            <option value="consumidor-pf">CONSUMIDOR PF</option>
-                                            <option value=atacadista>ATACADISTA</option>
-                                            <option value="varejista">VAREJISTA</option>
-                                            <option value="hospital/clinicas">HOSPITAL/CLINICAS</option>
+                                            <?php
+                                                foreach($array_seletores['tipo-cliente'] as $tipo_cliente){
+                                                    echo("<option value='".$tipo_cliente['valor']."'>".$tipo_cliente['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
 
-                                        <select name="funcoes" class="funcoes">
+                                        <select name="tipo-produto" class="funcoes" id="tipo-produto">
                                             <option value="tipo-produto">TIPO PRODUTO</option>
-                                            <option value="medicamentos">MEDICAMENTOS</option>
-                                            <option value="material">MATERIAL</option>
-                                            <option value="oncologico">ONCOLÓGICO</option>
-                                            <option value="generico">GENÉRICO</option>
-                                            <option value="pneus-de-carga">PNEUS DE CARGA</option>
-                                            <option value="pneus-de-passeio">PNEUS DE PASSEIO</option>
+                                            <?php
+                                                foreach($array_seletores['tipo-produto'] as $tipo_produto){
+                                                    echo("<option value='".$tipo_produto['valor']."'>".$tipo_produto['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
 
-                                        <input style="border: solid #e1651b 1px; width: 100%; text-align: center;" type="text" name="ncm" placeholder="NCM">
+                                        <input style="border: solid #e1651b 1px; width: 100%; text-align: center;" type="text" name="ncm" placeholder="NCM" id="ncm">
 
-                                        <select name="funcoes" class="funcoes">
+                                        <select name="origem" class="funcoes" id="origem">
                                             <option value="origem">ORIGEM</option>
-                                            <option value="nacional">NACIONAL</option>
-                                            <option value="importado">IMPORTADO</option>
+                                            <?php
+                                                foreach($array_seletores['origem'] as $origem){
+                                                    echo("<option value='".$origem['valor']."'>".$origem['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
 
-                                        <select name="funcoes" class="funcoes">
+                                        <select name="lista-do-produto" class="funcoes" id="lista-do-produto">
                                             <option value="lista-do-produto">LISTA DO PRODUTO</option>
-                                            <option value="positiva">POSITIVA</option>
-                                            <option value="negativa">NEGATIVA</option>
-                                            <option value="neutra">NEUTRA</option>
-                                            <option value="nao-aplicavel">NÃO Aplicável</option>
+                                            <?php
+                                                foreach($array_seletores['lista-do-produto'] as $lista_do_produto){
+                                                    echo("<option value='".$lista_do_produto['valor']."'>".$lista_do_produto['nome']."</option>");
+                                                }
+                                            ?>
                                         </select>
                                         
                                         <button id="myInput" type="button" data-toggle="modal" data-target="#defUf" class="btn btn-primary btn-block btn-sm" style="background: #e1651b; border-color: #e1651b;width: 100%;text-align:center;">
@@ -445,40 +486,40 @@
 
 <!-- DEFINIR FILIAIS -->
 <div class="modal fade" id="defUf" tabindex="-1" role="dialog" aria-labelledby="defUfLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="defUfLabel">DEFINIR FILIAIS</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                
-                <div class="col-md-12 colunas-pai" style="padding: 1px;"> <!-- Primeira coluna interna -->
-                    <div class="table-responsive">
-                        <select name="empresa1" id="empresa1" class="inputs">
-                            <?=$dados['options']?>
-                        </select>
-                        <input type="button" class="input-func" value="EDITAR" onclick="editarFilial(1)" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" onclick="deletarFilial(1)" name="" id="">
-                        <select name="empresa2" id="empresa2" class="inputs">
-                            <?=$dados['options']?>
-                        </select>
-                        <input type="button" class="input-func" value="EDITAR" onclick="editarFilial(2)" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" onclick="deletarFilial(2)" name="" id=""> 
-
-                        <input type="button" class="btn btn-secondary" onclick="cadastrarEmpresa()" style="margin: 10px;" value="CADASTRAR EMPRESA" name="cadastrar-empresa" id="cadastrar" data-dismiss="modal" >
-                        
-                    </div>
-                </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="defUfLabel">DEFINIR FILIAIS</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
             
+            <div class="col-md-12 colunas-pai" style="padding: 1px;"> <!-- Primeira coluna interna -->
+                <div class="table-responsive">
+                    <select name="empresa1" id="empresa1" class="inputs">
+                        <?=$dados['options']?>
+                    </select>
+                    <input type="button" class="input-func" value="EDITAR" onclick="editarFilial(1)" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" onclick="deletarFilial(1)" name="" id="">
+                    <select name="empresa2" id="empresa2" class="inputs">
+                        <?=$dados['options']?>
+                    </select>
+                    <input type="button" class="input-func" value="EDITAR" onclick="editarFilial(2)" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" onclick="deletarFilial(2)" name="" id=""> 
+
+                    <input type="button" class="btn btn-secondary" onclick="cadastrarEmpresa()" style="margin: 10px;" value="CADASTRAR EMPRESA" name="cadastrar-empresa" id="cadastrar" data-dismiss="modal" >
+                    
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
-                <button type="button" class="btn btn-primary" onclick="selecionarFiliais()">SELECIONAR</button>
-            </div>
-            </div>
+        
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
+            <button type="button" class="btn btn-primary" onclick="selecionarFiliais()">SELECIONAR</button>
+        </div>
         </div>
     </div>
+</div>
 
 <script>
     var ufs = "<?=$dados['estados']?>";

@@ -21,35 +21,34 @@ if(isset($dados['empresa']) && !empty($dados['empresa'])){
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 tela">
-                <div class="button">
+                <div class="button" onclick="window.location.href = '<?=URL?>formPreco/configuracoes/aliquotas'">
                     <p>Aliquota Interestadual</p>   
                 </div>
+
+                <hr>
+                
+                <div class="button" onclick="window.location.href = '<?=URL?>formPreco/configuracoes/seletores'">
+                    <p>Seletores</p>   
+                </div>
             </div>
+
 
             <div class="col-md-4 opcoes">
                 <!-- Titulo -->
                 <div class="titulo">
-                    <h4>Configurações</h4>
+                    <h4>Configurador</h4>
                 </div>
 
-                <form action="" method="post">
-                    De<select name="origem" id="origem" onchange="calcular_aliquota()">
-                        <?php
-                            echo "<option value='UF'>UF</option>".$dados['estados'];
-                            
-                        ?>
-                    </select>
-                    para<select name="destino" id="destino" onchange="calcular_aliquota()">
-                        <?php
-                            echo "<option value='UF'>UF</option>".$dados['estados'];
-                        ?>
-                        </select>
-                    aliquota <input type="text" name="alq" id="alq">
-                </form>
-
-                <div class="button" onclick="alterar_aliquota()">
-                    <p>Alterar aliquota</p>   
-                </div>
+                <!-- Formulario -->
+                <?php
+                    $configurador = new Configuradores();
+                    if(isset($dados['configurador']) && !empty($dados['configurador'])){
+                        $metodo = $dados['configurador'];
+                        $configurador->$metodo($dados);
+                    }
+                ?>
+                
+                
             </div>
         </div>
     </div>
@@ -171,5 +170,39 @@ if(isset($dados['empresa']) && !empty($dados['empresa'])){
                 }
             });
         }
+    }
+    function cadastrar_seletor(){
+        /*Pego um select e sua referencia
+        Atribuo um nome para o novo option
+        Transformo em um valor para o name, sem acentos e sem espaços*/
+
+        referencia = document.getElementById('referencia').value;
+        seletor = document.getElementById('seletor').value;
+        seletor_valor = seletor.replace(" ", "-");
+        seletor_valor = seletor_valor.toLowerCase();
+        seletor_valor = remover_acentos(seletor_valor);
+        
+        if(seletor != '' && seletor_valor != ''){ //Verifica se o seletor está vazio
+            $.ajax({ //Envia o seletor para o banco
+                url: '<?=URL?>formPreco/salvarGeral',
+                type: 'POST',
+                data: {
+                    'referencia': referencia,
+                    'seletor': seletor,
+                    'seletor_valor': seletor_valor
+                },
+                success: function(data){
+                    resposta = JSON.parse(data.split("resultadoJson")[1]);
+                    
+                    swal.fire(resposta.mensagem, '', resposta.status);
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
+                }
+            });
+        }
+    }
+    function remover_acentos(str) {
+        return str.normalize("NFD").replace(/[^a-zA-Zs-]/g, "");
     }
 </script>

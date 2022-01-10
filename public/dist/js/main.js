@@ -2,6 +2,7 @@ var criterios = 0;
 var split = 0;
 var entao = 0;
 var campoAlvo;
+url = "http://192.168.1.89/LobeGestao/";
 
 function escreve(code, valor){
     criterios++;
@@ -49,7 +50,7 @@ function limpa(){
 function salvarRegra(){
     var regra = getRegra() + ";}";
     $.ajax({
-        url: "<?=URL?>formPreco/salvarRegras",
+        url: url+"formPreco/salvarGeral",
         type: "POST",
         data: {
             regra: regra,
@@ -83,6 +84,7 @@ function mudarFornecedor(){
     $('#fornecedortext').text(fornecedor);
 }
 function atualizar(){
+    // Entradas
     preco_do_produto = doc.querySelector('#precodoproduto');
     redutor = doc.querySelector('#redutor');
     repasse = doc.querySelector('#repasse');
@@ -116,6 +118,7 @@ function atualizar(){
     lucro_projetado = doc.querySelector('#lucro-projetado');
     carga_tributaria = doc.querySelector('#carga-tributaria');
 
+    // Calculos
     preco_do_produto_v = parseFloat(preco_do_produto.value.replace(".",""))
     redutor_v = parseFloat(redutor.value.replace("%",""))
     repasse_v = parseFloat(repasse.value.replace("%",""))
@@ -158,6 +161,24 @@ function atualizar(){
     preco_de_custo.value = temp.toFixed(2);
     
 
+}
+
+function listarSeletoresCadastrados(referencia) {
+    console.log(referencia);
+    $.ajax({
+        url: url+'formPreco/listarSeletoresCadastrados',
+        type: 'POST',
+        data: {referencia: referencia},
+        success: function (data){
+            var html = '';
+            data = data.split('</div>')[1];
+            data = JSON.parse(data);
+            for (var i = 0; i < data.length; i++) {
+                html += '<option value="'+data[i].id+'">'+data[i].nome+'</option>';
+            }
+            $('#seletores').html(html);
+        }
+    })
 }
 
 

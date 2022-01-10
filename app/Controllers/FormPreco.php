@@ -7,7 +7,8 @@
             $empresa = new Empresa();
             $array = array(
                 'estados' => $estados->listarEstados(),
-                'options' => $empresa->listarEmpresas()
+                'options' => $empresa->listarEmpresas(),
+                'seletores' => $empresa->listarSeletores()
             );
             
             $this->seLogin('formPreco/index', $array);
@@ -19,7 +20,8 @@
 
             $array = array(
                 'estados' => $estados->listarEstados(),
-                'options' => $empresa->listarEmpresas()
+                'options' => $empresa->listarEmpresas(),
+                'seletores' => $empresa->listarSeletores()
             );
 
             if(isset($_POST) && !empty($_POST)){
@@ -41,12 +43,28 @@
             }
         }
 
-        public function configuracoes(){
+        public function salvarGeral(){
+            if(isset($_POST['regra']) && !empty($_POST['regra'])){
+                $empresa = new Empresa();
+                $result = $empresa->salvarRegras($_POST);
+                exit();
+            }
+            if(isset($_POST['seletor']) && !empty($_POST['seletor'])){
+                $empresa = new Empresa();
+                $result = $empresa->salvarSeletor($_POST);
+                exit();
+            }
+        }
+
+        public function configuracoes($parametros = null){
             $estados = new Estado();
             $dados = array(
                 'estados' => $estados->listarEstados(),
                 'aliquotas' => $estados->listarAliquotas()
             );
+            if($parametros != null){
+                $dados['configurador'] = $parametros;
+            }
             $this->seLogin('formPreco/configuracoes', $dados);
         }
 
@@ -66,5 +84,13 @@
                 $estado->alterarAliquotas($_POST);
             }
 
+        }
+
+        public function listarSeletoresCadastrados(){
+            if(isset($_POST) && !empty($_POST)){
+                $empresa = new Empresa();
+                $result = $empresa->listarSeletoresCadastrados($_POST['referencia']);
+                exit(json_encode($result));
+            }
         }
     }
