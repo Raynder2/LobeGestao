@@ -8,8 +8,22 @@
             $sql .= "CREATE TABLE `lobegestao`.`empresas` ( `id` INT NOT NULL AUTO_INCREMENT , `nome` VARCHAR(32) NOT NULL , `tipo` VARCHAR(15) NOT NULL , `uf` VARCHAR(2) NOT NULL , `regime` VARCHAR(15) NOT NULL , `faturamento` VARCHAR(15) NOT NULL , `tareto` VARCHAR(3) NOT NULL , `tarego` VARCHAR(3) NOT NULL , `lei` VARCHAR(3) NOT NULL , `taregomex` VARCHAR(3) NOT NULL , `credita` VARCHAR(3) NOT NULL , `id_user` INT(5) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
             $sql .= "CREATE TABLE `lobegestao`.`usuarios` ( `id` INT NOT NULL AUTO_INCREMENT , `cnpj` VARCHAR(32) NOT NULL , `nome` VARCHAR(32) NOT NULL , `email` VARCHAR(64) NOT NULL , `senha` VARCHAR(32) NOT NULL , `status` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
             $sql .= "CREATE TABLE `lobegestao`.`regras` ( `id` INT NOT NULL AUTO_INCREMENT , `regra` VARCHAR(256) NOT NULL , `campoalvo` VARCHAR(32) NOT NULL , `criterios` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
+
+            $resul = $db->multi_query($sql);
         
-            $sqltemp = "INSERT INTO `alq_uf`(`origem`, `AC`, `AL`, `AP`, `AM`, `BA`, `CE`, `DF`, `ES`, `GO`, `MA`, `MT`, `MS`, `MG`, `PR`, `PB`, `PA`, `PE`, `PI`, `RN`, `RS`, `RJ`, `RO`, `RR`, `SC`, `SE`, `SP`, `TO`) VALUES (	'AC',	'17',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12')	;
+            if($resul){
+                echo("banco criado!");
+            }
+            else{
+                echo("Erro");
+            }
+        }
+
+        public static function inserir(){
+            $db = new Database();
+
+            $sql = '';
+            $sql .= "INSERT INTO `alq_uf`(`origem`, `AC`, `AL`, `AP`, `AM`, `BA`, `CE`, `DF`, `ES`, `GO`, `MA`, `MT`, `MS`, `MG`, `PR`, `PB`, `PA`, `PE`, `PI`, `RN`, `RS`, `RJ`, `RO`, `RR`, `SC`, `SE`, `SP`, `TO`) VALUES (	'AC',	'17',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12')	;
             INSERT INTO `alq_uf`(`origem`, `AC`, `AL`, `AP`, `AM`, `BA`, `CE`, `DF`, `ES`, `GO`, `MA`, `MT`, `MS`, `MG`, `PR`, `PB`, `PA`, `PE`, `PI`, `RN`, `RS`, `RJ`, `RO`, `RR`, `SC`, `SE`, `SP`, `TO`) VALUES (	'AL',	'12',	'17',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12')	;
             INSERT INTO `alq_uf`(`origem`, `AC`, `AL`, `AP`, `AM`, `BA`, `CE`, `DF`, `ES`, `GO`, `MA`, `MT`, `MS`, `MG`, `PR`, `PB`, `PA`, `PE`, `PI`, `RN`, `RS`, `RJ`, `RO`, `RR`, `SC`, `SE`, `SP`, `TO`) VALUES (	'AM',	'12',	'12',	'18',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12')	;
             INSERT INTO `alq_uf`(`origem`, `AC`, `AL`, `AP`, `AM`, `BA`, `CE`, `DF`, `ES`, `GO`, `MA`, `MT`, `MS`, `MG`, `PR`, `PB`, `PA`, `PE`, `PI`, `RN`, `RS`, `RJ`, `RO`, `RR`, `SC`, `SE`, `SP`, `TO`) VALUES (	'AP',	'12',	'12',	'12',	'18',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12')	;
@@ -38,7 +52,7 @@
             INSERT INTO `alq_uf`(`origem`, `AC`, `AL`, `AP`, `AM`, `BA`, `CE`, `DF`, `ES`, `GO`, `MA`, `MT`, `MS`, `MG`, `PR`, `PB`, `PA`, `PE`, `PI`, `RN`, `RS`, `RJ`, `RO`, `RR`, `SC`, `SE`, `SP`, `TO`) VALUES (	'TO',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'12',	'18')	;
             ";
 
-            $sqltemp2 = "INSERT INTO `estados`(`sigla`, `estado`) VALUES ('GO','Goias');
+            $sql .= "INSERT INTO `estados`(`sigla`, `estado`) VALUES ('GO','Goias');
             INSERT INTO `estados`(`sigla`, `estado`) VALUES ('TO','Tocantins');
             INSERT INTO `estados`(`sigla`, `estado`) VALUES ('BA','Bahia');
             INSERT INTO `estados`(`sigla`, `estado`) VALUES ('MG','Minas Gerais');
@@ -68,10 +82,8 @@
             INSERT INTO `estados`(`sigla`, `estado`) VALUES ('INSERT INTO `estados`(`sigla`, `estado`) VALUES (','');
             ";
 
-            $resul = $db->multi_query($sql);
-        
-            if($resul){
-                echo("banco criado!");
+            if($db->multi_query($sql)){
+                echo("dados inseridos!");
             }
             else{
                 echo("Erro");

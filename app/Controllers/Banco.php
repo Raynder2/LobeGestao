@@ -4,4 +4,8 @@
         public function index(){
             CriarBanco::criar();
         }
+
+        public function inserir(){
+            CriarBanco::inserir();
+        }
     }
