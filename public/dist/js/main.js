@@ -2,7 +2,7 @@ var criterios = 0;
 var split = 0;
 var entao = 0;
 var campoAlvo;
-url = "http://192.168.1.89/LobeGestao/";
+url = "http://192.168.1.40/LobeGestao/";
 
 function escreve(code, valor){
     criterios++;
@@ -100,6 +100,7 @@ function atualizar(){
     icms_st = doc.querySelector('#icms-st');
     preco_da_compra = doc.querySelector('#preco-da-compra');
     preco_de_custo = doc.querySelector('#preco-de-custo');
+    operacao = doc.querySelector('#operacao');
 
     // Saidas
     icms_saida = doc.querySelector('#icms-saida');
@@ -117,6 +118,7 @@ function atualizar(){
     preco_venda_informado = doc.querySelector('#preco-venda-informado');
     lucro_projetado = doc.querySelector('#lucro-projetado');
     carga_tributaria = doc.querySelector('#carga-tributaria');
+    operacao = doc.querySelector('#operacao');
 
     // Calculos
     preco_do_produto_v = parseFloat(preco_do_produto.value.replace(".",""))

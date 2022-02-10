@@ -53,7 +53,7 @@
 
                                     <p class="text-center coluna-titulo" style="background: #800080;">Entradas</p> <!-- Titulo da coluna interna-->
                                     <input type="button" alt="operacao.value" name="operacao" id="operacao" value="Operação" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="valor.value" name="valor" id="valor" value="Preço do Produto" onclick="escreve(this.alt, this.value)">
+                                    <input type="button" alt="preco_do_produto.value" name="valor" id="valor" value="Preço do Produto" onclick="escreve(this.alt, this.value)">
                                     <input type="button" alt="redutor.value" name="redutor" id="redutor" value="Redutor" onclick="escreve(this.alt, this.value)">
                                     <input type="button" alt="repasse.value" name="repasse" id="repasse" value="Repasse" onclick="escreve(this.alt, this.value)">
                                     <input type="button" alt="desconto.value" name="desconto" id="desconto" value="Desconto" onclick="escreve(this.alt, this.value)">

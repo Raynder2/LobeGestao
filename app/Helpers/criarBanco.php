@@ -68,7 +68,9 @@
             INSERT INTO `estados`(`sigla`, `estado`) VALUES ('INSERT INTO `estados`(`sigla`, `estado`) VALUES (','');
             ";
 
-            $sqltemp3 = "CREATE TABLE `lobegestao`.`seletores` ( `id` INT NOT NULL AUTO_INCREMENT , `valor` VARCHAR(32) NOT NULL , `nome` VARCHAR(32) NOT NULL , `referencia` VARCHAR(32) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;"
+            $sqltemp3 = "CREATE TABLE `lobegestao`.`seletores` ( `id` INT NOT NULL AUTO_INCREMENT , `valor` VARCHAR(32) NOT NULL , `nome` VARCHAR(32) NOT NULL , `referencia` VARCHAR(32) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
+
+            $sqltemp4 = "CREATE TABLE `lobegestao`.`campos` ( `id` INT NOT NULL AUTO_INCREMENT , `nome` VARCHAR(32) NOT NULL ,  `fantasia` VARCHAR(32) NOT NULL , `familia` VARCHAR(15) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
 
             $resul = $db->multi_query($sql);
         

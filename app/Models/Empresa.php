@@ -43,24 +43,27 @@
 
         // Método para listar empresas
         public function listarEmpresas(){
-            $sql = new Database();
-            $query = "SELECT id, nome FROM empresas WHERE id_user = :id_user";
-
-            $array = array(
-                ':id_user' => $_SESSION['usuario']['id']
-            );
-            $options = "";
-            if($result = $sql->select($query, $array)){
-                $options = "<option value=''>Selecione uma empresa</option>";
-                foreach($result as $empresa){
-                    $options .= "<option value='" . $empresa['id'] . "'>" . $empresa['nome'] . "</option>";
+            if(isset($_SESSION['usuario']['id']) && !empty($_SESSION['usuario']['id'])){
+                $sql = new Database();
+                $query = "SELECT id, nome FROM empresas WHERE id_user = :id_user";
+    
+                $array = array(
+                    ':id_user' => $_SESSION['usuario']['id']
+                );
+                $options = "";
+                if($result = $sql->select($query, $array)){
+                    $options = "<option value=''>Selecione uma empresa</option>";
+                    foreach($result as $empresa){
+                        $options .= "<option value='" . $empresa['id'] . "'>" . $empresa['nome'] . "</option>";
+                    }
                 }
+                else{
+                    $options .= "<option value=''>Cadastre uma empresa</option>";
+                }
+    
+                return $options;
             }
-            else{
-                $options .= "<option value=''>Cadastre uma empresa</option>";
-            }
-
-            return $options;
+                
         }
 
         // Método para listar regras

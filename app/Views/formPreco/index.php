@@ -31,8 +31,8 @@
             $array_seletores[$nomeseletor][0] = $seletor;
             array_push($array_seletores[$nomeseletor], $seletor);
         }
+        array_shift($array_seletores[$nomeseletor]);
     }
-    array_shift($array_seletores[$nomeseletor]);
 ?>
 <div class="">
     <div class="row">
@@ -168,6 +168,26 @@
 
                                         <label for="preco-de-custo">Preço de Custo</label>
                                         <input id="preco-de-custo" type="text" name="preco-de-custo" class="valor real"  value="0,00">
+
+                                        <!-- Criar sql para inserir campos -->
+                                        <!-- insert into campos (nome, fantasia, familia) values ('operacao', 'operação', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('precodoproduto', 'preço do produto', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('redutor', 'redutor', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('repasse', 'repasse', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('desconto', 'desconto', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('despesas', 'despesas', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('pis-cofins-importacao', 'pis/cofins importação', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('pis-cofins-credito', 'pis/cofins crédito', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('ipi', 'ipi', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('ii', 'ii', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('frete', 'frete', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('credito-icms', 'crédito icms', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('difal-entrada', 'difal entrada', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('icms-st', 'icms st', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('preco-da-compra', 'preço da compra', 'painel');
+                                        insert into campos (nome, fantasia, familia) values ('preco-de-custo', 'preço de custo', 'painel'); -->
+                                        
+
 
                                         
                                     </div>
@@ -574,6 +594,11 @@
             }
         ?>
     }
+
+    // selecionar texto do input ao clicar no input
+    $('input').click(function(){
+        $(this).select();
+    });
     
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
