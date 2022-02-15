@@ -437,6 +437,7 @@
     function reacao(chave) {
         var html = '';
         campoCondicao = chave.querySelector('h1').id + '.value'
+        //Se tipo 2, listar seletores
         if (chave.querySelector('h1').classList.contains('tipo2')) {
             chaveAux = chave.querySelector('h1').id
             $.ajax({
@@ -459,23 +460,30 @@
             setTimeout(() => {
                 document.getElementById('flutuante-valor').innerHTML = '<select onchange="criarCondicao(this.value)" class="item"><option value="">Selecione</option>' + html + '</select>'
             }, 500)
-        } else {
+        }
+        //Se tipo 1, abrir input de valores
+        else {
             if (chave.querySelector('h1').classList.contains('tipo1')) {
                 document.getElementById('flutuante-valor').innerHTML = `
-            <input type="text" id="condicional" class="porcentagem" placeholder="Valor">
-            
-            <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value=">">
-            <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value="<">
-            <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value="=">
-            `
-            } else {
-                document.getElementById('flutuante-valor').innerHTML = `
-            <input type="text" id="condicional" class="real" placeholder="Valor">
-
-            <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value=">">
-            <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value="<">
-            <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value="=">
-            `
+                <input type="text" id="condicional" class="porcentagem" placeholder="Valor">
+                
+                <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value=">">
+                <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value="<">
+                <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value="=">
+                `
+            }
+            //Se tipo 4, puxar estados
+            else if (chave.querySelector('h1').classList.contains('tipo4')) {
+                $.ajax({
+                    url: url+'formPreco/listarEstados',
+                    success: function(data) {
+                        html = data.split('estadosListados')[1];                        
+                    }
+                })
+                //abiri modal
+                setTimeout(() => {
+                    document.getElementById('flutuante-valor').innerHTML = '<select onchange="criarCondicao(this.value)" class="item"><option value="">Selecione</option>' + html + '</select>'
+                }, 500)
             }
         }
         $('.real').mask('#.##0,00', {
@@ -505,14 +513,14 @@
             val = val.replaceAll('%', '')
             val = val.replaceAll('.', '')
             val = val.replaceAll(',', '.')
-            if(valor == '='){
+            if (valor == '=') {
                 valor = '=='
             }
             //CampoCondição => campo vindo do banco com .value e passado para o padrão do arquivo regras.php com _v no lugar de .value
             campoCondicao = campoCondicao.replaceAll('.value', '_v')
             condicao += campoCondicao + " " + valor + " " + val
         }
-        console.log("CampoCondicao: " + campoCondicao+"\nCondicao: "+condicao)
+        console.log("CampoCondicao: " + campoCondicao + "\nCondicao: " + condicao)
         document.getElementById('flutuante').click()
         criterios++;
     }
@@ -531,7 +539,7 @@
         // }
 
         //Verificar se é real ou porcentagem
-        if(document.getElementById('check').checked){
+        if (document.getElementById('check').checked) {
 
         }
         //Condição, campo.value => campo em html, valor => valor do campo

@@ -14,6 +14,12 @@
             $this->seLogin('formPreco/index', $array);
         }
 
+        public function listarEstados(){
+            $estado = new Estado();
+            echo('estadosListados'.$estado->listarEstados());
+            exit();
+        }
+
         public function cadastrarEmpresa(){
             $estados = new Estado();
             $empresa = new Empresa();
