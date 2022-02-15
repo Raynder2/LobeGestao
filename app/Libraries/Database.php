@@ -37,6 +37,14 @@
             return $res;
         }
 
+        public function delete($query, $array){
+            $sql = $this->conn->prepare($query);
+            $this->setParams($array, $sql);
+            if($sql->execute()){
+                return true;
+            }
+        }
+
         public function setParams($array = array(), $sql){
 
             foreach($array as $key => $value){

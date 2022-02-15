@@ -33,7 +33,15 @@
         }
 
         public function regras(){
-            $this->seLogin('formPreco/regras');
+            $empresa = new Empresa();
+            $arrayCampos = array(
+                'entradas' => $empresa->listarCampos('entradas'),
+                'saidas' => $empresa->listarCampos('saidas'),
+                'empresa' => $empresa->listarCampos('empresa'),
+                'controle' => $empresa->listarCampos('controle')
+            );
+            
+            $this->seLogin('formPreco/regras2', $arrayCampos);
         }
 
         public function salvarRegras(){
@@ -52,6 +60,11 @@
             if(isset($_POST['seletor']) && !empty($_POST['seletor'])){
                 $empresa = new Empresa();
                 $result = $empresa->salvarSeletor($_POST);
+                exit();
+            }
+            if(isset($_POST['campo']) && !empty($_POST['campo'])){
+                $empresa = new Empresa();
+                $result = $empresa->salvarCampo($_POST);
                 exit();
             }
         }
@@ -92,5 +105,29 @@
                 $result = $empresa->listarSeletoresCadastrados($_POST['referencia']);
                 exit(json_encode($result));
             }
+        }
+
+        public function listarCamposCadastrados(){
+            if(isset($_POST) && !empty($_POST)){
+                $empresa = new Empresa();
+                $result = $empresa->listarCamposCadastrados($_POST['referencia']);
+                exit(json_encode($result));
+            }
+        }
+
+        public function listarCamposSelecionados(){
+            $referencia = $_POST['referencia'];
+            $empresa = new Empresa();
+            $result = $empresa->listarCampos($referencia);
+            exit(json_encode($result));
+        }
+
+        public function exluirGeral(){
+            if(isset($_POST['seletor']) && !empty($_POST['seletor'])){
+                $empresa = new Empresa();
+                $result = $empresa->excluirSeletor($_POST['seletor']);
+                exit();
+            }
+
         }
     }

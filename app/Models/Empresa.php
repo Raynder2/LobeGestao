@@ -112,6 +112,43 @@
             }
         }
 
+        public function excluirSeletor($seletor){
+            $sql = new Database();
+            $query = "DELETE FROM seletores WHERE id = :id";
+            $array = array(
+                ':id' => $seletor
+            );
+
+            if($sql->delete($query, $array)){
+                exit("resultadoJson".json_encode(['status' => 'success', 'mensagem' => 'Seletor excluído com sucesso!']));
+            }
+            else{
+                exit("resultadoJson".json_encode(['status' => 'error', 'mensagem' => 'Erro ao excluir seletor!']));
+            }
+        }
+
+        // Método para salvar campos
+        public function salvarCampo($campo){
+            $sql = new Database();
+            $query = "INSERT INTO campos (nome, fantasia, familia, tipo, visivel, editavel) VALUES (:nome, :fantasia, :familia, :tipo, :visivel, :editavel)";
+
+            $array = array(
+                ':nome' => $campo['nome'],
+                ':fantasia' => strtoupper($campo['fantasia']),
+                ':familia' => $campo['familia'],
+                ':tipo' => $campo['tipo'],
+                ':visivel' => $campo['visivel'],
+                ':editavel' => $campo['editavel']
+            );
+
+            if($sql->insere($query, $array)){
+                exit("resultadoJson".json_encode(['status' => 'success', 'mensagem' => 'Campo salvo com sucesso!']));
+            }
+            else{
+                exit("resultadoJson".json_encode(['status' => 'error', 'mensagem' => 'Erro ao salvar campo!']));
+            }
+        }
+
         public function listarSeletores(){
             $sql = new Database();
             $query = "SELECT * FROM seletores";
@@ -148,6 +185,23 @@
                 ':referencia' => $referencia
             );
             $result = $sql->select($query, $array);
+            return($result);
+        }
+
+        public function listarCamposCadastrados(){
+            $sql = new Database();
+            $query = "SELECT * FROM campos";
+
+            $result = $sql->select($query);
+            return($result);
+        }
+
+        public function listarCampos($referencia){
+            $sql = new Database();
+            $array = array(':referencia' => $referencia);
+            $query = "SELECT * FROM campos WHERE familia = :referencia";
+            $result = $sql->select($query, $array);
+
             return($result);
         }
     }

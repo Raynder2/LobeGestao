@@ -27,6 +27,42 @@
 
         }
 
+        public function campos($dados){
+            ?>
+            <form action="" method="post">
+                <p>Campo
+                    <input type="text" name="campo" id="campo" style="width:50%;">
+                </p>
+            </form>
+
+            <div class="button" onclick="cadastrar_campo()">
+                <p>Cadastrar campo</p>  
+            </div>
+
+            <div class="titulo">
+                <h4>Campos Cadastrados</h4>
+            </div>
+
+            <p>Campos &nbsp;
+            <select name="campoCadastrado" id="campos" style="width: 50%;">
+                //aqui vai os campos cadastrados
+                <?php
+                $empresa = new Empresa();
+                $result = $empresa->listarCamposCadastrados();
+                foreach ($result as $option){
+                    echo "<option value='".$option['id']."'>".$option['nome']."</option>";
+                }
+                ?>
+            </select></p>
+
+            <div class="button" onclick="excluir_campo()">
+                <p>Excluir Campo</p>  
+            </div>
+
+            </div>
+            <?php
+        }
+
         public function seletores($dados){
             ?>
             <form action="" method="post">
@@ -35,13 +71,13 @@
                     <option value="operacao_entr">Operação Entrada</option>
                     <option value="operacao_said">Operação Saida</option>
                     <option value="regime">Regime</option>
-                    <option value="tipo-fornecedor">Tipo de Fornecedor</option>
-                    <option value="tipo-cliente">Tipo de Cliente</option>
-                    <option value="tipo-produto">Tipo de Produto</option>
+                    <option value="tipo_fornecedor">Tipo de Fornecedor</option>
+                    <option value="tipo_cliente">Tipo de Cliente</option>
+                    <option value="tipo_produto">Tipo de Produto</option>
                     <option value="origem">Origem</option>
-                    <option value="lista-produto">Lista do Produto</option>
-                    <option value="tipo-empresa">Tipo da Empresa</option>
-                    <option value="regime-tributario">Regime Tributario da Empresa</option>
+                    <option value="lista_produto">Lista do Produto</option>
+                    <option value="tipo_empresa">Tipo da Empresa</option>
+                    <option value="regime_tributario">Regime Tributario da Empresa</option>
                 </select></p>
 
                 <p>Seletor
@@ -60,7 +96,7 @@
             <p>Seletores &nbsp;<select name="seletorCadastrado" id="seletores" style="width: 50%;">
             </select></p>
 
-            <div class="button" onclick="cadastrar_seletor()">
+            <div class="button" onclick="excluir_seletor(document.getElementById('seletores').value)">
                 <p>Excluir Seletor</p>  
             </div>
 
