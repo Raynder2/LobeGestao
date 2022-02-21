@@ -26,50 +26,6 @@
         $rotas = new Rota();
     ?>
 
-        
-    <!-- DEFINIR FILIAIS -->
-    <div class="modal fade" id="defUf" tabindex="-1" role="dialog" aria-labelledby="defUfLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="defUfLabel">DEFINIR FILIAIS</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                
-                <div class="col-md-12 colunas-pai" style="padding: 1px;"> <!-- Primeira coluna interna -->
-                    <div class="table-responsive">
-                        <select name="empresa1" id="empresa1">
-                            <?php
-                                $empresa = new Empresa();
-                                $empresa->listarEmpresas();
-                            ?>
-                        </select>
-                        <input type="button" class="input-func" value="EDITAR" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" name="" id="">
-                        <select name="empresa1" id="empresa1">
-                            <?php
-                                $empresa = new Empresa();
-                                $empresa->listarEmpresas();
-                            ?>
-                        </select>
-                        <input type="button" class="input-func" value="EDITAR" data-dismiss="modal"> <input type="button" class="input-func" value="DELETAR" data-dismiss="modal" name="" id=""> 
-
-                        <input type="button" class="btn btn-secondary" onclick="cadastrarEmpresa()" style="margin: 10px;" value="CADASTRAR EMPRESA" name="cadastrar-empresa" id="cadastrar" data-dismiss="modal" >
-                        
-                    </div>
-                </div>
-            
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">FECHAR</button>
-                <button type="button" class="btn btn-primary">SALVAR</button>
-            </div>
-            </div>
-        </div>
-    </div>
-
 
     <!-- CADASTRAR EMPRESA -->
     <div class="modal fade" id="cadastrarEmpresa" tabindex="-1" role="dialog" aria-labelledby="defUfLabel" aria-hidden="true">

@@ -1,4 +1,8 @@
-function atualizar(){
+var variantes = new Object();
+var tabelas = new Object();
+var tabelaValores = new Object();
+
+function atualizar() {
     // Entradas
     preco_do_produto = doc.querySelector('#precodoproduto');
     redutor = doc.querySelector('#redutor');
@@ -16,7 +20,7 @@ function atualizar(){
     preco_da_compra = doc.querySelector('#preco-da-compra');
     preco_de_custo = doc.querySelector('#preco-de-custo');
     operacao = doc.querySelector('#operacao');
-    
+
 
     // Saidas
     icms_saida = doc.querySelector('#icms-saida');
@@ -36,7 +40,7 @@ function atualizar(){
     carga_tributaria = doc.querySelector('#carga-tributaria');
     operacao = doc.querySelector('#operacao');
 
-    // Controle
+    // Controle / Variantes
     regime = document.querySelector('#regime');
     preco_de_venda = document.querySelector('#preco-de-venda');
     fornecedor = document.querySelector('#fornecedor');
@@ -49,34 +53,34 @@ function atualizar(){
     lista_do_produto = document.querySelector('#lista-do-produto');
 
     // Calculos
-    preco_do_produto_v = parseFloat(preco_do_produto.value.replaceAll(".","").replaceAll(",","."));
-    redutor_v = parseFloat(redutor.value.replace("%","").replaceAll(".","").replaceAll(",","."));
-    repasse_v = parseFloat(repasse.value.replace("%","").replaceAll(".","").replaceAll(",","."))
-    desconto_v = parseFloat(desconto.value.replace("%","").replaceAll(".","").replaceAll(",","."))
-    despesas_v = parseFloat(despesas.value.replaceAll(".","").replaceAll(",","."))
-    pis_cofins_importacao_v = parseFloat(pis_cofins_importacao.value.replace("%","").replaceAll(".","").replaceAll(",","."))
-    pis_cofins_credito_v = parseFloat(pis_cofins_credito.value.replace("%","").replaceAll(".","").replaceAll(",","."))
-    ipi_v = parseFloat(ipi.value.replace("%","").replaceAll(".","").replaceAll(",","."))
-    ii_v = parseFloat(ii.value.replace("%","").replaceAll(".","").replaceAll(",","."))
-    frete_v = parseFloat(frete.value.replace("%","").replaceAll(".","").replaceAll(",","."))
-    credito_icms_v = parseFloat(credito_icms.value.replace("%","").replaceAll(".","").replaceAll(",","."))
-    difal_entrada_v = parseFloat(difal_entrada.value.replace("%","").replaceAll(".","").replaceAll(",","."))
-    icms_st_v = parseFloat(icms_st.value.replace("%","").replaceAll(".","").replaceAll(",","."))
-    preco_da_compra_v = parseFloat(preco_da_compra.value.replaceAll(".","").replaceAll(",","."))
-    preco_de_custo_v = parseFloat(preco_de_custo.value.replaceAll(".","").replaceAll(",","."))
+    preco_do_produto_v = parseFloat(preco_do_produto.value.replaceAll(".", "").replaceAll(",", "."));
+    redutor_v = parseFloat(redutor.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."));
+    repasse_v = parseFloat(repasse.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."))
+    desconto_v = parseFloat(desconto.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."))
+    despesas_v = parseFloat(despesas.value.replaceAll(".", "").replaceAll(",", "."))
+    pis_cofins_importacao_v = parseFloat(pis_cofins_importacao.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."))
+    pis_cofins_credito_v = parseFloat(pis_cofins_credito.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."))
+    ipi_v = parseFloat(ipi.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."))
+    ii_v = parseFloat(ii.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."))
+    frete_v = parseFloat(frete.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."))
+    credito_icms_v = parseFloat(credito_icms.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."))
+    difal_entrada_v = parseFloat(difal_entrada.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."))
+    icms_st_v = parseFloat(icms_st.value.replace("%", "").replaceAll(".", "").replaceAll(",", "."))
+    preco_da_compra_v = parseFloat(preco_da_compra.value.replaceAll(".", "").replaceAll(",", "."))
+    preco_de_custo_v = parseFloat(preco_de_custo.value.replaceAll(".", "").replaceAll(",", "."))
 
-    function tipoCalculo(base, valor, calculo){
-        if(valor != 0){
-            if(calculo == 1){
+    function tipoCalculo(base, valor, calculo) {
+        if (valor != 0) {
+            if (calculo == 1) {
                 decremento = decremento + valor
                 return base - valor
             }
-            else if(calculo == 2){
+            else if (calculo == 2) {
                 incremento += valor
                 return base + valor
             }
         }
-        else{
+        else {
             return base
         }
     }
@@ -99,11 +103,93 @@ function atualizar(){
 
 
     preco_de_custo.value = temp.toFixed(2);
+    // Atribuir mascara de real
+    preco_de_custo.value = preco_de_custo.value.toString().replace(".", ",");
 
-    criarGraficoColunas(preco_de_custo.value, incremento, decremento)
+
+    // criarGraficoColunas(preco_de_custo.value, incremento, decremento)
 
     // adicionar style hover a elemento
     // document.querySelector('//*[@id="columnchart_values"]/div/div[1]/div/svg/g[2]/g[1]/g[2]/rect[3]').addEventListener('mouseover', function(){
     //     alert('teste')
     // })
+}
+
+function lerVariantes() {
+    document.getElementById("variantes").querySelectorAll(".varianteCampo").forEach(function (variante) {
+        nome = variante.name.replaceAll("-", "_")
+        variantes[nome] = variante
+    })
+}
+
+function lerTabelaAtual(tabela) {
+    tabela.querySelectorAll(".campoTabela").forEach(function (campo) {
+        nome = campo.name.replaceAll("-", "_")
+        tabelas[nome] = campo
+    })
+}
+
+function converterValores(tabela) {
+    tabela.querySelectorAll(".campoTabela").forEach(function (campo) {
+        campoAux = campo.value.replaceAll('%', '')
+        nome = campo.name.replaceAll("-", "_")
+        if (campo.value.includes('%')) {
+            tabelaValores[nome] = [parseFloat(campoAux.replaceAll(".", "").replaceAll(",", ".")), '%']
+        }
+        else {
+            tabelaValores[nome] = [parseFloat(campoAux.replaceAll(".", "").replaceAll(",", ".")), '$']
+        }
+    })
+}
+
+function mostrarValores() {
+    for (var i in tabelaValores) {
+        console.log(i + ": " + tabelaValores[i])
+    }
+}
+
+function calcularCusto() {
+    cont = 0
+    preco = tabelaValores['precodoproduto'][0]
+
+    for (var i in tabelaValores) {
+        if(tabelaValores[i][0] > 0 && i != 'valor'){
+            if (tabelaValores[i][1] == '%') {
+                if (cont <= 2) {
+                    preco = tipoCalculo(preco, preco * (tabelaValores[i][0] / 100), 1)
+                }
+                else {
+                    preco = tipoCalculo(preco, preco * (tabelaValores[i][0] / 100), 2)
+                }
+            }
+            else {
+                if (cont <= 2) {
+                    preco = tipoCalculo(preco, tabelaValores[i][0], 1)
+                }
+                else {
+                    preco = tipoCalculo(preco, tabelaValores[i][0], 2)
+                }
+            }
+            cont++
+        }
+    }
+    tabelas['preco_de_custo'].value = preco.toFixed(2);
+    // Atribuir mascara de real
+    tabelas['preco_de_custo'].value = tabelas['preco_de_custo'].value.toString().replace(".", ",");
+}
+
+function tipoCalculo(base, valor, calculo) {
+    if (valor != 0) {
+        if (calculo == 1) {
+            decremento = decremento + valor
+            return base - valor
+        }
+        else if (calculo == 2) {
+            incremento += valor
+            return base + valor
+        }
+    }
+    else {
+        return base
+    }
 }

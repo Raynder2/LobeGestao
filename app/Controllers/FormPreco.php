@@ -96,6 +96,15 @@
 
         }
 
+        public function verificarAliquota(){
+            $estados = new Estado();
+            $origem = $_POST['origem'];
+            $destino = $_POST['destino'];
+
+            $resul = $estados->verificarAliquota($origem, $destino);
+            echo("Resultado Alq:".$resul."|");
+        }
+
         public function alterarAliquotas(){
             $estado = new Estado();
 
@@ -135,5 +144,10 @@
                 exit();
             }
 
+        }
+
+        public function apagartudo(){
+            $empresa = new Empresa();
+            $empresa->apagarTudo();
         }
     }

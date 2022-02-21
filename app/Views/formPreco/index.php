@@ -28,7 +28,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
     array_shift($array_seletores[$nomeseletor]);
 }
 ?>
-<div class="">
+<div class="conteudo-central">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -46,10 +46,10 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                 <div class="coluna_entradas entrada_um col-md-6 colunas-pai" style="padding: 1px;">
                                     <!-- Primeira coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #800080;"><span id="fornecedortext">UF</span> - > <span class="empresa1text">UF</span></p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo" style="background: #800080;"><span class="fornecedortext">UF</span> - > <span class="empresa1text">UF</span></p> <!-- Titulo da coluna interna-->
 
                                         <!-- Inicio dos campos -->
-                                        <select name="operacao" class="operacao" id="operacao">
+                                        <select name="operacao" class="operacao campoTabela" id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
                                             <!-- Listar $array_seletores['operacao'] -->
                                             <?php
@@ -60,49 +60,49 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         </select>
 
                                         <label for="valor">Preço do Produto</label>
-                                        <input id="precodoproduto" type="text" name="valor" class="valor real" value="0,00">
+                                        <input id="precodoproduto" type="text" name="precodoproduto" class="campoTabela valor real" value="0,00">
 
                                         <label for="redutor">Redutor</label>
-                                        <input id="redutor" type="text" name="redutor" class="valor porcentagem" value="0,00">
+                                        <input id="redutor" type="text" name="redutor" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="repasse">Repasse</label>
-                                        <input id="repasse" type="text" name="repasse" class="valor porcentagem" value="0,00">
+                                        <input id="repasse" type="text" name="repasse" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="desconto">Desconto</label>
-                                        <input id="desconto" type="text" name="desconto" class="valor porcentagem" value="0,00">
+                                        <input id="desconto" type="text" name="desconto" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="despesas">Despesas</label>
-                                        <input id="despesas" type="text" name="despesas" class="valor real" value="0,00">
+                                        <input id="despesas" type="text" name="despesas" class="campoTabela valor real" value="0,00">
 
                                         <label for="pis-cofins-importacao">Pis/Cofins Importação</label>
-                                        <input id="pis-cofins-importacao" type="text" name="pis-cofins-importacao" class="valor porcentagem" value="0,00">
+                                        <input id="pis-cofins-importacao" type="text" name="pis-cofins-importacao" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="pis-cofins-credito">Pis/Cofins Crédito</label>
-                                        <input id="pis-cofins-credito" type="text" name="pis-cofins-credito" class="valor porcentagem" value="0,00">
+                                        <input id="pis-cofins-credito" type="text" name="pis-cofins-credito" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="ipi">IPI</label>
-                                        <input id="ipi" type="text" name="ipi" class="valor porcentagem" value="0,00">
+                                        <input id="ipi" type="text" name="ipi" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="ii">II</label>
-                                        <input id="ii" type="text" name="ii" class="valor real" value="0,00">
+                                        <input id="ii" type="text" name="ii" class="campoTabela valor real" value="0,00">
 
                                         <label for="frete">Frete</label>
-                                        <input id="frete" type="text" name="frete" class="valor real" value="0,00">
+                                        <input id="frete" type="text" name="frete" class="campoTabela valor real" value="0,00">
 
                                         <label for="credito-icms">Crédito ICMS</label>
-                                        <input id="credito-icms" type="text" name="credito-icms" class="valor porcentagem" value="0,00">
+                                        <input id="credito-icms" type="text" name="credito-icms" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="difal-entrada">Difal Entrada</label>
-                                        <input id="difal-entrada" type="text" name="difal-entrada" class="valor porcentagem" value="0,00">
+                                        <input id="difal-entrada" type="text" name="difal-entrada" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="icms-st">ICMS ST</label>
-                                        <input id="icms-st" type="text" name="icms-st" class="valor porcentagem" value="0,00">
+                                        <input id="icms-st" type="text" name="icms-st" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="preco-da-compra">Preço da Compra</label>
-                                        <input id="preco-da-compra" type="text" name="preco-da-compra" class="valor real" value="0,00">
+                                        <input id="preco-da-compra" type="text" name="preco-da-compra" class="campoTabela valor real" value="0,00">
 
                                         <label for="preco-de-custo">Preço de Custo</label>
-                                        <input id="preco-de-custo" type="text" name="preco-de-custo" class="valor real" value="0,00">
+                                        <input id="preco-de-custo" type="text" name="preco-de-custo" class="campoTabela valor real" value="0,00">
 
 
                                     </div>
@@ -112,8 +112,8 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                 <div class="coluna_entradas entrada_dois col-md-6 colunas-pai" style="padding: 1px;">
                                     <!-- Segunda coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #800080;"><span id="fornecedortext">UF</span> -> <span class="empresa2text">UF</span></p> <!-- Titulo da coluna interna-->
-                                        <select name="operacao" class="operacao" id="operacao">
+                                        <p class="text-center coluna-titulo" style="background: #800080;"><span class="fornecedortext">UF</span> -> <span class="empresa2text">UF</span></p> <!-- Titulo da coluna interna-->
+                                        <select name="operacao" class="campoTabela operacao" id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
                                             <!-- Listar $array_seletores['operacao'] -->
                                             <?php
@@ -124,49 +124,49 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         </select>
 
                                         <label for="valor">Preço do Produto</label>
-                                        <input id="precodoproduto" type="text" name="valor" class="valor real" value="0,00">
+                                        <input id="precodoproduto" type="text" name="precodoproduto" class="campoTabela valor real" value="0,00">
 
                                         <label for="redutor">Redutor</label>
-                                        <input id="redutor" type="text" name="redutor" class="valor porcentagem" value="0,00">
+                                        <input id="redutor" type="text" name="redutor" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="repasse">Repasse</label>
-                                        <input id="repasse" type="text" name="repasse" class="valor porcentagem" value="0,00">
+                                        <input id="repasse" type="text" name="repasse" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="desconto">Desconto</label>
-                                        <input id="desconto" type="text" name="desconto" class="valor porcentagem" value="0,00">
+                                        <input id="desconto" type="text" name="desconto" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="despesas">Despesas</label>
-                                        <input id="despesas" type="text" name="despesas" class="valor real" value="0,00">
+                                        <input id="despesas" type="text" name="despesas" class="campoTabela valor real" value="0,00">
 
                                         <label for="pis-cofins-importacao">Pis/Cofins Importação</label>
-                                        <input id="pis-cofins-importacao" type="text" name="pis-cofins-importacao" class="valor porcentagem" value="0,00">
+                                        <input id="pis-cofins-importacao" type="text" name="pis-cofins-importacao" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="pis-cofins-credito">Pis/Cofins Crédito</label>
-                                        <input id="pis-cofins-credito" type="text" name="pis-cofins-credito" class="valor porcentagem" value="0,00">
+                                        <input id="pis-cofins-credito" type="text" name="pis-cofins-credito" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="ipi">IPI</label>
-                                        <input id="ipi" type="text" name="ipi" class="valor porcentagem" value="0,00">
+                                        <input id="ipi" type="text" name="ipi" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="ii">II</label>
-                                        <input id="ii" type="text" name="ii" class="valor real" value="0,00">
+                                        <input id="ii" type="text" name="ii" class="campoTabela valor real" value="0,00">
 
                                         <label for="frete">Frete</label>
-                                        <input id="frete" type="text" name="frete" class="valor real" value="0,00">
+                                        <input id="frete" type="text" name="frete" class="campoTabela valor real" value="0,00">
 
                                         <label for="credito-icms">Crédito ICMS</label>
-                                        <input id="credito-icms" type="text" name="credito-icms" class="valor porcentagem" value="0,00">
+                                        <input id="credito-icms" type="text" name="credito-icms" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="difal-entrada">Difal Entrada</label>
-                                        <input id="difal-entrada" type="text" name="difal-entrada" class="valor porcentagem" value="0,00">
+                                        <input id="difal-entrada" type="text" name="difal-entrada" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="icms-st">ICMS ST</label>
-                                        <input id="icms-st" type="text" name="icms-st" class="valor porcentagem" value="0,00">
+                                        <input id="icms-st" type="text" name="icms-st" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="preco-da-compra">Preço da Compra</label>
-                                        <input id="preco-da-compra" type="text" name="preco-da-compra" class="valor real" value="0,00">
+                                        <input id="preco-da-compra" type="text" name="preco-da-compra" class="campoTabela valor real" value="0,00">
 
                                         <label for="preco-de-custo">Preço de Custo</label>
-                                        <input id="preco-de-custo" type="text" name="preco-de-custo" class="valor real" value="0,00">
+                                        <input id="preco-de-custo" type="text" name="preco-de-custo" class="campoTabela valor real" value="0,00">
 
                                         <!-- Criar sql para inserir campos -->
                                         <!-- insert into campos (nome, fantasia, familia) values ('operacao', 'operação', 'painel');
@@ -206,10 +206,10 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                 <div class="coluna_saidas saida_um col-md-4 colunas-pai" style="padding: 1px;">
                                     <!-- Primeira coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #008080;"> <span class="empresa1text">UF</span> -> UF</p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo" style="background: #008080;"> <span class="empresa1text">UF</span> -> <span class="clientetext">UF</span></p> <!-- Titulo da coluna interna-->
 
                                         <!-- Inicio dos campos -->
-                                        <select name="operacao" class="operacao" id="operacao">
+                                        <select name="operacao" class="campoTabela operacao" id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
                                             <!-- Listar $array_seletores['operacao_said'] -->
                                             <?php
@@ -220,49 +220,49 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         </select>
 
                                         <label for="icms-saida">ICMS Saida</label>
-                                        <input id="icms-saida" type="text" name="icms-saida" class="valor porcentagem" value="0,00">
+                                        <input id="icms-saida" type="text" name="icms-saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="difal-fecp-saida">Difal + Fecp Saida</label>
-                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="valor porcentagem" value="0,00">
+                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="icms-st-efetivo">ICMS ST Efetivo</label>
-                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="valor porcentagem" value="0,00">
+                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="impostos-federais">Impostos Federais</label>
-                                        <input id="impostos-federais" type="text" name="impostos-federais" class="valor porcentagem" value="0,00">
+                                        <input id="impostos-federais" type="text" name="impostos-federais" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="desconto-concedido">Desconto Concedido</label>
-                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="valor porcentagem" value="0,00">
+                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="pis-cofins-debito">Pis/Cofins Debito</label>
-                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="valor porcentagem" value="0,00">
+                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="ipi_saida">IPI</label>
-                                        <input id="ipi_saida" type="text" name="ipi_saida" class="valor porcentagem" value="0,00">
+                                        <input id="ipi_saida" type="text" name="ipi_saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="taxa-de-desconto">Taxa</label>
-                                        <input id="taxa" type="text" name="taxa" class="valor porcentagem" value="0,00">
+                                        <input id="taxa" type="text" name="taxa" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="comissao">Comissão</label>
-                                        <input id="comissao" type="text" name="comissao" class="valor porcentagem" value="0,00">
+                                        <input id="comissao" type="text" name="comissao" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="frete_saida">Frete</label>
-                                        <input id="frete_saida" type="text" name="frete_saida" class="valor porcentagem" value="0,00">
+                                        <input id="frete_saida" type="text" name="frete_saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="custo-fixo">Custo Fixo</label>
-                                        <input id="custo-fixo" type="text" name="custo-fixo" class="valor porcentagem" value="0,00">
+                                        <input id="custo-fixo" type="text" name="custo-fixo" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="margem-calculada">Margem Calculada</label>
-                                        <input id="margem-calculada" type="text" name="margem-calculada" class="valor porcentagem" value="0,00">
+                                        <input id="margem-calculada" type="text" name="margem-calculada" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="preco-venda-informado">Preço Venda Informado</label>
-                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="valor real" value="0,00">
+                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="campoTabela valor real" value="0,00">
 
                                         <label for="lucro-projetado">Lucro Projetado</label>
-                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="valor real" value="0,00">
+                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="campoTabela valor real" value="0,00">
 
                                         <label for="carga-tributaria">Carga Tributária</label>
-                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="valor porcentagem" value="0,00">
+                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="campoTabela valor porcentagem" value="0,00">
 
 
 
@@ -273,10 +273,10 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                 <div class="coluna_saidas saida_dois col-md-4 colunas-pai" style="padding: 1px;">
                                     <!-- Segunda coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #008080;"> <span class="empresa2text">UF</span> -> UF</p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo" style="background: #008080;"> <span class="empresa2text">UF</span> -> <span class="clientetext">UF</span></p> <!-- Titulo da coluna interna-->
 
                                         <!-- Inicio dos campos -->
-                                        <select name="operacao" class="operacao" id="operacao">
+                                        <select name="operacao" class="campoTabela operacao" id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
                                             <!-- Listar $array_seletores['operacao_said'] -->
                                             <?php
@@ -287,49 +287,49 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         </select>
 
                                         <label for="icms-saida">ICMS Saida</label>
-                                        <input id="icms-saida" type="text" name="icms-saida" class="valor porcentagem" value="0,00">
+                                        <input id="icms-saida" type="text" name="icms-saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="difal-fecp-saida">Difal + Fecp Saida</label>
-                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="valor porcentagem" value="0,00">
+                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="icms-st-efetivo">ICMS ST Efetivo</label>
-                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="valor porcentagem" value="0,00">
+                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="impostos-federais">Impostos Federais</label>
-                                        <input id="impostos-federais" type="text" name="impostos-federais" class="valor porcentagem" value="0,00">
+                                        <input id="impostos-federais" type="text" name="impostos-federais" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="desconto-concedido">Desconto Concedido</label>
-                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="valor porcentagem" value="0,00">
+                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="pis-cofins-debito">Pis/Cofins Debito</label>
-                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="valor porcentagem" value="0,00">
+                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="ipi_saida">IPI</label>
-                                        <input id="ipi_saida" type="text" name="ipi_saida" class="valor porcentagem" value="0,00">
+                                        <input id="ipi_saida" type="text" name="ipi_saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="taxa-de-desconto">Taxa</label>
-                                        <input id="taxa" type="text" name="taxa" class="valor porcentagem" value="0,00">
+                                        <input id="taxa" type="text" name="taxa" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="comissao">Comissão</label>
-                                        <input id="comissao" type="text" name="comissao" class="valor porcentagem" value="0,00">
+                                        <input id="comissao" type="text" name="comissao" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="frete_saida">Frete</label>
-                                        <input id="frete_saida" type="text" name="frete_saida" class="valor porcentagem" value="0,00">
+                                        <input id="frete_saida" type="text" name="frete_saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="custo-fixo">Custo Fixo</label>
-                                        <input id="custo-fixo" type="text" name="custo-fixo" class="valor porcentagem" value="0,00">
+                                        <input id="custo-fixo" type="text" name="custo-fixo" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="margem-calculada">Margem Calculada</label>
-                                        <input id="margem-calculada" type="text" name="margem-calculada" class="valor porcentagem" value="0,00">
+                                        <input id="margem-calculada" type="text" name="margem-calculada" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="preco-venda-informado">Preço Venda Informado</label>
-                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="valor real" value="0,00">
+                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="campoTabela valor real" value="0,00">
 
                                         <label for="lucro-projetado">Lucro Projetado</label>
-                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="valor real" value="0,00">
+                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="campoTabela valor real" value="0,00">
 
                                         <label for="carga-tributaria">Carga Tributária</label>
-                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="valor porcentagem" value="0,00">
+                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="campoTabela valor porcentagem" value="0,00">
 
 
 
@@ -341,7 +341,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                     <!-- Terceira coluna interna -->
                                     <div class="table-responsive campos">
                                         <p class="text-center coluna-titulo" style="background: #008080;">UF -> UF</p> <!-- Titulo da coluna interna-->
-                                        <select name="operacao" class="operacao" id="operacao">
+                                        <select name="operacao" class="campoTabela operacao" id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
                                             <!-- Listar $array_seletores['operacao_said'] -->
                                             <?php
@@ -352,49 +352,49 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         </select>
 
                                         <label for="icms-saida">ICMS Saida</label>
-                                        <input id="icms-saida" type="text" name="icms-saida" class="valor porcentagem" value="0,00">
+                                        <input id="icms-saida" type="text" name="icms-saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="difal-fecp-saida">Difal + Fecp Saida</label>
-                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="valor porcentagem" value="0,00">
+                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="icms-st-efetivo">ICMS ST Efetivo</label>
-                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="valor porcentagem" value="0,00">
+                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="impostos-federais">Impostos Federais</label>
-                                        <input id="impostos-federais" type="text" name="impostos-federais" class="valor porcentagem" value="0,00">
+                                        <input id="impostos-federais" type="text" name="impostos-federais" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="desconto-concedido">Desconto Concedido</label>
-                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="valor porcentagem" value="0,00">
+                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="pis-cofins-debito">Pis/Cofins Debito</label>
-                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="valor porcentagem" value="0,00">
+                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="ipi_saida">IPI</label>
-                                        <input id="ipi_saida" type="text" name="ipi_saida" class="valor porcentagem" value="0,00">
+                                        <input id="ipi_saida" type="text" name="ipi_saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="taxa-de-desconto">Taxa</label>
-                                        <input id="taxa" type="text" name="taxa" class="valor porcentagem" value="0,00">
+                                        <input id="taxa" type="text" name="taxa" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="comissao">Comissão</label>
-                                        <input id="comissao" type="text" name="comissao" class="valor porcentagem" value="0,00">
+                                        <input id="comissao" type="text" name="comissao" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="frete_saida">Frete</label>
-                                        <input id="frete_saida" type="text" name="frete_saida" class="valor porcentagem" value="0,00">
+                                        <input id="frete_saida" type="text" name="frete_saida" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="custo-fixo">Custo Fixo</label>
-                                        <input id="custo-fixo" type="text" name="custo-fixo" class="valor porcentagem" value="0,00">
+                                        <input id="custo-fixo" type="text" name="custo-fixo" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="margem-calculada">Margem Calculada</label>
-                                        <input id="margem-calculada" type="text" name="margem-calculada" class="valor porcentagem" value="0,00">
+                                        <input id="margem-calculada" type="text" name="margem-calculada" class="campoTabela valor porcentagem" value="0,00">
 
                                         <label for="preco-venda-informado">Preço Venda Informado</label>
-                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="valor real" value="0,00">
+                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="campoTabela valor real" value="0,00">
 
                                         <label for="lucro-projetado">Lucro Projetado</label>
-                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="valor real" value="0,00">
+                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="campoTabela valor real" value="0,00">
 
                                         <label for="carga-tributaria">Carga Tributária</label>
-                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="valor porcentagem" value="0,00">
+                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="campoTabela valor porcentagem" value="0,00">
 
 
                                     </div>
@@ -412,10 +412,10 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                             <div class="table-responsivo entradas">
                                 <h5 class="text-center coluna-titulo" style="background: #e1651b;">Variantes</h5> <!-- Titulo da coluna -->
 
-                                <div class="table-responsive campos">
+                                <div class="table-responsive" id="variantes">
 
                                     <!-- Inicio dos campos -->
-                                    <select name="regime" class="funcoes">
+                                    <select name="regime" class="funcoes varianteCampo">
                                         <!-- regime -->
                                         <option value="regime">REGIME</option>
                                         <?php
@@ -425,7 +425,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         ?>
                                     </select>
 
-                                    <select name="preco-de-venda" class="funcoes" id="preco-de-venda">
+                                    <select name="preco-de-venda" class="funcoes varianteCampo" id="preco-de-venda">
                                         <option value="preco-de-venda">PRECO DE VENDA</option>
                                         <?php
                                         foreach ($array_seletores['preco_venda'] as $preco_venda) {
@@ -434,12 +434,12 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         ?>
                                     </select>
 
-                                    <select name="fornecedor" class="funcoes" id="fornecedor">
+                                    <select name="fornecedor" class="funcoes varianteCampo" id="fornecedor">
                                         <option value="fornecedor">FORNECEDOR</option>
                                         <?= $dados['estados'] ?>
                                     </select>
 
-                                    <select name="tipo-fornecedor" class="funcoes" id="tipo-fornecedor">
+                                    <select name="tipo-fornecedor" class="funcoes varianteCampo" id="tipo-fornecedor">
                                         <option value="tipo-fornecedor">TIPO DE FORNECEDOR</option>
                                         <?php
                                         foreach ($array_seletores['tipo_fornecedor'] as $tipo_fornecedor) {
@@ -448,12 +448,12 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         ?>
                                     </select>
 
-                                    <select name="cliente" class="funcoes" id="cliente">
+                                    <select name="cliente" class="funcoes varianteCampo" id="cliente">
                                         <option value="cliente">CLIENTE</option>
                                         <?= $dados['estados'] ?>
                                     </select>
 
-                                    <select name="tipo-cliente" class="funcoes" id="tipo-cliente">
+                                    <select name="tipo-cliente" class="funcoes varianteCampo" id="tipo-cliente">
                                         <option value="tipo-cliente">TIPO CLIENTE</option>
                                         <?php
                                         foreach ($array_seletores['tipo_cliente'] as $tipo_cliente) {
@@ -462,7 +462,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         ?>
                                     </select>
 
-                                    <select name="tipo-produto" class="funcoes" id="tipo-produto">
+                                    <select name="tipo-produto" class="funcoes varianteCampo" id="tipo-produto">
                                         <option value="tipo-produto">TIPO PRODUTO</option>
                                         <?php
                                         foreach ($array_seletores['tipo_produto'] as $tipo_produto) {
@@ -471,9 +471,9 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         ?>
                                     </select>
 
-                                    <input style="border: solid #e1651b 1px; width: 100%; text-align: center;" type="text" name="ncm" placeholder="NCM" id="ncm">
+                                    <input style="border: solid #e1651b 1px; width: 100%; text-align: center;" class="varianteCampo" type="text" name="ncm" placeholder="NCM" id="ncm">
 
-                                    <select name="origem" class="funcoes" id="origem">
+                                    <select name="origem" class="funcoes varianteCampo" id="origem">
                                         <option value="origem">ORIGEM</option>
                                         <?php
                                         foreach ($array_seletores['origem'] as $origem) {
@@ -482,7 +482,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         ?>
                                     </select>
 
-                                    <select name="lista-do-produto" class="funcoes" id="lista-do-produto">
+                                    <select name="lista-do-produto" class="funcoes varianteCampo" id="lista-do-produto">
                                         <option value="lista-do-produto">LISTA DO PRODUTO</option>
                                         <?php
                                         foreach ($array_seletores['lista_do_produto'] as $lista_do_produto) {
@@ -546,6 +546,26 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
         </div>
     </div>
 </div>
+
+<!-- balao -->
+<div id="balao" style="display: none; opacity: 0;transition: 1s">
+    <p id="frasebalao">
+        teste
+    </p>
+</div>
+
+<style>
+    div#balao {
+        height: 8vh;
+        width: 14%;
+        background: grey;
+        border-radius: 18px;
+        padding: 5px;
+        color: white;
+        text-align: center;
+        position: absolute;
+    }
+</style>
 
 <!-- Inicio do grafico -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -614,7 +634,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
         <?php
         $empresa = new Empresa();
         $regras = $empresa->listarRegras();
-        
+
 
         for ($i = 0; $i < 3; $i++) {
             foreach ($regras as $regra) {
@@ -652,19 +672,19 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
         }, 1000);
     }
 
-    $('.card-body').change(function() {
-        doc = $('.entrada_um')[0];
-        atualizar();
-        calcular();
-        atualizar();
-        calcular();
-        doc = $('.entrada_dois')[0];
-        atualizar();
-        calcular()
-        atualizar();
-        calcular()
-        
-    });
+    // $('.card-body').change(function() {
+    //     doc = $('.entrada_um')[0];
+    //     atualizar();
+    //     calcular();
+    //     atualizar();
+    //     calcular();
+    //     doc = $('.entrada_dois')[0];
+    //     atualizar();
+    //     calcular()
+    //     atualizar();
+    //     calcular()
+
+    // });
 
     // $('.entrada_um').change(function() {
     // })
@@ -757,11 +777,11 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
     .campos label {
         float: left;
         font-size: 8pt;
-        width: 50%;
+        width: 60%;
     }
 
     .campos input {
-        width: 50%;
+        width: 40%;
     }
 
     .funcoes {

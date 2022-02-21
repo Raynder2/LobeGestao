@@ -1,3 +1,98 @@
+/* Estilos do painel do site */
 a{
-    text-decoration: none;color:black;
+    text-decoration: none;
 }
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa;
+}
+
+header {
+    height: 55px;
+    position: relative;
+    background-color: #1d1552;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.nome-empresa {
+    font-size: 1rem;
+    white-space: nowrap;
+    color: #fff;
+    height: 100%;
+    position: relative;
+}
+
+.nome-empresa > span {
+    position: relative;
+    top: 30%;
+}
+
+.menu-header {
+    height: 100%;
+    display: flex;
+    position: relative;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.menu-lateral {
+    background: #fff;
+    width: 100px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin-top: 55px;
+    box-shadow: 1px 0 9px rgb(0 0 0 / 10%);
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+.menu-lateral > nav > ul > a > li > img {
+    width: 50%;
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    margin: 10px 0;
+    box-shadow: 1px 0 9px rgb(0 0 0 / 10%);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.menu-lateral > nav > ul > a > li > img:hover {
+    box-shadow: 1px 0 9px #6177a9;
+}
+
+.conteudo-central {
+    border-radius: 10px;
+    height: 90vh;
+    width: 90%;
+    background: #fff;
+    left: 120px;
+    top: 17px;
+    position: relative;
+}
+
+.demais-informacoes{
+    width: 100%;
+}
+
+.usuario-logado{
+    float: right;
+    height: 100%;
+}
+
+.usuario-logado > a {
+    position: relative;
+    top: 30%;
+    margin-right: 20px;
+    color: white !important;
+}
+/* Fim do Estilo */
+

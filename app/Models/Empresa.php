@@ -204,4 +204,11 @@
 
             return($result);
         }
+
+        public function apagartudo(){
+            $sql = new Database();
+            $query = "DELETE FROM regras";
+            $sql->delete($query);
+        }
+
     }

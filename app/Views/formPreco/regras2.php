@@ -39,6 +39,10 @@
 
                     </div>
 
+                    <button onclick="apagartudo()">Apagar todas as regras</button>
+
+                
+
                     <img class="img-concluir" src="<?= DIST ?>img/seta.png" alt="" onclick="mudarTemplate()">
 
                 </div>

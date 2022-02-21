@@ -61,7 +61,7 @@
         public function alterarAliquotas($dados){
             $sql = new Database();
             $_SESSION['aux']['nome'] = ''; // Limpar o nome para que as aliquotas sejam recarregadas
-            $query = "UPDATE alq_uf SET ".$dados['destino']." = :ALQ WHERE origem = :ORI"; 
+            $query = "UPDATE alq_uf SET ".$dados['destino']." = :ALQ WHERE origem = :ORI";
             $array = array(
                 ':ORI' => $dados['origem'],
                 ':ALQ' => $dados['aliquota']
@@ -71,6 +71,20 @@
             }
             else{
                 exit("resultadoJson".json_encode(array('status' => 'error', 'mensagem' => 'Erro ao alterar aliquota!')));
+            }
+        }
+
+        public function verificarAliquota($origem, $destino){
+            $sql = new Database();
+            $query = "SELECT ".$destino." FROM alq_uf WHERE origem = :ORI";
+            $array = array(
+                ':ORI' => $origem
+            );
+            $dados = $sql->select($query, $array);
+            if(!empty($dados)){
+                return $dados[0][$destino];
+            }else{
+                return 0;
             }
         }
     }

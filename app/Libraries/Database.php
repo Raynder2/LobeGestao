@@ -37,7 +37,7 @@
             return $res;
         }
 
-        public function delete($query, $array){
+        public function delete($query, $array = array()){
             $sql = $this->conn->prepare($query);
             $this->setParams($array, $sql);
             if($sql->execute()){
