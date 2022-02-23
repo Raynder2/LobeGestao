@@ -38,15 +38,14 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                     <form action="">
                         <!-- inicio do formulario -->
 
-                        <div class="col-md-4 colunas-pai" style="border-color: #800080;">
+                        <div class="col-md-4 colunas-pai">
                             <!-- Primeira coluna -->
                             <div class="table-responsive entradas">
-                                <h5 class="text-center coluna-titulo" style="background: #800080;">Entradas</h5> <!-- Titulo da coluna -->
 
                                 <div class="coluna_entradas entrada_um col-md-6 colunas-pai" style="padding: 1px;">
                                     <!-- Primeira coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #800080;"><span class="fornecedortext">UF</span> - > <span class="empresa1text">UF</span></p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo"><span class="fornecedortext">UF</span> - > <span class="empresa1text">UF</span></p> <!-- Titulo da coluna interna-->
 
                                         <!-- Inicio dos campos -->
                                         <select name="operacao" class="operacao campoTabela" id="operacao">
@@ -59,60 +58,59 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                             ?>
                                         </select>
 
-                                        <label for="valor">Preço do Produto</label>
-                                        <input id="precodoproduto" type="text" name="precodoproduto" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="valor">Preço do Produto</label>
+                                        <input id="precodoproduto" type="text" name="precodoproduto" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="redutor">Redutor</label>
-                                        <input id="redutor" type="text" name="redutor" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="redutor">Redutor</label>
+                                        <input id="redutor" type="text" name="redutor" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="repasse">Repasse</label>
-                                        <input id="repasse" type="text" name="repasse" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="repasse">Repasse</label>
+                                        <input id="repasse" type="text" name="repasse" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="desconto">Desconto</label>
-                                        <input id="desconto" type="text" name="desconto" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="desconto">Desconto</label>
+                                        <input id="desconto" type="text" name="desconto" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="despesas">Despesas</label>
-                                        <input id="despesas" type="text" name="despesas" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="despesas">Despesas</label>
+                                        <input id="despesas" type="text" name="despesas" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="pis-cofins-importacao">Pis/Cofins Importação</label>
-                                        <input id="pis-cofins-importacao" type="text" name="pis-cofins-importacao" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="pis-cofins-importacao">Pis/Cofins Importação</label>
+                                        <input id="pis-cofins-importacao" type="text" name="pis-cofins-importacao" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="pis-cofins-credito">Pis/Cofins Crédito</label>
-                                        <input id="pis-cofins-credito" type="text" name="pis-cofins-credito" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="pis-cofins-credito">Pis/Cofins Crédito</label>
+                                        <input id="pis-cofins-credito" type="text" name="pis-cofins-credito" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="ipi">IPI</label>
-                                        <input id="ipi" type="text" name="ipi" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="ipi">IPI</label>
+                                        <input id="ipi" type="text" name="ipi" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="ii">II</label>
-                                        <input id="ii" type="text" name="ii" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="ii">II</label>
+                                        <input id="ii" type="text" name="ii" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="frete">Frete</label>
-                                        <input id="frete" type="text" name="frete" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="frete">Frete</label>
+                                        <input id="frete" type="text" name="frete" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="credito-icms">Crédito ICMS</label>
-                                        <input id="credito-icms" type="text" name="credito-icms" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="credito-icms">Crédito ICMS</label>
+                                        <input id="credito-icms" type="text" name="credito-icms" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="difal-entrada">Difal Entrada</label>
-                                        <input id="difal-entrada" type="text" name="difal-entrada" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="difal-entrada">Difal Entrada</label>
+                                        <input id="difal-entrada" type="text" name="difal-entrada" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="icms-st">ICMS ST</label>
-                                        <input id="icms-st" type="text" name="icms-st" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="icms-st">ICMS ST</label>
+                                        <input id="icms-st" type="text" name="icms-st" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="preco-da-compra">Preço da Compra</label>
-                                        <input id="preco-da-compra" type="text" name="preco-da-compra" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="preco-da-compra">Preço da Compra</label>
+                                        <input id="preco-da-compra" type="text" name="preco-da-compra" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="preco-de-custo">Preço de Custo</label>
-                                        <input id="preco-de-custo" type="text" name="preco-de-custo" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="preco-de-custo">Preço de Custo</label>
+                                        <input id="preco-de-custo" type="text" name="preco-de-custo" class="campoTabela valor real" value="0,00"></div>
 
 
                                     </div>
                                 </div>
 
-
                                 <div class="coluna_entradas entrada_dois col-md-6 colunas-pai" style="padding: 1px;">
                                     <!-- Segunda coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #800080;"><span class="fornecedortext">UF</span> -> <span class="empresa2text">UF</span></p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo"><span class="fornecedortext">UF</span> -> <span class="empresa2text">UF</span></p> <!-- Titulo da coluna interna-->
                                         <select name="operacao" class="campoTabela operacao" id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
                                             <!-- Listar $array_seletores['operacao'] -->
@@ -123,50 +121,50 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                             ?>
                                         </select>
 
-                                        <label for="valor">Preço do Produto</label>
-                                        <input id="precodoproduto" type="text" name="precodoproduto" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="valor">Preço do Produto</label>
+                                        <input id="precodoproduto" type="text" name="precodoproduto" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="redutor">Redutor</label>
-                                        <input id="redutor" type="text" name="redutor" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="redutor">Redutor</label>
+                                        <input id="redutor" type="text" name="redutor" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="repasse">Repasse</label>
-                                        <input id="repasse" type="text" name="repasse" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="repasse">Repasse</label>
+                                        <input id="repasse" type="text" name="repasse" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="desconto">Desconto</label>
-                                        <input id="desconto" type="text" name="desconto" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="desconto">Desconto</label>
+                                        <input id="desconto" type="text" name="desconto" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="despesas">Despesas</label>
-                                        <input id="despesas" type="text" name="despesas" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="despesas">Despesas</label>
+                                        <input id="despesas" type="text" name="despesas" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="pis-cofins-importacao">Pis/Cofins Importação</label>
-                                        <input id="pis-cofins-importacao" type="text" name="pis-cofins-importacao" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="pis-cofins-importacao">Pis/Cofins Importação</label>
+                                        <input id="pis-cofins-importacao" type="text" name="pis-cofins-importacao" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="pis-cofins-credito">Pis/Cofins Crédito</label>
-                                        <input id="pis-cofins-credito" type="text" name="pis-cofins-credito" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="pis-cofins-credito">Pis/Cofins Crédito</label>
+                                        <input id="pis-cofins-credito" type="text" name="pis-cofins-credito" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="ipi">IPI</label>
-                                        <input id="ipi" type="text" name="ipi" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="ipi">IPI</label>
+                                        <input id="ipi" type="text" name="ipi" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="ii">II</label>
-                                        <input id="ii" type="text" name="ii" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="ii">II</label>
+                                        <input id="ii" type="text" name="ii" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="frete">Frete</label>
-                                        <input id="frete" type="text" name="frete" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="frete">Frete</label>
+                                        <input id="frete" type="text" name="frete" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="credito-icms">Crédito ICMS</label>
-                                        <input id="credito-icms" type="text" name="credito-icms" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="credito-icms">Crédito ICMS</label>
+                                        <input id="credito-icms" type="text" name="credito-icms" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="difal-entrada">Difal Entrada</label>
-                                        <input id="difal-entrada" type="text" name="difal-entrada" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="difal-entrada">Difal Entrada</label>
+                                        <input id="difal-entrada" type="text" name="difal-entrada" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="icms-st">ICMS ST</label>
-                                        <input id="icms-st" type="text" name="icms-st" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="icms-st">ICMS ST</label>
+                                        <input id="icms-st" type="text" name="icms-st" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="preco-da-compra">Preço da Compra</label>
-                                        <input id="preco-da-compra" type="text" name="preco-da-compra" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="preco-da-compra">Preço da Compra</label>
+                                        <input id="preco-da-compra" type="text" name="preco-da-compra" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="preco-de-custo">Preço de Custo</label>
-                                        <input id="preco-de-custo" type="text" name="preco-de-custo" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="preco-de-custo">Preço de Custo</label>
+                                        <input id="preco-de-custo" type="text" name="preco-de-custo" class="campoTabela valor real" value="0,00"></div>
 
                                         <!-- Criar sql para inserir campos -->
                                         <!-- insert into campos (nome, fantasia, familia) values ('operacao', 'operação', 'painel');
@@ -188,7 +186,6 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
 
 
 
-
                                     </div>
                                 </div>
 
@@ -198,15 +195,14 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
 
                         </div>
 
-                        <div class="col-md-7 colunas-pai" style="border-color: #008080;">
+                        <div class="col-md-8 colunas-pai">
                             <!-- Segunda coluna -->
                             <div class="table-responsive entradas">
-                                <h5 class="text-center coluna-titulo" style="background: #008080;">Saidas</h5> <!-- Titulo da coluna -->
 
                                 <div class="coluna_saidas saida_um col-md-4 colunas-pai" style="padding: 1px;">
                                     <!-- Primeira coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #008080;"> <span class="empresa1text">UF</span> -> <span class="clientetext">UF</span></p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo"> <span class="empresa1text">UF</span> -> <span class="clientetext">UF</span></p> <!-- Titulo da coluna interna-->
 
                                         <!-- Inicio dos campos -->
                                         <select name="operacao" class="campoTabela operacao" id="operacao">
@@ -219,50 +215,50 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                             ?>
                                         </select>
 
-                                        <label for="icms-saida">ICMS Saida</label>
-                                        <input id="icms-saida" type="text" name="icms-saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="icms-saida">ICMS Saida</label>
+                                        <input id="icms-saida" type="text" name="icms-saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="difal-fecp-saida">Difal + Fecp Saida</label>
-                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="difal-fecp-saida">Difal + Fecp Saida</label>
+                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="icms-st-efetivo">ICMS ST Efetivo</label>
-                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="icms-st-efetivo">ICMS ST Efetivo</label>
+                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="impostos-federais">Impostos Federais</label>
-                                        <input id="impostos-federais" type="text" name="impostos-federais" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="impostos-federais">Impostos Federais</label>
+                                        <input id="impostos-federais" type="text" name="impostos-federais" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="desconto-concedido">Desconto Concedido</label>
-                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="desconto-concedido">Desconto Concedido</label>
+                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="pis-cofins-debito">Pis/Cofins Debito</label>
-                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="pis-cofins-debito">Pis/Cofins Debito</label>
+                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="ipi_saida">IPI</label>
-                                        <input id="ipi_saida" type="text" name="ipi_saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="ipi_saida">IPI</label>
+                                        <input id="ipi_saida" type="text" name="ipi_saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="taxa-de-desconto">Taxa</label>
-                                        <input id="taxa" type="text" name="taxa" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="taxa-de-desconto">Taxa</label>
+                                        <input id="taxa" type="text" name="taxa" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="comissao">Comissão</label>
-                                        <input id="comissao" type="text" name="comissao" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="comissao">Comissão</label>
+                                        <input id="comissao" type="text" name="comissao" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="frete_saida">Frete</label>
-                                        <input id="frete_saida" type="text" name="frete_saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="frete_saida">Frete</label>
+                                        <input id="frete_saida" type="text" name="frete_saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="custo-fixo">Custo Fixo</label>
-                                        <input id="custo-fixo" type="text" name="custo-fixo" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="custo-fixo">Custo Fixo</label>
+                                        <input id="custo-fixo" type="text" name="custo-fixo" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="margem-calculada">Margem Calculada</label>
-                                        <input id="margem-calculada" type="text" name="margem-calculada" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="margem-calculada">Margem Calculada</label>
+                                        <input id="margem-calculada" type="text" name="margem-calculada" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="preco-venda-informado">Preço Venda Informado</label>
-                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="preco-venda-informado">Preço Venda Informado</label>
+                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="lucro-projetado">Lucro Projetado</label>
-                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="lucro-projetado">Lucro Projetado</label>
+                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="carga-tributaria">Carga Tributária</label>
-                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="carga-tributaria">Carga Tributária</label>
+                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="campoTabela valor porcentagem" value="0,00"></div>
 
 
 
@@ -273,7 +269,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                 <div class="coluna_saidas saida_dois col-md-4 colunas-pai" style="padding: 1px;">
                                     <!-- Segunda coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #008080;"> <span class="empresa2text">UF</span> -> <span class="clientetext">UF</span></p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo"> <span class="empresa2text">UF</span> -> <span class="clientetext">UF</span></p> <!-- Titulo da coluna interna-->
 
                                         <!-- Inicio dos campos -->
                                         <select name="operacao" class="campoTabela operacao" id="operacao">
@@ -286,50 +282,50 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                             ?>
                                         </select>
 
-                                        <label for="icms-saida">ICMS Saida</label>
-                                        <input id="icms-saida" type="text" name="icms-saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="icms-saida">ICMS Saida</label>
+                                        <input id="icms-saida" type="text" name="icms-saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="difal-fecp-saida">Difal + Fecp Saida</label>
-                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="difal-fecp-saida">Difal + Fecp Saida</label>
+                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="icms-st-efetivo">ICMS ST Efetivo</label>
-                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="icms-st-efetivo">ICMS ST Efetivo</label>
+                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="impostos-federais">Impostos Federais</label>
-                                        <input id="impostos-federais" type="text" name="impostos-federais" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="impostos-federais">Impostos Federais</label>
+                                        <input id="impostos-federais" type="text" name="impostos-federais" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="desconto-concedido">Desconto Concedido</label>
-                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="desconto-concedido">Desconto Concedido</label>
+                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="pis-cofins-debito">Pis/Cofins Debito</label>
-                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="pis-cofins-debito">Pis/Cofins Debito</label>
+                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="ipi_saida">IPI</label>
-                                        <input id="ipi_saida" type="text" name="ipi_saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="ipi_saida">IPI</label>
+                                        <input id="ipi_saida" type="text" name="ipi_saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="taxa-de-desconto">Taxa</label>
-                                        <input id="taxa" type="text" name="taxa" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="taxa-de-desconto">Taxa</label>
+                                        <input id="taxa" type="text" name="taxa" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="comissao">Comissão</label>
-                                        <input id="comissao" type="text" name="comissao" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="comissao">Comissão</label>
+                                        <input id="comissao" type="text" name="comissao" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="frete_saida">Frete</label>
-                                        <input id="frete_saida" type="text" name="frete_saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="frete_saida">Frete</label>
+                                        <input id="frete_saida" type="text" name="frete_saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="custo-fixo">Custo Fixo</label>
-                                        <input id="custo-fixo" type="text" name="custo-fixo" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="custo-fixo">Custo Fixo</label>
+                                        <input id="custo-fixo" type="text" name="custo-fixo" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="margem-calculada">Margem Calculada</label>
-                                        <input id="margem-calculada" type="text" name="margem-calculada" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="margem-calculada">Margem Calculada</label>
+                                        <input id="margem-calculada" type="text" name="margem-calculada" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="preco-venda-informado">Preço Venda Informado</label>
-                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="preco-venda-informado">Preço Venda Informado</label>
+                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="lucro-projetado">Lucro Projetado</label>
-                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="lucro-projetado">Lucro Projetado</label>
+                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="carga-tributaria">Carga Tributária</label>
-                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="carga-tributaria">Carga Tributária</label>
+                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="campoTabela valor porcentagem" value="0,00"></div>
 
 
 
@@ -340,7 +336,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                 <div class="coluna_saidas saida_tres col-md-4 colunas-pai" style="padding: 1px;">
                                     <!-- Terceira coluna interna -->
                                     <div class="table-responsive campos">
-                                        <p class="text-center coluna-titulo" style="background: #008080;">UF -> UF</p> <!-- Titulo da coluna interna-->
+                                        <p class="text-center coluna-titulo">UF -> UF</p> <!-- Titulo da coluna interna-->
                                         <select name="operacao" class="campoTabela operacao" id="operacao">
                                             <option value="operacao">OPERAÇÃO</option>
                                             <!-- Listar $array_seletores['operacao_said'] -->
@@ -351,55 +347,54 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                             ?>
                                         </select>
 
-                                        <label for="icms-saida">ICMS Saida</label>
-                                        <input id="icms-saida" type="text" name="icms-saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="icms-saida">ICMS Saida</label>
+                                        <input id="icms-saida" type="text" name="icms-saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="difal-fecp-saida">Difal + Fecp Saida</label>
-                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="difal-fecp-saida">Difal + Fecp Saida</label>
+                                        <input id="difal-fecp-saida" type="text" name="difal-fecp-saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="icms-st-efetivo">ICMS ST Efetivo</label>
-                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="icms-st-efetivo">ICMS ST Efetivo</label>
+                                        <input id="icms-st-efetivo" type="text" name="icms-st-efetivo" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="impostos-federais">Impostos Federais</label>
-                                        <input id="impostos-federais" type="text" name="impostos-federais" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="impostos-federais">Impostos Federais</label>
+                                        <input id="impostos-federais" type="text" name="impostos-federais" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="desconto-concedido">Desconto Concedido</label>
-                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="desconto-concedido">Desconto Concedido</label>
+                                        <input id="desconto-concedido" type="text" name="desconto-concedido" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="pis-cofins-debito">Pis/Cofins Debito</label>
-                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="pis-cofins-debito">Pis/Cofins Debito</label>
+                                        <input id="pis-cofins-debito" type="text" name="pis-cofins-debito" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="ipi_saida">IPI</label>
-                                        <input id="ipi_saida" type="text" name="ipi_saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="ipi_saida">IPI</label>
+                                        <input id="ipi_saida" type="text" name="ipi_saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="taxa-de-desconto">Taxa</label>
-                                        <input id="taxa" type="text" name="taxa" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="taxa-de-desconto">Taxa</label>
+                                        <input id="taxa" type="text" name="taxa" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="comissao">Comissão</label>
-                                        <input id="comissao" type="text" name="comissao" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="comissao">Comissão</label>
+                                        <input id="comissao" type="text" name="comissao" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="frete_saida">Frete</label>
-                                        <input id="frete_saida" type="text" name="frete_saida" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="frete_saida">Frete</label>
+                                        <input id="frete_saida" type="text" name="frete_saida" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="custo-fixo">Custo Fixo</label>
-                                        <input id="custo-fixo" type="text" name="custo-fixo" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="custo-fixo">Custo Fixo</label>
+                                        <input id="custo-fixo" type="text" name="custo-fixo" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="margem-calculada">Margem Calculada</label>
-                                        <input id="margem-calculada" type="text" name="margem-calculada" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="margem-calculada">Margem Calculada</label>
+                                        <input id="margem-calculada" type="text" name="margem-calculada" class="campoTabela valor porcentagem" value="0,00"></div>
 
-                                        <label for="preco-venda-informado">Preço Venda Informado</label>
-                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="preco-venda-informado">Preço Venda Informado</label>
+                                        <input id="preco-venda-informado" type="text" name="preco-venda-informado" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="lucro-projetado">Lucro Projetado</label>
-                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="campoTabela valor real" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="lucro-projetado">Lucro Projetado</label>
+                                        <input id="lucro-projetado" type="text" name="lucro-projetado" class="campoTabela valor real" value="0,00"></div>
 
-                                        <label for="carga-tributaria">Carga Tributária</label>
-                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="campoTabela valor porcentagem" value="0,00">
+                                        <div class="caixa-campo-texto"><label for="carga-tributaria">Carga Tributária</label>
+                                        <input id="carga-tributaria" type="text" name="carga-tributaria" class="campoTabela valor porcentagem" value="0,00"></div>
 
 
                                     </div>
                                 </div>
-
 
                             </div>
 
@@ -407,10 +402,10 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                         </div>
 
 
-                        <div class="col-md-1 colunas-pai" style="border-color: #e1651b;">
+                        <div class="col-md-1 colunas-pai painelVariantes">
                             <!-- Funções -->
                             <div class="table-responsivo entradas">
-                                <h5 class="text-center coluna-titulo" style="background: #e1651b;">Variantes</h5> <!-- Titulo da coluna -->
+                                <h5 class="text-center coluna-titulo">Variantes</h5> <!-- Titulo da coluna -->
 
                                 <div class="table-responsive" id="variantes">
 
@@ -471,8 +466,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         ?>
                                     </select>
 
-                                    <input style="border: solid #e1651b 1px; width: 100%; text-align: center;" class="varianteCampo" type="text" name="ncm" placeholder="NCM" id="ncm">
-
+                                    
                                     <select name="origem" class="funcoes varianteCampo" id="origem">
                                         <option value="origem">ORIGEM</option>
                                         <?php
@@ -481,7 +475,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         }
                                         ?>
                                     </select>
-
+                                    
                                     <select name="lista-do-produto" class="funcoes varianteCampo" id="lista-do-produto">
                                         <option value="lista-do-produto">LISTA DO PRODUTO</option>
                                         <?php
@@ -490,6 +484,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
                                         }
                                         ?>
                                     </select>
+                                    <input style="border: solid #e1651b 1px; width: 100%; text-align: center;" class="varianteCampo" type="text" name="ncm" placeholder="NCM" id="ncm">
 
                                     <button id="myInput" type="button" data-toggle="modal" data-target="#defUf" class="btn btn-primary btn-block btn-sm" style="background: #e1651b; border-color: #e1651b;width: 100%;text-align:center;">
                                         CONFIG
@@ -497,6 +492,10 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
 
 
                                 </div>
+                            </div>
+
+                            <div class="abrir" onclick="abrir()">
+                                <img src="<?=DIST?>img/engrenagem.png" alt="">
                             </div>
                         </div>
 
@@ -740,22 +739,33 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
 
         })
     }
+
+    function abrir(){
+        painelDistancia = document.querySelector('.painelVariantes').offsetLeft
+        tamanhoTela = window.innerWidth
+
+        console.log(painelDistancia, tamanhoTela)
+        img = document.querySelector('.abrir>img')
+
+        if(painelDistancia < tamanhoTela-40){
+            document.querySelector('.painelVariantes').classList.add('left100')
+            document.querySelector('.painelVariantes').classList.remove('left75')
+            img.style.transform = "rotate(0deg)";
+        }
+        else{
+            document.querySelector('.painelVariantes').classList.remove('left100')
+            document.querySelector('.painelVariantes').classList.add('left75')
+            img.style.transform = "rotate(360deg)";
+        }
+
+
+    }
+
 </script>
 
 <style>
     p {
         margin: 0;
-    }
-
-    .coluna-titulo {
-        color: white;
-        padding: 5px;
-    }
-
-    .colunas-pai {
-        padding: 5px;
-        border: solid 1px;
-        float: left;
     }
 
     .table {
@@ -773,27 +783,7 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
     .operacao option {
         text-align: center;
     }
-
-    .campos label {
-        float: left;
-        font-size: 8pt;
-        width: 60%;
-    }
-
-    .campos input {
-        width: 40%;
-    }
-
-    .funcoes {
-        font-size: 8pt;
-        background: #e1651b;
-        border: none;
-        margin: 5px auto;
-        color: white;
-        height: 38px;
-        width: 100%;
-        text-align: center;
-    }
+    
 
     select {
         -webkit-appearance: none;
@@ -830,4 +820,6 @@ if (isset($dados['seletores']) && !empty($dados['seletores'])) {
     form#cadastrar-empresa p {
         padding: 5px;
     }
+
+    
 </style>

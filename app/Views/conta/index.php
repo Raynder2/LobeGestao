@@ -40,7 +40,7 @@
 		}
 		else if($status == 'sucesso'){
 			echo '<div class="alert alert-success">'.$msg.'</div>';
-			echo("<script>setTimeout(function(){window.location.href = '".URL."sistema/index';}, 2000);</script>");
+			echo("<script>setTimeout(function(){window.location.href = '".URL."FormPreco/index';}, 2000);</script>");
 		}
 		else if($status == 'info'){
 			echo '<div class="alert alert-info">'.$msg.'</div>';

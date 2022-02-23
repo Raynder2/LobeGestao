@@ -12,7 +12,7 @@ var decremento = 0
 var incremento = 0
 
 
-url = "http://192.168.1.40/LobeGestao/";
+url = "http://192.168.1.31/LobeGestao/";
 
 $('#fornecedor').change(function () {
     mudarFornecedor();

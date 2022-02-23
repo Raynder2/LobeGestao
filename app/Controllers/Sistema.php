@@ -7,7 +7,7 @@
                 $dados = array(
                     'nomeSistema' => $nomeSistema
                 );
-                $this->view('sistema/index', $dados);
+                $this->view('formPreco/index', $dados);
             } else {
                 $this->view('conta/index');
             }

@@ -18,6 +18,11 @@
             $user = "root";
             $pass = "";
 
+            // $db = 'lobege28_lobegestao'; 
+            // $host = "localhost";
+            // $user = "lobege28_raynder";
+            // $pass = "Raynder@1008";
+
             $this->conn = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
         }
 
