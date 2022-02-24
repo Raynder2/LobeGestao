@@ -84,7 +84,7 @@
             if($parametros != null){
                 $dados['configurador'] = $parametros;
             }
-            $this->seLogin('formPreco/configuracoes', $dados);
+            $this->seLogin('formPreco/configuracao', $dados);
         }
 
         public function selecionarFiliais(){

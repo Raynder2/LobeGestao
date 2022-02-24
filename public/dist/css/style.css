@@ -233,3 +233,92 @@ p.coluna-titulo {
     border: none;
     border-bottom: solid 1px #467aef;
 }
+
+/* Fim do estilo das regras */
+
+/* Estilo de configuração do painel */
+
+nav.opcoes-edicao ul {
+    background: #f5f7fa;
+    display: flex;
+    list-style: none;
+}
+
+.opcoes-edicao>ul>li {
+    padding: 10px 20px;
+    font-size: 16pt;
+}
+
+.opcoes-edicao>ul>li.ativo {
+    background: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: solid 1px #1d1552;
+    border-bottom: none;
+}
+
+.tabela {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    margin: 20px;
+}
+
+.tabela>table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 13pt;
+}
+
+.caixa-de-pesquisa {
+    /* max-width: 400px; */
+    padding: 20px;
+    height: 30px;
+}
+
+/* Paginação */
+.divPagination {
+    position: relative;
+}
+
+ul.pagination {
+    position: absolute;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+ul.pagination li {
+    display: inline;
+}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+ul.pagination li a.active {
+    background-color: #1d1552;
+    color: white;
+    border-radius: 5px;
+}
+
+ul.pagination li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.caixa-de-pesquisa > button {
+    padding: 10px;
+    position: relative;
+    float: right;
+    background: #36972a;
+    color: white;
+}
+.caixa-de-pesquisa > input{
+    font-size: 13pt;
+}
+
+/* Fim do estilo de configuração do painel */

@@ -11,7 +11,7 @@ if (isset($dados['empresa']) && !empty($dados['empresa'])) {
     }
 }
 ?>
-<div class="background">
+<div class="conteudo-central">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8 tela">
