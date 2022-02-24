@@ -47,7 +47,7 @@
                 'controle' => $empresa->listarCampos('controle')
             );
             
-            $this->seLogin('formPreco/regras2', $arrayCampos);
+            $this->seLogin('formPreco/regras', $arrayCampos);
         }
 
         public function salvarRegras(){

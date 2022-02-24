@@ -116,6 +116,7 @@ function atualizar() {
 }
 
 function lerVariantes() {
+    var variantes = new Object();
     document.getElementById("variantes").querySelectorAll(".varianteCampo").forEach(function (variante) {
         nome = variante.name.replaceAll("-", "_")
         variantes[nome] = variante
@@ -123,6 +124,7 @@ function lerVariantes() {
 }
 
 function lerTabelaAtual(tabela) {
+    tabelas = new Object()
     tabela.querySelectorAll(".campoTabela").forEach(function (campo) {
         nome = campo.name.replaceAll("-", "_")
         tabelas[nome] = campo
@@ -130,6 +132,7 @@ function lerTabelaAtual(tabela) {
 }
 
 function converterValores(tabela) {
+    tabelaValores = new Object()
     tabela.querySelectorAll(".campoTabela").forEach(function (campo) {
         campoAux = campo.value.replaceAll('%', '')
         nome = campo.name.replaceAll("-", "_")
@@ -144,7 +147,6 @@ function converterValores(tabela) {
 
 function mostrarValores() {
     for (var i in tabelaValores) {
-        console.log(i + ": " + tabelaValores[i])
     }
 }
 
@@ -153,25 +155,25 @@ function calcularCusto() {
     preco = tabelaValores['precodoproduto'][0]
 
     for (var i in tabelaValores) {
-        if(tabelaValores[i][0] > 0 && i != 'valor'){
+        if(tabelaValores[i][0] > 0 && i != 'precodoproduto' && i != 'preco_de_custo'){
             if (tabelaValores[i][1] == '%') {
-                if (cont <= 2) {
+                if (cont <= 3) {
                     preco = tipoCalculo(preco, preco * (tabelaValores[i][0] / 100), 1)
                 }
                 else {
                     preco = tipoCalculo(preco, preco * (tabelaValores[i][0] / 100), 2)
                 }
             }
-            else {
-                if (cont <= 2) {
+            if (tabelaValores[i][1] == '$') {
+                if (cont <= 3) {
                     preco = tipoCalculo(preco, tabelaValores[i][0], 1)
                 }
                 else {
                     preco = tipoCalculo(preco, tabelaValores[i][0], 2)
                 }
             }
-            cont++
         }
+        cont++
     }
     tabelas['preco_de_custo'].value = preco.toFixed(2);
     // Atribuir mascara de real
@@ -193,3 +195,12 @@ function tipoCalculo(base, valor, calculo) {
         return base
     }
 }
+
+$('.table-responsive.campos').change((tabela)=>{
+    tabela = tabela.currentTarget
+    console.log(tabela)
+    lerTabelaAtual(tabela)
+    converterValores(tabela)
+
+    calcularCusto()
+})

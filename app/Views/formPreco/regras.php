@@ -1,132 +1,551 @@
-<div class="">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
+<?php
+// $conexao = mysqli_connect('localhost', 'root', '', 'lobegestao');
+// mysqli_set_charset($conexao, 'utf8');
 
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
+// if (!$conexao) {
+//     echo "Erro ao se conectar com o banco de dados!";
+// }
 
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="Se" id="se" alt="if(">
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="Senão" id="senao" alt="else(">
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="E" id="e" alt=" && ">
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="Ou" id="ou" alt=" || ">
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="Maior que" id="maior" alt=" > ">
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="Menor que" id="menor" alt=" < ">
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="Igual a" id="igual" alt=" == ">
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="Diferente de" id="diferente" alt=" != ">
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="Então" id="entao" alt="){">
-                                <input type="button" onclick="escreve(this.alt, this.value),split=1;" value="Conter" id="conter" alt=".split('">
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="Não Contem" id="naoContem" alt=".split('">
-                                <input type="button" onclick="escreve(this.alt, this.value)" value="Recebe" id="recebe" alt=" = ">
-                                
-                                
-                                
-                            </div>
+// $sql = "SELECT * FROM campos";
+// $dados = mysqli_query($conexao, $sql);
+?>
+<!DOCTYPE html>
+<html lang="en">
 
-                            <br>
-                            
-                            <div class="col-md-12">
-                                <input type="text" name="valor" id="valor">
-                                <input type="button" onclick="envia()" value="Envia" id="envia">
-                                <input type="button" onclick="envia('R$')" value="R$" id="envia_real">
-                                <input type="button" onclick="envia('%')" value="%" id="envia_porc">
-                            </div>
-                        </div>
-                        <br>
 
-                        <form action="">
-                            <input type="text" id="exemplo" name="exemplo" disabled style="width:50%;"><input type="button" onclick="limpa()" value="Limpar" id="limpar"><input type="button" onclick="salvarRegra()" value="Salvar" id="salvar">
-                            <input type="text" id="regra" name="regra" disabled style="width:50%;display:block;" >
-                        </form>
-    
-                    </div>
+
+
+<div class="conteudo-central">
+    <div class="">
+
+        <div id="etapa1" class="etapa1">
+            <h1 class="frase">ESCOLHA O CAMPO</h1>
+
+            <div class="campos">
+                <select name="categoria" id="categoria" class="item">
+                    <option value=""></option>
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saida</option>
+                </select>
+
+
+                <select disabled="disabled" class="disabled item" name="campo" id="campo" style="margin-top: 50px; opacity: 0; transition: 1s;">
+                    <option value=""></option>
+                </select>
+
+
+                <div disabled="disabled" class="disabled item" name="valor" id="valor" style="margin-top: 50px; opacity: 0; transition: 1s;">
 
                 </div>
 
-                <div class="card-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-3 colunas-pai" style="padding: 1px;"> <!-- COLUNA ENTRADAS -->
-                                <div class="table-responsive campos">
+                <button onclick="apagartudo()">Apagar todas as regras</button>
 
-                                    <p class="text-center coluna-titulo" style="background: #800080;">Entradas</p> <!-- Titulo da coluna interna-->
-                                    <input type="button" alt="operacao.value" name="operacao" id="operacao" value="Operação" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="preco_do_produto.value" name="valor" id="valor" value="Preço do Produto" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="redutor.value" name="redutor" id="redutor" value="Redutor" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="repasse.value" name="repasse" id="repasse" value="Repasse" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="desconto.value" name="desconto" id="desconto" value="Desconto" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="despesas.value" name="despesas" id="despesas" value="Despesas" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="pis_cofins_importacao.value" name="pis-cofins-importacao" id="pis-cofins-importacao" value="Pis/Cofins Importação" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="pis_cofins_credito.value" name="pis-cofins-credito" id="pis-cofins-credito" value="Pis/Cofins Crédito" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="ipi.value" name="ipi" id="ipi" value="IPI" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="ii.value" name="ii" id="ii" value="II" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="frete.value" name="frete" id="frete" value="Frete" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="credito_icms.value" name="credito-icms" id="credito-icms" value="Crédito ICMS" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="difal_entrada.value" name="difal-entrada" id="difal-entrada" value="Difal Entrada" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="icms_st.value" name="icms-st" id="icms-st" value="ICMS ST" onclick="escreve(this.alt, this.value)">
-                                    <input id="preco-da-compra" alt="preco_da_compra.value" type="button" name="preco-da-compra" class="valor real" value="preco-da-compra" onclick="escreve(this.alt, this.value)">
-                                    <input id="preco-de-custo" alt="preco_de_custo.value" type="button" name="preco-de-custo" class="valor real" value="preco-de-custo" onclick="escreve(this.alt, this.value)">
 
-                                    
-                                </div>
-                            </div>
 
-                            
-                            <div class="col-md-3 colunas-pai" style="padding: 1px;"> <!-- COLUNA SAIDAS -->
-                                <div class="table-responsive campos">
-
-                                    <p class="text-center coluna-titulo" style="background: #008080;">Saidas</p> <!-- Titulo da coluna interna-->
-                                    <input type="button" alt="operacao.value" name="operacao" id="operacao" value="Operação" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="icms_saida.value" name="icms-saida" id="icms-saida" value="ICMS Saida" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="difal_fecp_saida.value" name="difal-fecp-saida" id="difal-fecp-saida" value="Difal Fecp Saida" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="icms_st_efetivo.value" name="icms-st-efetivo" id="icms-st-efetivo" value="ICMS ST Efetivo" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="imposto_federais.value" name="imposto-federais" id="imposto-federais" value="Imposto Federais" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="desconto_concedido.value" name="desconto-concedido" id="desconto-concedido" value="Desconto Concedido" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="pis_cofins_debito.value" name="pis-cofins-debito" id="pis-cofins-debito" value="Pis/Cofins Débito" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="ipi.value" name="ipi" id="ipi" value="IPI" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="taxa.value" name="taxa" id="taxa" value="Taxa" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="comissao.value" name="comissao" id="comissao" value="Comissão" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="frete.value" name="frete" id="frete" value="Frete" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="custo_fixo.value" name="custo-fixo" id="custo-fixo" value="Custo Fixo" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="margem_calculada.value" name="margem-calculada" id="margem-calculada" value="Margem Calculada" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="preco_venda_informado.value" name="preco-venda-informado" id="preco-venda-informado" value="Preço Venda Informado" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="lucro_projetado.value" name="lucro-projetado" id="lucro-projetado" value="Lucro Projetado" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="carga_tributario.value" name="carga-tributario" id="carga-tributario" value="Carga Tributário" onclick="escreve(this.alt, this.value)">
-
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-3 colunas-pai" style="padding: 1px;"> <!-- COLUNA EMPRESAS -->
-                                <div class="table-responsive campos">
-
-                                    <p class="text-center coluna-titulo" style="background: #5f729b;">Empresas</p> <!-- Titulo da coluna interna-->
-                                    <input type="button" alt="tipo.value" name="tipo" id="tipo" value="Tipo" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="uf.value" name="uf" id="uf" value="UF" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="regime_tributario.value" name="regime-tributario" id="regime-tributario" value="Regime Tributário" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="faturamento.value" name="faturamento" id="faturamento" value="Faturamento" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="tareto.value" name="tareto" id="tareto" value="Tare To" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="tarego.value" name="tarego" id="tarego" value="Tare Go" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="lei.value" name="lei" id="lei" value="Lei 5.005 DF" onclick="escreve(this.alt, this.value)">
-                                    <input type="button" alt="taregomex.value" name="taregomex" id="taregomex" value="Tare Go MEX" onclick="escreve(this.alt, this.value)">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <img class="img-concluir" src="<?= DIST ?>img/seta.png" alt="" onclick="mudarTemplate()">
 
             </div>
+
+
+        </div>
+    </div>
+
+    <div id="etapa2" class="etapa2 dropzone">
+        <div class="navegacao-campos">
+            <nav>
+                <ul onclick="listarCamposSelecionados('empresa')">Empresa</ul>
+                <ul onclick="listarCamposSelecionados('painel')">Paine</ul>
+                <ul onclick="listarCamposSelecionados('controle')">Controle</ul>
+            </nav>
+        </div>
+        <?php
+        foreach ($dados as $key => $dado) {
+        ?>
+            <div id="<?= $key ?>Campos" style="display:none">
+                <?php
+                foreach ($dado as $campo) {
+                    echo ("<div class='chave' draggable='true'>");
+                    echo ("<h1 name='" . $key . "Campos' class='tipo" . $campo['tipo'] . "' id=" . $campo['nome'] . ">" . $campo['fantasia'] . "</h1>");
+                    echo ("</div>");
+                }
+                ?>
+            </div>
+        <?php
+        }
+        ?>
+
+        <div class="chave" draggable="true">
+            <h1>A definir</h1>
+        </div>
+
+    </div>
+
+    <div id="etapa3" class="etapa3">
+        <div class="board">
+            <h3>Regra</h3>
+            <div class="dropzone">
+                <!-- AQUI SERA COLOCADOS OS PEDAÇOS DA REGRA -->
+
+            </div>
+        </div>
+        <img class="img-concluir" src="http://192.168.1.95/LobeGestao/public/dist/img/seta.png" alt="" onclick="montarRegra()">
+    </div>
+
+    <dados class="empresa"></dados>
+
+</div>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- Small modal -->
+<button type="button" id="btsm" class="btn btn-primary" style="display: none;" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
+
+<div id="flutuante" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div id="flutuante-valor">
+
+            </div>
+
         </div>
     </div>
 </div>
 
+</html>
 <style>
-    .campos input, select{
-        width: 100%;
+    .direcao {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .direcao h1 {
+        font-size: 16pt;
+        background: red;
+        border-radius: 10px;
+        padding: 5px;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .etapa1 {
+        width: 600px;
+        height: 70vh;
+        background: rgba(28, 66, 118, 1);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        transition: 1s;
+    }
+
+    .etapa2 {
+        opacity: 0;
+        border-radius: 10px;
+        position: absolute;
+        transform: translate(0%, -80%);
+        background-color: rgba(28, 66, 118, 1);
+        z-index: 111;
+        top: 30%;
+        left: 98%;
+        height: 1%;
+        width: 1%;
+        transition: 1s;
+        display: block;
+    }
+
+    .etapa3 {
+        opacity: 0;
+        border-radius: 10px;
+        position: absolute;
+        transform: translate(0%, -80%);
+        background-color: rgba(28, 66, 118, 1);
+        z-index: 111;
+        top: 75%;
+        left: 98%;
+        height: 1%;
+        width: 1%;
+        transition: 1s;
+    }
+
+    h1.frase {
+        text-align: center;
+        padding: 15px;
+        width: 50%;
+        margin: auto;
+        font-family: -webkit-pictograph;
+        margin-top: 10px;
+        color: #467aef;
+    }
+
+    
+
+    .campos {
+        width: 50%;
+        margin: auto;
+    }
+
+    select:hover,
+    select:focus,
+    select:checked {
+        color: #467aef;
+    }
+
+    /*toggle*/
+    input[type="checkbox"] {
+        position: relative;
+        width: 80px;
+        height: 40px;
+        -webkit-appearance: none;
+        background-image: url('<?= DIST ?>img/toogle.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: inset 0 0 5px #3f48cc;
+        border-radius: 20px;
+        transition: all 0.5s ease;
+    }
+
+    input[type="checkbox"]:before {
+        content: "";
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background: #3f48cc;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        box-shadow: 0 0 2px #3f48cc;
+        transition: all 0.5s;
+        transform: scale(1.1);
+    }
+
+    input[type="checkbox"]:checked:before {
+        left: 40px;
+    }
+
+    img.img-concluir {
+        width: 50px;
+        right: 20px;
+        position: absolute;
+        bottom: 20px;
+    }
+
+    .board {
+        height: 100%;
+    }
+
+    .dropzone {
+        height: 80%;
+    }
+
+    .chave>h1 {
+        color: #467aef;
+        font-size: 20px;
+        margin: 5px;
+        float: left;
+        border: solid 1px #467aef;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    input.identificacao {
+        width: 31%;
+    }
+
+    .navegacao-campos > nav > ul {
+        float: left;
+        width: 33.3%;
+        padding: 10px;
+        text-align: center;
+        border: solid 1px #467aef;
+    }
+
+    .navegacao-campos > nav {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
     }
 </style>
+
 <script>
-    
+    chaves = ''
+    dropzones = ''
+    var campoCondicao = ''
+    var valorCondicao = ''
+    var condicao = ''
+
+    window.onload = () => {
+        document.querySelectorAll('.campos>.item').forEach(function(select) {
+            select.addEventListener('change', function() {
+                setTimeout(function() {
+                    select.disabled = true
+                }, 200)
+                html = trazerConteudo(this.value);
+                selectRetornado = document.querySelector('.campos>.disabled')
+                if (selectRetornado != null) {
+                    selectRetornado.removeAttribute('disabled')
+                    selectRetornado.classList.remove('disabled')
+                    selectRetornado.style.opacity = 1
+                    selectRetornado.style.marginTop = '0'
+                    selectRetornado.innerHTML = html
+                } else {
+                    valorTp()
+                }
+            })
+        });
+
+    }
+
+    function valorTp() {
+        input = document.getElementById('valorTp')
+        if (document.querySelector('#check').checked) {
+            input.classList.add('porcentagem')
+            input.classList.remove('real')
+        } else {
+            input.classList.add('real')
+            input.classList.remove('porcentagem')
+        }
+        $('.porcentagem').mask('#.##0,00%', {
+            reverse: true
+        });
+        $('.real').mask('#.##0,00', {
+            reverse: true
+        });
+    }
+
+
+    function trazerConteudo(valor) {
+        Entradas = ['operacao', 'valor', 'redutor', 'repasse', 'desconto', 'despesas', 'pis-cofins-importacao', 'pis-cofins-credito', 'ipi', 'ii', 'frete', 'credito-icms', 'difal-entrada', 'icms-st', 'preco-da-compra', 'preco-de-custo']
+        Saida = ['operacao', 'icms_saida', 'difal_fecp_saida', 'icms_st_efetivo', 'imposto_federais', 'desconto_concedido', 'pis_cofins_debito', 'ipi', 'taxa', 'comissao', 'frete', 'custo_fixo', 'margem_calculada', 'preco_venda_informado', 'lucro_projetado', 'carga_tributario']
+
+        var html = ''
+        
+        if (valor == 'entrada') {
+            Entradas.forEach(function(item) {
+                console.log(item)
+                html += `<option value="${item}">${item}</option>`
+            })
+        } else if (valor == 'saida') {
+            html = ''
+            Saida.forEach(function(item) {
+                html += `<option value="${item}">${item}</option>`
+            })
+        } else {
+            html = '<div class="center chave"><input type="checkbox" onchange="valorTp()" name="" id="check"></div><input id="valorTp" type="text" class="real" placeholder="Valor à assumir">'
+        }
+        return html
+    }
+
+    function mudarTemplate() {
+        etapa1 = document.querySelector('#etapa1')
+        etapa2 = document.querySelector('#etapa2')
+        etapa3 = document.querySelector('#etapa3')
+        // etapa1 = document.querySelector('.etapa1')
+        etapa1.setAttribute("style", "width:40%;left:25%;height:80vh;");
+        etapa2.setAttribute("style", "top: 50%;left: 46%;height: 50%;width: 50%;opacity: 1;");
+        etapa3.setAttribute("style", "top: 84%;left: 46%;height: 28%;width: 50%;opacity: 1;");
+
+        chaves = document.querySelectorAll('.chave');
+        dropzones = document.querySelectorAll('.dropzone');
+
+        chaves.forEach((chave) => {
+            chave.addEventListener('dragstart', dragstart);
+            chave.addEventListener('dragend', dragEnd);
+            chave.addEventListener('drag', drag);
+        });
+
+        dropzones.forEach((dropzone) => {
+            dropzone.addEventListener('dragover', dragover);
+            dropzone.addEventListener('dragenter', dragenter);
+            dropzone.addEventListener('dragleave', dragleave);
+            dropzone.addEventListener('drop', drop);
+        });
+    }
+
+    // chaves 
+
+    function dragstart() {
+        //this = chave
+        dropzones.forEach((dropzone) => {
+            dropzone.classList.add('highlight');
+        });
+
+        this.classList.add('is-dragging');
+    }
+
+    function dragEnd() {
+        //this = chave
+        dropzones.forEach((dropzone) => {
+            dropzone.classList.remove('highlight');
+        });
+
+        clone = this.cloneNode(true);
+        clone.removeAttribute('draggable');
+        document.getElementById('etapa3').querySelector('.dropzone').appendChild(clone);
+
+        this.classList.remove('is-dragging');
+        reacao(this)
+    }
+
+    function drag() {
+        // console.log('chave drag');
+    }
+
+    // dropzones
+
+    function dragover() {
+        //this = dropzone
+        this.classList.add('over');
+
+        const chaveBeingDragged = document.querySelector('.is-dragging');
+        divAlvo = chaveBeingDragged.getAttribute('name')
+
+        // document.getElementById('etapa2').getElementById(divAlvo).appendChild(chaveBeingDragged);
+        document.getElementById('etapa2').appendChild(chaveBeingDragged);
+    }
+
+    function dragenter() {
+        //this = dropzone
+    }
+
+    function dragleave() {
+        //this = dropzone
+        this.classList.remove('over');
+    }
+
+    function drop() {
+        console.log('dropzone drop');
+    }
+
+    //função que abre um modal para inserir o valor da chave
+    function reacao(chave) {
+        var html = '';
+        campoCondicao = chave.querySelector('h1').id + '.value'
+        //Se tipo 2, listar seletores
+        if (chave.querySelector('h1').classList.contains('tipo2')) {
+            chaveAux = chave.querySelector('h1').id
+            $.ajax({
+                url: url + 'formPreco/listarSeletoresCadastrados',
+                type: 'POST',
+                data: {
+                    referencia: chaveAux
+                },
+                success: function(data) {
+                    data = data.split('</div>')[1];
+                    data = JSON.parse(data);
+                    for (var i = 0; i < data.length; i++) {
+                        html += '<option value="' + data[i].valor + '">' + data[i].nome + '</option>';
+                    }
+                    console.log(html)
+                }
+            })
+            console.log(html)
+            //abiri modal
+            setTimeout(() => {
+                document.getElementById('flutuante-valor').innerHTML = '<select onchange="criarCondicao(this.value)" class="item"><option value="">Selecione</option>' + html + '</select>'
+            }, 500)
+        }
+        //Se tipo 1, abrir input de valores
+        else {
+            if (chave.querySelector('h1').classList.contains('tipo1')) {
+                document.getElementById('flutuante-valor').innerHTML = `
+                <input type="text" id="condicional" class="porcentagem" placeholder="Valor">
+                
+                <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value=">">
+                <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value="<">
+                <input type="button" onclick="criarCondicao(this.value)" class="identificacao" value="=">
+                `
+            }
+            //Se tipo 4, puxar estados
+            else if (chave.querySelector('h1').classList.contains('tipo4')) {
+                $.ajax({
+                    url: url + 'formPreco/listarEstados',
+                    success: function(data) {
+                        html = data.split('estadosListados')[1];
+                    }
+                })
+                //abiri modal
+                setTimeout(() => {
+                    document.getElementById('flutuante-valor').innerHTML = '<select onchange="criarCondicao(this.value)" class="item"><option value="">Selecione</option>' + html + '</select>'
+                }, 500)
+            }
+        }
+        $('.real').mask('#.##0,00', {
+            reverse: true
+        });
+        $('.porcentagem').mask('#.##0,00%', {
+            reverse: true
+        });
+        document.getElementById('btsm').click()
+    }
+
+    //Função para criar condição
+    function criarCondicao(valor) {
+        console.log(valor)
+        //pegar variavel global
+        //pegar ultimo caractere da variavel condicao
+        ultimocaractere = condicao.substr(condicao.length - 1);
+        //adicionar o valor ao final da variavel
+
+        if (condicao.length > 0 && condicao.substr(condicao.length - 2) != '|') {
+            condicao += " && "
+        }
+        if (valor.length > 1) {
+            condicao += campoCondicao + " == '" + valor + "'"
+        } else {
+            val = document.getElementById("condicional").value
+            val = val.replaceAll('%', '')
+            val = val.replaceAll('.', '')
+            val = val.replaceAll(',', '.')
+            if (valor == '=') {
+                valor = '=='
+            }
+            //CampoCondição => campo vindo do banco com .value e passado para o padrão do arquivo regras.php com _v no lugar de .value
+            campoCondicao = campoCondicao.replaceAll('.value', '_v')
+            condicao += campoCondicao + " " + valor + " " + val
+        }
+        console.log("CampoCondicao: " + campoCondicao + "\nCondicao: " + condicao)
+        document.getElementById('flutuante').click()
+        criterios++;
+    }
+
+    function montarRegra() {
+        categoria = document.getElementById('categoria').value
+        campo = document.getElementById('campo').value
+
+        valor = document.getElementById('valorTp').value
+        // valor = valor.replaceAll('%', '')
+        // valor = valor.replaceAll('.', '')
+        // valor = valor.replaceAll(',', '.')
+
+        // if (campo == 'operacao') {
+        //     campo += '_' + categoria.substr(0, 4)
+        // }
+
+        //Verificar se é real ou porcentagem
+        if (document.getElementById('check').checked) {
+
+        }
+        //Condição, campo.value => campo em html, valor => valor do campo
+        regra = "if(" + condicao + "){" + campo + ".value = '" + valor + "';}"
+        regra = regra.replaceAll('_entr', '')
+        regra = regra.replaceAll('_said', '')
+        salvarRegra(regra, campo, criterios)
+    }
+
+    function salvarRegra(regra, campoAlvo, criterios) {
+        $.ajax({
+            url: url + "formPreco/salvarGeral",
+            type: "POST",
+            data: {
+                regra: regra,
+                campoAlvo: campoAlvo,
+                criterios: criterios
+            },
+            success: function(data) {
+                console.log(data);
+                window.location.reload();
+            }
+        })
+    }
 </script>

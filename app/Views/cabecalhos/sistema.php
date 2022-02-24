@@ -4,7 +4,7 @@ if (isset($_SESSION['usuario']['nome']) && !empty($_SESSION['usuario']['nome']))
     <header>
         <div class="menu-header">
             <div class="logo">
-                <img height="55px" src="<?= DIST ?>/img/logo.png" alt="">
+                <a href="<?=URL?>"><img height="55px" src="<?= DIST ?>/img/logo.png" alt=""></a>
             </div>
             <div class="nome-empresa">
                 <span>LOBE CONSULTORIA</span>

@@ -1,7 +1,8 @@
 /* Estilos do painel do site */
-a{
+a {
     text-decoration: none;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -27,7 +28,7 @@ header {
     position: relative;
 }
 
-.nome-empresa > span {
+.nome-empresa>span {
     position: relative;
     top: 30%;
 }
@@ -56,7 +57,7 @@ ul {
     margin: 0;
 }
 
-.menu-lateral > nav > ul > a > li > img {
+.menu-lateral>nav>ul>a>li>img {
     width: 50%;
     left: 50%;
     position: relative;
@@ -67,7 +68,7 @@ ul {
     border-radius: 10px;
 }
 
-.menu-lateral > nav > ul > a > li > img:hover {
+.menu-lateral>nav>ul>a>li>img:hover {
     box-shadow: 1px 0 9px #6177a9;
 }
 
@@ -81,21 +82,22 @@ ul {
     position: relative;
 }
 
-.demais-informacoes{
+.demais-informacoes {
     width: 100%;
 }
 
-.usuario-logado{
+.usuario-logado {
     float: right;
     height: 100%;
 }
 
-.usuario-logado > a {
+.usuario-logado>a {
     position: relative;
     top: 30%;
     margin-right: 20px;
     color: white !important;
 }
+
 /* Fim do Estilo */
 
 /* Estilo Formação de Preço */
@@ -103,45 +105,55 @@ ul {
     BORDER: NONE;
     margin: 5px;
 }
-h5.coluna-titulo{
+
+h5.coluna-titulo {
     color: white;
     padding: 5px;
     border-radius: 5px;
     background: #010351;
 }
+
 p.coluna-titulo {
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     background-color: #2125FD;
     color: white;
 }
-.colunas-pai>.campos>select{
+
+.colunas-pai>.campos>select {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
 .caixa-campo-texto {
     border-bottom: solid 1px;
     height: 45px;
     position: relative;
     font-size: 9pt;
+    font-weight: bold;
 }
-.campos input {
+
+.colunas-pai>.campos>.caixa-campo-texto>input {
     padding: 0;
     text-align: right;
     border: none;
     width: 40%;
     position: absolute;
     right: 0;
-    bottom: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.campos label {
+.colunas-pai>.campos>.caixa-campo-texto>label {
     width: 60%;
     position: absolute;
     bottom: 0;
     left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
-.colunas-pai{
+
+.colunas-pai {
     border: solid 1px;
     border-radius: 5px;
     float: left;
@@ -157,6 +169,7 @@ p.coluna-titulo {
     width: 32.4%;
     text-align: center;
 }
+
 .painelVariantes {
     background: white;
     width: 25%;
@@ -169,6 +182,7 @@ p.coluna-titulo {
     border: solid 1px;
     transition: .5s;
 }
+
 .abrir {
     height: 100px;
     width: 100px;
@@ -178,28 +192,44 @@ p.coluna-titulo {
     border-radius: 50%;
     left: -14%;
 }
+
 .abrir>img {
     width: 100%;
     transition: 1s;
     transform: rotate(0deg);
 }
 
-.left75{
+.left75 {
     left: 75%;
 }
-.left100{
+
+.left100 {
     left: 100%;
 }
 
 /* Estilo segundo */
 
-.table-responsive{
+.table-responsive {
     margin: 6px;
 }
-.colunas-pai{
+
+.colunas-pai {
     border: none;
 }
 
 /* Fim do estilo segundo */
 
 /* Fim do estilo */
+
+/* Estilo das regras */
+.etapa1>.campos>select,
+.etapa1>.campos>input {
+    padding: 20px;
+    margin: 15px 0;
+    width: 100%;
+    font-size: 16pt;
+    text-align: center;
+    background: none;
+    border: none;
+    border-bottom: solid 1px #467aef;
+}
