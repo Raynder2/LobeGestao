@@ -1,6 +1,7 @@
 /* Estilos do painel do site */
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 body {

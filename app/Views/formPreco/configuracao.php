@@ -1,9 +1,18 @@
 <div class="conteudo-central">
     <nav class="opcoes-edicao">
         <ul>
-            <li class="ativo">Campos</li>
+            <?php
+            foreach($dados['listas'] as $itemLista){
+                if($itemLista == $dados['lista']){
+                    echo "<li  class='ativo'><a href='".URL."formPreco/configuracao/".$itemLista."'>".ucfirst($itemLista)."</a></li>";
+                }else{
+                    echo("<li><a href='".$itemLista."'>".ucfirst($itemLista)."</a></li>");
+                }
+            }
+            ?>
+            <!-- <li class="ativo">Campos</li>
             <li class="">Aliquotas</li>
-            <li class="">Regras</li>
+            <li class="">Regras</li> -->
         </ul>
     </nav>
     

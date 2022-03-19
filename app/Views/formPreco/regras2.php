@@ -89,7 +89,7 @@
 
                 </div>
             </div>
-            <img class="img-concluir" src="http://192.168.1.95/LobeGestao/public/dist/img/seta.png" alt="" onclick="montarRegra()">
+            <img class="img-concluir" src="http://10.3.6.152/LobeGestao/public/dist/img/seta.png" alt="" onclick="montarRegra()">
         </div>
 
         <dados class="empresa"></dados>

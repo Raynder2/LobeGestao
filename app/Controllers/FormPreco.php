@@ -77,9 +77,14 @@
 
         public function configuracoes($parametros = null){
             $estados = new Estado();
+            $empresa = new Empresa();
+
             $dados = array(
                 'estados' => $estados->listarEstados(),
-                'aliquotas' => $estados->listarAliquotas()
+                'aliquotas' => $estados->listarAliquotas(),
+                'resultados' => $empresa->listar($parametros),
+                'listas' => ['campos', 'regras'],
+                'lista' => $parametros
             );
             if($parametros != null){
                 $dados['configurador'] = $parametros;

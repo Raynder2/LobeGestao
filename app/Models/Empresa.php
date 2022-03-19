@@ -188,9 +188,9 @@
             return($result);
         }
 
-        public function listarCamposCadastrados(){
+        public function listar($tabela){
             $sql = new Database();
-            $query = "SELECT * FROM campos";
+            $query = "SELECT * FROM $tabela";
 
             $result = $sql->select($query);
             return($result);
