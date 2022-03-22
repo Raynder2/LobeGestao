@@ -29,7 +29,7 @@
                     <?php
                     // print_r($dados);exit();
                     foreach ($dados['colunas'] as $coluna) {
-                        echo ("<th>" . ucfirst(str_replace('_', ' ', $coluna)) . "</th>");
+                        echo ("<th>" . ucfirst(str_replace('_', ' ', $coluna[0])) . "</th>");
                     }
                     ?>
                     <th>Açõoes</th>
@@ -40,10 +40,10 @@
                 foreach ($dados['linhas'] as $linha) {
                     echo ("<tr>");
                     foreach ($dados['colunas'] as $coluna) {
-                        echo ("<td>" . $linha[$coluna] . "</td>");
+                        echo ("<td>" . $linha[$coluna[0]] . "</td>");
                     }
-                    echo ("<td><a href='" . URL . "formPreco/editar/" . $linha['id'] . "'>Editar</a> | <a href='" . URL . "formPreco/excluir/" . $linha['id'] . "'>Excluir</a></td>");
-                    echo ("</tr>");
+                    echo ("<td><img src='" . DIST . "img/note.png' class='botaofuncao' tabela='" . $dados['lista'] . "' funcao='editar' valor='" . $linha['id'] . "'>
+                     <img src='" . DIST . "img/lixo.png' class='botaofuncao' tabela='" . $dados['lista'] . "' funcao='deletar' valor='" . $linha['id'] . "'></td>");
                 }
                 ?>
             </tbody>
@@ -61,15 +61,27 @@
             <!-- um for para criar input para cada item da coluna -->
             <?php
             foreach ($dados['colunas'] as $coluna) {
-                echo ("<input type='text' name='" . $coluna . "' placeholder='" . ucfirst(str_replace('_', ' ', $coluna)) . "'>");
+                if ($coluna[1] == 0) {
+                    $coluna = $coluna[0];
+                    echo ("<input class='inp' type='text' name='" . $coluna . "' placeholder='" . ucfirst(str_replace('_', ' ', $coluna)) . "'>");
+                } else {
+                    echo ("<select class='inp' name='" . $coluna[0] . "'>");
+                    echo ("<option value=''>Selecione</option>");
+                    foreach ($coluna[1] as $opt) {
+                        echo ("<option value='" . $opt . "'>" . ucfirst(str_replace('_', ' ', $opt)) . "</option>");
+                    }
+                    echo ("</select>");
+                }
             }
             ?>
 
-            <button id="enviar">Cadastrar</button>
+            <input type="text" class="inp" value="0" name="id" style="display: none;">
+
+            <button id="enviar">Enviar</button>
 
         </form>
         <style>
-            form>input {
+            form>.inp {
                 margin: 7px 2%;
                 width: 40%;
 
@@ -80,6 +92,11 @@
                 margin: 10px;
                 background: #1d1552;
                 color: white;
+            }
+
+            img.botaofuncao {
+                width: 20px;
+                margin: 0 5px;
             }
         </style>
     </div>
@@ -99,8 +116,6 @@
     </div>
 
     <script>
-        
-
         function trocar() {
             selecAll('.conteudo-central>.tabela').forEach((table) => {
                 if (table.style.display == 'none') {
@@ -115,8 +130,8 @@
         window.onload = function() {
             selec('#enviar').addEventListener('click', function(e) {
                 e.preventDefault();
-                            
-                if(dados = selecValues('.conteudo-central>.tabela>form>input')){
+
+                if (dados = selecValues('.conteudo-central>.tabela>form>.inp')) {
                     // enviar os dados para o servidor
                     $.ajax({
                         url: 'cadastrar',
@@ -131,6 +146,40 @@
                         }
                     })
                 }
+            });
+
+            selecAll('.botaofuncao').forEach(function(button) {
+                button.addEventListener('click', function(e) {
+                    e = e.target
+                    funcao = e.getAttribute('funcao');
+                    valor = e.getAttribute('valor');
+                    tabela = e.getAttribute('tabela');
+
+                    $.ajax({
+                        url: funcao,
+                        type: 'POST',
+                        data: {
+                            valor: valor,
+                            table: tabela
+                        },
+                        success: function(response) {
+                            dados = JSON.parse(response.split("resultadoJson")[1]);
+                            if (dados.mensagem == 'undefined' || dados.mensagem == undefined) {
+                                dados = dados[0]
+                                //pegar valores e colocar no formulario
+                                selecAll('form>.inp').forEach(function(input) {
+                                    input.value = dados[input.name];
+                                });
+                                trocar()
+                            } else {
+                                alerta(dados.mensagem, dados.status);
+                                setTimeout(function() {
+                                    location.reload();
+                                }, 1000);
+                            }
+                        }
+                    })
+                });
             });
         }
     </script>

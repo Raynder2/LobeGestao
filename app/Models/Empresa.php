@@ -235,4 +235,36 @@
             }
         }
 
+        public function deletar($table, $id){
+            $sql = new Database();
+            $query = "DELETE FROM $table WHERE id = :id";
+            $array = array(
+                ':id' => $id
+            );
+
+            if($sql->delete($query, $array)){
+                exit("resultadoJson".json_encode(['status' => 'success', 'mensagem' => 'Campo excluído com sucesso!']));
+            }
+            else{
+                exit("resultadoJson".json_encode(['status' => 'error', 'mensagem' => 'Erro ao excluir campo!']));
+            }
+        }
+
+        public function editar($table, $id){
+            $sql = new Database();
+            $query = "SELECT * FROM $table WHERE id = :id";
+
+            $array = array(
+                ':id' => $id
+            );
+
+            if($result = $sql->select($query, $array)){
+                exit("resultadoJson".json_encode($result));
+            }
+            else{
+                exit("resultadoJson".json_encode(['status' => 'error', 'mensagem' => 'Erro ao tentar editar campo!']));
+            }
+
+        }
+
     }

@@ -83,7 +83,7 @@
             $model = new Empresa();
             $dados = array(
                 'linhas' => $model->listar('campos'),
-                'colunas' => ['nome', 'familia', 'tipo_campo', 'efeito'],
+                'colunas' => [['nome',0], ['familia','entrada','saida'], ['tipo_campo','real','porcentagem'], ['efeito','soma','subtracao']],
                 'listas' => $this->listarColunas(),
                 'lista' => 'campos'
             );
@@ -95,7 +95,7 @@
             $model = new Empresa();
             $dados = array(
                 'linhas' => $model->listar('campos'),
-                'colunas' => ['nome', 'familia', 'tipo_campo', 'efeito'],
+                'colunas' => [['nome',0], ['familia',['entrada','saida']], ['tipo_campo',['real','porcentagem']], ['efeito',['soma','subtracao']]],
                 'listas' => $this->listarColunas(),
                 'lista' => 'campos'
             );
@@ -106,7 +106,7 @@
             $model = new Empresa();
             $dados = array(
                 'linhas' => $model->listar('regras'),
-                'colunas' => ['regra','campo_alvo','criterios'],
+                'colunas' => [['regra',0],['campo_alvo',0],['criterios',0]],
                 'listas' => $this->listarColunas(),
                 'lista' => 'regras'
             );
@@ -118,6 +118,24 @@
             $model = new Empresa();
 
             $model->cadastrar($_POST['table'], $_POST['dados']);
+        }
+
+        public function alterar(){
+            $model = new Empresa();
+
+            $model->alterar($_POST['table'], $_POST['dados']);
+        }
+
+        public function deletar(){
+            $model = new Empresa();
+
+            $model->deletar($_POST['table'], $_POST['valor']);
+        }
+
+        public function editar(){
+            $model = new Empresa();
+
+            $dados = $model->editar($_POST['table'], $_POST['valor']);
         }
 
         public function selecionarFiliais(){
