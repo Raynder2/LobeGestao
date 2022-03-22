@@ -11,7 +11,7 @@ var lucro = 0
 var decremento = 0
 var incremento = 0
 
-url = "http://192.168.1.95/LobeGestao/";
+url = "http://192.168.1.97/LobeGestao/";
 
 $('#fornecedor').change(function () {
     mudarFornecedor();
@@ -163,6 +163,42 @@ function verificarAliquota() {
         }
 
     }, 5000)
+}
+
+function selecAll(parametro) {
+    return document.querySelectorAll(parametro)
+}
+
+function selec(parametro) {
+    return document.querySelector(parametro)
+}
+
+function ifNull(input){
+    if (input == '' || input == null || input == undefined || input == 'undefined') {
+        return true;
+    }
+}
+
+function selecValues(alvo){
+    let inputs = selecAll(alvo);
+    let dados = {};
+    let vazio = false;
+
+    // percorrer os inputs e verificar se estão vazios
+    inputs.forEach((input) => {
+        if (ifNull(input.value)) {
+            alerta('Preencha todos os campos!', 'error');
+            vazio = true;
+        }
+        else {
+            dados[input.name] = input.value;
+        }
+    });
+
+    if(vazio){
+        return false;
+    }
+    return dados;
 }
 
 

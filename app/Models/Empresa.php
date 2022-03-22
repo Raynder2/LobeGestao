@@ -211,4 +211,28 @@
             $sql->delete($query);
         }
 
+
+        public function cadastrar($table, $dados){
+            $sql = new Database();
+            $query = "INSERT INTO $table (";
+            $campos = "";
+            $valores = "";
+
+            foreach($dados as $key => $value){
+                $campos .= $key.", ";
+                $valores .= ":".$key.", ";
+            }
+
+            $campos = substr($campos, 0, -2);
+            $valores = substr($valores, 0, -2);
+            
+            $query .= $campos.") VALUES (".$valores.")";
+            if($sql->insere($query, $dados)){
+                exit("resultadoJson".json_encode(['status' => 'success', 'mensagem' => 'Registro salvo com sucesso!']));
+            }
+            else{
+                exit("resultadoJson".json_encode(['status' => 'error', 'mensagem' => 'Erro ao salvar registro!']));
+            }
+        }
+
     }

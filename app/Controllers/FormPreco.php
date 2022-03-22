@@ -38,17 +38,17 @@
             $this->seLogin('formPreco/index', $array);
         }
 
-        public function regras(){
-            $empresa = new Empresa();
-            $arrayCampos = array(
-                'entradas' => $empresa->listarCampos('entradas'),
-                'saidas' => $empresa->listarCampos('saidas'),
-                'empresa' => $empresa->listarCampos('empresa'),
-                'controle' => $empresa->listarCampos('controle')
-            );
+        // public function regras(){
+        //     $empresa = new Empresa();
+        //     $arrayCampos = array(
+        //         'entradas' => $empresa->listarCampos('entradas'),
+        //         'saidas' => $empresa->listarCampos('saidas'),
+        //         'empresa' => $empresa->listarCampos('empresa'),
+        //         'controle' => $empresa->listarCampos('controle')
+        //     );
             
-            $this->seLogin('formPreco/regras', $arrayCampos);
-        }
+        //     $this->seLogin('formPreco/regras', $arrayCampos);
+        // }
 
         public function salvarRegras(){
             if(isset($_POST['regra']) && !empty($_POST['regra'])){
@@ -75,21 +75,49 @@
             }
         }
 
-        public function configuracoes($parametros = null){
-            $estados = new Estado();
-            $empresa = new Empresa();
+        private function listarColunas(){
+            return ['campos', 'regras'];
+        }
 
+        public function configuracoes($parametros = 'campos'){
+            $model = new Empresa();
             $dados = array(
-                'estados' => $estados->listarEstados(),
-                'aliquotas' => $estados->listarAliquotas(),
-                'resultados' => $empresa->listar($parametros),
-                'listas' => ['campos', 'regras'],
-                'lista' => $parametros
+                'linhas' => $model->listar('campos'),
+                'colunas' => ['nome', 'familia', 'tipo_campo', 'efeito'],
+                'listas' => $this->listarColunas(),
+                'lista' => 'campos'
             );
-            if($parametros != null){
-                $dados['configurador'] = $parametros;
-            }
             $this->seLogin('formPreco/configuracao', $dados);
+        }
+
+        //Controllers admin do sistema
+        public function campos(){
+            $model = new Empresa();
+            $dados = array(
+                'linhas' => $model->listar('campos'),
+                'colunas' => ['nome', 'familia', 'tipo_campo', 'efeito'],
+                'listas' => $this->listarColunas(),
+                'lista' => 'campos'
+            );
+            $this->seLogin('formPreco/configuracao', $dados);
+        }
+
+        public function regras(){
+            $model = new Empresa();
+            $dados = array(
+                'linhas' => $model->listar('regras'),
+                'colunas' => ['regra','campo_alvo','criterios'],
+                'listas' => $this->listarColunas(),
+                'lista' => 'regras'
+            );
+            $this->seLogin('formPreco/configuracao', $dados);
+        }
+        // Fim dos Controllers admin do sistema
+
+        public function cadastrar(){
+            $model = new Empresa();
+
+            $model->cadastrar($_POST['table'], $_POST['dados']);
         }
 
         public function selecionarFiliais(){
