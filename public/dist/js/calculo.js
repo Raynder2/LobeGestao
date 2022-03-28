@@ -136,11 +136,21 @@ function converterValores(tabela) {
     tabela.querySelectorAll(".campoTabela").forEach(function (campo) {
         campoAux = campo.value.replaceAll('%', '')
         nome = campo.name.replaceAll("-", "_")
+        efeito = 0
+
+        if(campo.getAttribute('efeito') == 'subtrai'){
+            efeito = 1
+        }
+        else if(campo.getAttribute('efeito') == 'soma'){
+            efeito = 2
+        }
+
+
         if (campo.value.includes('%')) {
-            tabelaValores[nome] = [parseFloat(campoAux.replaceAll(".", "").replaceAll(",", ".")), '%']
+            tabelaValores[nome] = [parseFloat(campoAux.replaceAll(".", "").replaceAll(",", ".")), '%',efeito]
         }
         else {
-            tabelaValores[nome] = [parseFloat(campoAux.replaceAll(".", "").replaceAll(",", ".")), '$']
+            tabelaValores[nome] = [parseFloat(campoAux.replaceAll(".", "").replaceAll(",", ".")), '$',efeito]
         }
     })
 }
@@ -157,20 +167,10 @@ function calcularCusto() {
     for (var i in tabelaValores) {
         if(tabelaValores[i][0] > 0 && i != 'precodoproduto' && i != 'preco_de_custo'){
             if (tabelaValores[i][1] == '%') {
-                if (cont <= 3) {
-                    preco = tipoCalculo(preco, preco * (tabelaValores[i][0] / 100), 1)
-                }
-                else {
-                    preco = tipoCalculo(preco, preco * (tabelaValores[i][0] / 100), 2)
-                }
+                preco = tipoCalculo(preco, preco * (tabelaValores[i][0] / 100), tabelaValores[i][2])
             }
             if (tabelaValores[i][1] == '$') {
-                if (cont <= 3) {
-                    preco = tipoCalculo(preco, tabelaValores[i][0], 1)
-                }
-                else {
-                    preco = tipoCalculo(preco, tabelaValores[i][0], 2)
-                }
+                preco = tipoCalculo(preco, tabelaValores[i][0], tabelaValores[i][2])
             }
         }
         cont++
@@ -181,6 +181,7 @@ function calcularCusto() {
 }
 
 function tipoCalculo(base, valor, calculo) {
+    console.log(base, valor, calculo)
     if (valor != 0) {
         if (calculo == 1) {
             decremento = decremento + valor
@@ -198,7 +199,6 @@ function tipoCalculo(base, valor, calculo) {
 
 $('.table-responsive.campos').change((tabela)=>{
     tabela = tabela.currentTarget
-    console.log(tabela)
     lerTabelaAtual(tabela)
     converterValores(tabela)
 

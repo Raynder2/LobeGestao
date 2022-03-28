@@ -18,6 +18,11 @@
             $user = "root";
             $pass = "";
 
+            // $db = 'epiz_31390044_sanduicheria'; 
+            // $host = "sql309.epizy.com";
+            // $user = "epiz_31390044";
+            // $pass = "wFfEvFyaUR";
+
             // $db = 'lobege28_lobegestao'; 
             // $host = "localhost";
             // $user = "lobege28_raynder";

@@ -211,7 +211,6 @@
             $sql->delete($query);
         }
 
-
         public function cadastrar($table, $dados){
             $sql = new Database();
             $query = "INSERT INTO $table (";

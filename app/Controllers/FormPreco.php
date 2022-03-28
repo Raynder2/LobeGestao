@@ -8,7 +8,8 @@
             $array = array(
                 'estados' => $estados->listarEstados(),
                 'options' => $empresa->listarEmpresas(),
-                'seletores' => $empresa->listarSeletores()
+                'seletores' => $empresa->listarSeletores(),
+                'campos' => $empresa->listar('campos')
             );
             
             $this->seLogin('formPreco/index', $array);
@@ -83,7 +84,7 @@
             $model = new Empresa();
             $dados = array(
                 'linhas' => $model->listar('campos'),
-                'colunas' => [['nome',0], ['familia','entrada','saida'], ['tipo_campo','real','porcentagem'], ['efeito','soma','subtracao']],
+                'colunas' => [['nome',0], ['familia',['entrada','saida']], ['tipo_campo',['real','porcentagem']], ['efeito',['soma','subtrai']]],
                 'listas' => $this->listarColunas(),
                 'lista' => 'campos'
             );
@@ -95,7 +96,7 @@
             $model = new Empresa();
             $dados = array(
                 'linhas' => $model->listar('campos'),
-                'colunas' => [['nome',0], ['familia',['entrada','saida']], ['tipo_campo',['real','porcentagem']], ['efeito',['soma','subtracao']]],
+                'colunas' => [['nome',0], ['familia',['entrada','saida']], ['tipo_campo',['real','porcentagem']], ['efeito',['soma','subtrai']]],
                 'listas' => $this->listarColunas(),
                 'lista' => 'campos'
             );
